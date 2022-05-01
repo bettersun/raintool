@@ -1,33 +1,40 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:kiwi/kiwi.dart';
+import 'package:raintool/api/api_get_hello_world.dart';
+import 'package:raintool/api/impl/api_get_hello_world_impl.dart';
+import 'package:raintool/app/app_repository.dart';
+import 'package:raintool/app/impl/app_service_impl.dart';
 
-// 创建一个 "provider"，它会存储一个值 （在这里是 "Hello world"）。
-// 通过使用 provider， 这使我们可以模拟/覆写暴露的值。
-final helloWorldProvider = Provider((_) => 'Hello world');
+import 'app/app.dart';
+import 'app/app_service.dart';
+import 'app/impl/app_repository_impl.dart';
+import 'common/constant.dart';
+import 'common/hive_util.dart';
 
-void main() {
-  runApp(
-    // 为了使组件能读取 provider ，我们需要将整个应用包装在一个 "ProviderScope" 组件中。
-    // 这是 provider 的状态要存储的地方。
-    ProviderScope(
-      child: MyApp(),
-    ),
-  );
-}
+// void main() {
+//   runApp(
+//     // 为了使组件能读取 provider ，我们需要将整个应用包装在一个 "ProviderScope" 组件中。
+//     // 这是 provider 的状态要存储的地方。
+//     const ProviderScope(
+//       child: App(),
+//     ),
+//   );
+// }
 
-// 继承 ConsumerWidget 而不是 StatelessWidget，它是 Riverpod 中暴露的组件。
-class MyApp extends ConsumerWidget {
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final String value = ref.watch(helloWorldProvider);
+void main() async {
+  // Hive
+  await HiveUtil.initBox();
+  await HiveUtil.openAppBox();
 
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(title: const Text('Example')),
-        body: Center(
-          child: Text(value),
-        ),
-      ),
-    );
-  }
+  HiveUtil.appBox().put(Constant.title, 'Hello~World~');
+
+  // Kiwi
+  KiwiContainer container = KiwiContainer();
+  container.registerInstance<AppService>(AppServiceImpl());
+  container.registerInstance<AppRepository>(AppRepositoryImpl());
+  container.registerInstance<ApiGetHelloWorld>(ApiGetHelloWorldImpl());
+
+  runApp(const ProviderScope(child: RainApp()));
 }
