@@ -8,3 +8,7 @@ final AppService service = KiwiContainer().resolve<AppService>();
 final helloWorldProvider = FutureProvider<String>((ref) async {
   return await service.helloWorld();
 });
+
+final helloProvider = FutureProvider<String>((ref) async {
+  return await service.helloWorld();
+});

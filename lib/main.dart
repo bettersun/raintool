@@ -1,17 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:kiwi/kiwi.dart';
-import 'package:raintool/api/api_get_hello_world.dart';
-import 'package:raintool/api/impl/api_get_hello_world_impl.dart';
-import 'package:raintool/app/app_repository.dart';
-import 'package:raintool/app/impl/app_service_impl.dart';
 
 import 'app/app.dart';
-import 'app/app_service.dart';
-import 'app/impl/app_repository_impl.dart';
-import 'common/constant.dart';
 import 'common/hive_util.dart';
+import 'kiwi.dart';
 
 // void main() {
 //   runApp(
@@ -28,13 +21,10 @@ void main() async {
   await HiveUtil.initBox();
   await HiveUtil.openAppBox();
 
-  HiveUtil.appBox().put(Constant.title, 'Hello~World~');
+  // HiveUtil.appBox().put(Constant.title, 'Hello~World~');
 
-  // Kiwi
-  KiwiContainer container = KiwiContainer();
-  container.registerInstance<AppService>(AppServiceImpl());
-  container.registerInstance<AppRepository>(AppRepositoryImpl());
-  container.registerInstance<ApiGetHelloWorld>(ApiGetHelloWorldImpl());
+  // kiwi
+  inject();
 
   runApp(const ProviderScope(child: RainApp()));
 }

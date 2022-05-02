@@ -7,7 +7,6 @@ class AppServiceImpl extends AppService {
   @override
   Future<String> helloWorld() async {
     final AppRepository repo = KiwiContainer().resolve<AppRepository>();
-    String s = await repo.helloWorld();
-    return s;
+    return await repo.helloWorld();
   }
 }
