@@ -1,36 +1,37 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:raintool/app/provdier/app_env.dart';
 
-import '../common/constant.dart';
-import '../common/hive_util.dart';
-import 'app_provider.dart';
+import 'provdier/app_provider.dart';
 
-class RainApp extends ConsumerWidget {
+class RainApp extends ConsumerStatefulWidget {
   const RainApp({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final AsyncValue<String> value = ref.watch(helloWorldProvider);
+  RainAppState createState() => RainAppState();
+}
 
-    final String title = value.when(
-      data: (val) {
-        return val;
-      },
-      error: (e, s) => 'ER',
-      loading: () => 'Loading',
-    );
+class RainAppState extends ConsumerState<RainApp> {
+  @override
+  void initState() {
+    ref.read(appEnvProvider.notifier).init();
+    super.initState();
+  }
 
-    final String title2 = HiveUtil.appBox().get(Constant.title);
+  @override
+  Widget build(BuildContext context) {
+    final AppEnv appEnv = ref.watch(appEnvProvider);
+    print(appEnv.theme);
 
     return MaterialApp(
-      // theme: ThemeData.dark(),
+      theme: appEnv.themeData,
       home: Scaffold(
         appBar: AppBar(
-          title: Text(title + title2),
+          title: Text(appEnv.title),
         ),
         drawer: Drawer(
           child: ListView(
-            // Important: Remove any padding from the ListView.
             padding: EdgeInsets.zero,
             children: [
               const DrawerHeader(
@@ -47,62 +48,17 @@ class RainApp extends ConsumerWidget {
                 },
               ),
               ListTile(
-                title: const Text('Item 2'),
+                title: Text(appEnv.label),
                 onTap: () {
-                  // Update the state of the app.
-                  // ...
+                  // 切换主题
+                  ref.read(appEnvProvider.notifier).toggle();
                 },
               ),
             ],
           ),
         ),
+        body: Text(appEnv.message),
       ),
     );
-    //
-    // return value.when(
-    //   data: (val) {
-    //     return MaterialApp(
-    //       // theme: ThemeData.dark(),
-    //       home: Scaffold(
-    //         appBar: AppBar(title: Text(val)),
-    //         drawer: Drawer(
-    //           child: ListView(
-    //             // Important: Remove any padding from the ListView.
-    //             padding: EdgeInsets.zero,
-    //             children: [
-    //               const DrawerHeader(
-    //                 decoration: BoxDecoration(
-    //                   color: Colors.blue,
-    //                 ),
-    //                 child: Text('Drawer Header'),
-    //               ),
-    //               ListTile(
-    //                 title: const Text('Item 1'),
-    //                 onTap: () {
-    //                   // Update the state of the app.
-    //                   // ...
-    //                 },
-    //               ),
-    //               ListTile(
-    //                 title: const Text('Item 2'),
-    //                 onTap: () {
-    //                   // Update the state of the app.
-    //                   // ...
-    //                 },
-    //               ),
-    //             ],
-    //           ),
-    //         ),
-    //         body: const TodoPage(),
-    //       ),
-    //     );
-    //   },
-    //   error: (error, stack) => const MaterialApp(
-    //     home: Scaffold(body: Text('Error')),
-    //   ),
-    //   loading: () => const MaterialApp(
-    //     home: Scaffold(body: CircularProgressIndicator()),
-    //   ),
-    // );
   }
 }

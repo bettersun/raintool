@@ -16,6 +16,7 @@ abstract class Injector {
   void configure();
 }
 
+// 注入
 void inject() {
   var injector = _$Injector();
   injector.configure();

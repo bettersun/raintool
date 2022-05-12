@@ -4,7 +4,7 @@ import '../_grpc/hello.pbgrpc.dart';
 
 class RpcHello {
   Future<String> hello(List<String> args) async {
-    final stub = GreeterClient(RpcUtil.rpcChannel());
+    final stub = GreeterClient(RpcUtil.channelRpc());
 
     final name = args.isNotEmpty ? args[0] : 'world';
     final response = await stub.sayHello(

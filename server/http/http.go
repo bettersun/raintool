@@ -19,7 +19,7 @@ func RunHttp() {
 
 // Handler 响应函数
 func Handler(w http.ResponseWriter, r *http.Request) {
-	log.Printf("%+v", *r)
+	//log.Printf("%+v", *r)
 
 	s := "Hello, world."
 	// 转换成字节
@@ -28,5 +28,6 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 	//	log.Println(err)
 	//}
 
+	log.Println(s)
 	w.Write([]byte(s))
 }
