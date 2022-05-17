@@ -7,4 +7,5 @@ class HiveKey {
   static const String rpcServerPort = 'rpcServerPort';
 
   static const String appTheme = 'appTheme';
+  static const String appLocale = 'appLocale';
 }

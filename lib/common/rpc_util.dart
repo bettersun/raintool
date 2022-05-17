@@ -1,5 +1,4 @@
 import 'package:grpc/grpc.dart';
-import 'package:raintool/common/env_util.dart';
 
 import 'const/hive_key.dart';
 import 'hive_util.dart';

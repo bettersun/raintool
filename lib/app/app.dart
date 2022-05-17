@@ -1,10 +1,11 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:raintool/app/provdier/app_env.dart';
+import './provdier/app_env.dart';
 
+import '../_i18n/strings.g.dart';
 import 'provdier/app_provider.dart';
 
+/// Rain 工具应用
 class RainApp extends ConsumerStatefulWidget {
   const RainApp({Key? key}) : super(key: key);
 
@@ -15,20 +16,24 @@ class RainApp extends ConsumerStatefulWidget {
 class RainAppState extends ConsumerState<RainApp> {
   @override
   void initState() {
-    ref.read(appEnvProvider.notifier).init();
     super.initState();
+    // 初始化
+    ref.read(appEnvProvider.notifier).init();
   }
 
   @override
   Widget build(BuildContext context) {
+    // 应用配置
     final AppEnv appEnv = ref.watch(appEnvProvider);
-    print(appEnv.theme);
+    // 主题
+    final ThemeData themeData = ref.watch(themeProvider);
+    // print(appEnv.theme);
 
     return MaterialApp(
-      theme: appEnv.themeData,
+      theme: themeData,
       home: Scaffold(
         appBar: AppBar(
-          title: Text(appEnv.title),
+          title: Text(t.hello),
         ),
         drawer: Drawer(
           child: ListView(
@@ -41,10 +46,10 @@ class RainAppState extends ConsumerState<RainApp> {
                 child: Text('Drawer Header'),
               ),
               ListTile(
-                title: const Text('Item 1'),
+                title: Text(t.hello),
                 onTap: () {
-                  // Update the state of the app.
-                  // ...
+                  // 切换语言
+                  ref.read(appEnvProvider.notifier).changeLocale();
                 },
               ),
               ListTile(

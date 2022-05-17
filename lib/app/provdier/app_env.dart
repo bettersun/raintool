@@ -1,50 +1,23 @@
-import 'package:flutter/material.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:flutter/foundation.dart';
 
-@immutable
-class AppEnv {
-  const AppEnv({
-    this.code = '',
-    this.message = '',
-    this.title = '',
-    this.theme = '',
-    this.label = '',
-    required this.themeData,
-    this.apiServer = '',
-    this.rpcServerIp = '',
-    this.rpcServerPort = 0,
-  });
+part 'app_env.freezed.dart';
+part 'app_env.g.dart';
 
-  final String code;
-  final String message;
-  final String title;
-  final String theme;
-  final String label;
-  final ThemeData themeData;
-  final String apiServer;
-  final String rpcServerIp;
-  final int rpcServerPort;
+/// 应用配置
+@freezed
+class AppEnv with _$AppEnv {
+  const factory AppEnv({
+    @Default('') String code, // 状态码
+    @Default('') String message, // 消息
+    @Default('') String title, // 应用标题
+    @Default('') String theme, // 应用主题标志
+    @Default('') String locale, // 应用语言标志
+    @Default('') String label, // 主题切换标签
+    @Default('') String apiServer, // API服务 URL
+    @Default('') String rpcServerIp, // RPC服务 IP
+    @Default(0) int rpcServerPort, // RPC服务 端口
+  }) = _AppEnv;
 
-  AppEnv copyWith({
-    String? code,
-    String? message,
-    String? title,
-    String? theme,
-    String? label,
-    ThemeData? themeData,
-    String? apiServer,
-    String? rpcServerIp,
-    int? rpcServerPort,
-  }) {
-    return AppEnv(
-      code: code ?? this.code,
-      message: message ?? this.message,
-      title: title ?? this.title,
-      theme: theme ?? this.theme,
-      label: label ?? this.label,
-      themeData: themeData ?? this.themeData,
-      apiServer: apiServer ?? this.apiServer,
-      rpcServerIp: rpcServerIp ?? this.rpcServerIp,
-      rpcServerPort: rpcServerPort ?? this.rpcServerPort,
-    );
-  }
+  factory AppEnv.fromJson(Map<String, Object?> json) => _$AppEnvFromJson(json);
 }

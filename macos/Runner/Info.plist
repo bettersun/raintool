@@ -28,5 +28,11 @@
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
+    <key>CFBundleLocalizations</key>
+    <array>
+        <string>en</string>
+        <string>cn</string>
+        <string>ja</string>
+    </array>
 </dict>
 </plist>

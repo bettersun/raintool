@@ -2,12 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '_i18n/strings.g.dart';
 import 'app/app.dart';
 import 'common/env_util.dart';
 import 'common/hive_util.dart';
 import 'kiwi.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  LocaleSettings.useDeviceLocale();
+
   // kiwi 依赖注入
   inject();
 
@@ -15,8 +19,14 @@ void main() async {
   await HiveUtil.initBox();
   await HiveUtil.openAppBox();
 
-  // 必须
-  await EnvUtil.fetchEnv();
+  // HiveUtil.appBox().put(HiveKey.appLocale, 'zh-CN');
 
-  runApp(const ProviderScope(child: RainApp()));
+  // 必需
+  await EnvUtil.loadEnv();
+
+  runApp(
+    const ProviderScope(
+      child: RainApp(),
+    ),
+  );
 }
