@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import './provdier/app_env.dart';
+import 'package:raintool/app/entity/app_setting.dart';
+import 'package:raintool/app/widget/home_view.dart';
+import 'package:raintool/app/widget/navibar.dart';
 
-import '../_i18n/strings.g.dart';
+import '../common/i18n/strings.g.dart';
+import 'entity/app_env.dart';
 import 'provdier/app_provider.dart';
 
 /// Rain 工具应用
@@ -19,6 +22,7 @@ class RainAppState extends ConsumerState<RainApp> {
     super.initState();
     // 初始化
     ref.read(appEnvProvider.notifier).init();
+    ref.read(appSettingProvider.notifier).init();
   }
 
   @override
@@ -28,6 +32,9 @@ class RainAppState extends ConsumerState<RainApp> {
     // 主题
     final ThemeData themeData = ref.watch(themeProvider);
     // print(appEnv.theme);
+
+    // 应用设定
+    final AppSetting appSetting = ref.watch(appSettingProvider);
 
     return MaterialApp(
       theme: themeData,
@@ -62,7 +69,41 @@ class RainAppState extends ConsumerState<RainApp> {
             ],
           ),
         ),
-        body: Text(appEnv.message),
+        bottomNavigationBar: BottomNavigationBar(
+          items: [
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.home,
+              ),
+              label: '1',
+              backgroundColor: Colors.blueAccent,
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.email,
+              ),
+              label: '2',
+              backgroundColor: Colors.blueAccent,
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.pages,
+              ),
+              label: '3',
+              backgroundColor: Colors.blueAccent,
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.airplay,
+              ),
+              label: '4',
+              backgroundColor: Colors.blueAccent,
+            )
+          ],
+          currentIndex: 0,
+          onTap: (int index) {},
+        ),
+        body: const HomeView(),
       ),
     );
   }

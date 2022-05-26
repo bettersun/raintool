@@ -1,6 +1,5 @@
-import 'package:raintool/common/rpc_util.dart';
-
 import '../_grpc/hello.pbgrpc.dart';
+import '../common/util.dart';
 
 class RpcHello {
   Future<String> hello(List<String> args) async {

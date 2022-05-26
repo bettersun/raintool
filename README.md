@@ -6,7 +6,7 @@ A new Flutter project.
 
 This project is a starting point for a Flutter application.
 
-
+Flutter 3.x
 
 ### proto To Dart
 
@@ -20,4 +20,8 @@ This project is a starting point for a Flutter application.
 protoc --go_out=server/grpc --go_opt=paths=source_relative \
     --go-grpc_out=server/grpc --go-grpc_opt=paths=source_relative \
     proto/hello.proto
+```
+
+```
+flutter packages pub run build_runner build --delete-conflicting-outputs
 ```

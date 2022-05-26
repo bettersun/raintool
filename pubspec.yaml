@@ -18,7 +18,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.16.0 <3.0.0"
+  sdk: ">=2.17.0 <3.0.0"
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -45,8 +45,8 @@ dependencies:
   grpc: ^3.0.2
   basic_utils: ^4.2.1
   freezed_annotation: ^2.0.3
-  easy_localization: ^3.0.0
-  fast_i18n: ^5.12.4
+  json_annotation: ^4.5.0
+  slang: ^2.3.1
 
 dev_dependencies:
   flutter_test:
@@ -83,6 +83,7 @@ flutter:
   #   - images/a_dot_ham.jpeg
   assets:
      - assets/env/env.json
+     - assets/env/menu.json
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

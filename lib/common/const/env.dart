@@ -1,8 +1,5 @@
 /// 环境设定
 class Env {
-  /// 环境设定文件路径
-  static const String assetEnv = 'assets/env/env.json';
-
   /// 应用标题
   static const String title = 'title';
 

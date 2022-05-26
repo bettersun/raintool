@@ -5,11 +5,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:grpc/grpc.dart';
 
 import '../../_grpc/hello.pbgrpc.dart';
-import '../../_i18n/strings.g.dart';
 import '../../common/const.dart';
-import '../../common/hive_util.dart';
-import '../../common/rpc_util.dart';
-import 'app_env.dart';
+import '../../common/i18n/strings.g.dart';
+import '../../common/util.dart';
+import '../entity/app_env.dart';
 
 class AppEnvNotifier extends StateNotifier<AppEnv> {
   AppEnvNotifier(AppEnv? state) : super(state ?? const AppEnv());
@@ -36,9 +35,9 @@ class AppEnvNotifier extends StateNotifier<AppEnv> {
       final Dio dio = Dio(
         BaseOptions(
           baseUrl: apiServer,
-          connectTimeout: Const.defaultConnectTimeout,
-          receiveTimeout: Const.defaultReceiveTimeout,
-          sendTimeout: Const.defaultSendTimeout,
+          connectTimeout: AppConst.defaultConnectTimeout,
+          receiveTimeout: AppConst.defaultReceiveTimeout,
+          sendTimeout: AppConst.defaultSendTimeout,
         ),
       );
 
@@ -55,7 +54,7 @@ class AppEnvNotifier extends StateNotifier<AppEnv> {
       // 检查 PRC 服务
       const name = 'rain tool init';
       int tryTime = 0;
-      while (tryTime < Const.maxRpcConnecdtTimes) {
+      while (tryTime < AppConst.maxRpcConnecdtTimes) {
         try {
           // 检查 RPC 服务
           final ClientChannel channel = ClientChannel(
@@ -94,7 +93,7 @@ class AppEnvNotifier extends StateNotifier<AppEnv> {
       }
 
       // 已达最大尝试次数，RPC服务不可用。
-      if (tryTime == Const.maxRpcConnecdtTimes) {
+      if (tryTime == AppConst.maxRpcConnecdtTimes) {
         code = Code.e90000;
         message = 'RPC服务不可用。';
       }
@@ -112,25 +111,25 @@ class AppEnvNotifier extends StateNotifier<AppEnv> {
   /// 切换主题
   void toggle() {
     // 明亮模式 -> 黑暗模式
-    if (state.theme == Const.light) {
+    if (state.theme == AppConst.light) {
       state = state.copyWith(
-        theme: Const.dark,
-        label: Const.labelLight,
+        theme: AppConst.dark,
+        label: AppConst.labelLight,
       );
 
       // 持久化
-      HiveUtil.appBox().put(HiveKey.appTheme, Const.dark);
+      HiveUtil.appBox().put(HiveKey.appTheme, AppConst.dark);
       return;
     }
     // 黑暗模式 -> 明亮模式
-    if (state.theme == Const.dark) {
+    if (state.theme == AppConst.dark) {
       state = state.copyWith(
-        theme: Const.light,
-        label: Const.labelDark,
+        theme: AppConst.light,
+        label: AppConst.labelDark,
       );
 
       // 持久化
-      HiveUtil.appBox().put(HiveKey.appTheme, Const.light);
+      HiveUtil.appBox().put(HiveKey.appTheme, AppConst.light);
       return;
     }
   }
@@ -139,37 +138,37 @@ class AppEnvNotifier extends StateNotifier<AppEnv> {
   void changeLocale() {
     switch (state.locale) {
       // 英语
-      case Const.localEnUs:
+      case AppConst.localEnUs:
         state = state.copyWith(
           // 汉语（中国）
-          locale: Const.localZhCn,
+          locale: AppConst.localZhCn,
         );
         break;
       // 汉语（中国）
-      case Const.localZhCn:
+      case AppConst.localZhCn:
         state = state.copyWith(
           // 汉语（香港）
-          locale: Const.localZhHk,
+          locale: AppConst.localZhHk,
         );
         break;
       // 汉语（香港）
-      case Const.localZhHk:
+      case AppConst.localZhHk:
         state = state.copyWith(
           // 日语
-          locale: Const.localJaJp,
+          locale: AppConst.localJaJp,
         );
         break;
       // 日语
-      case Const.localJaJp:
+      case AppConst.localJaJp:
         state = state.copyWith(
           // 英语
-          locale: Const.localEnUs,
+          locale: AppConst.localEnUs,
         );
         break;
       default:
         state = state.copyWith(
           // 默认语言
-          locale: Const.localDefault,
+          locale: AppConst.localDefault,
         );
     }
 

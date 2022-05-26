@@ -1,6 +1,6 @@
 import 'package:grpc/grpc.dart';
 
-import 'const/hive_key.dart';
+import '../const.dart';
 import 'hive_util.dart';
 
 class RpcUtil {

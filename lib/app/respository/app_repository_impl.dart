@@ -1,9 +1,9 @@
 import 'package:basic_utils/basic_utils.dart';
 
-import '../../common/const/hive_key.dart';
-import '../../common/hive_util.dart';
+import '../../common/const.dart';
+import '../../common/util/hive_util.dart';
 import '../../rpc/rpc_hello.dart';
-import '../app_repository.dart';
+import 'app_repository.dart';
 
 class AppRepositoryImpl extends AppRepository {
   @override
@@ -23,10 +23,6 @@ class AppRepositoryImpl extends AppRepository {
     String? apiServer = HiveUtil.appBox().get(HiveKey.apiServer);
     String? rpcServerIp = HiveUtil.appBox().get(HiveKey.rpcServerIp);
     int? rpcServerPort = HiveUtil.appBox().get(HiveKey.rpcServerPort);
-
-    print(apiServer);
-    print(rpcServerIp);
-    print(rpcServerPort);
 
     if (StringUtils.isNullOrEmpty(apiServer) || StringUtils.isNullOrEmpty(rpcServerIp) || rpcServerPort == null) {
       return false;

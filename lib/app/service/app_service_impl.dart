@@ -1,7 +1,7 @@
 import 'package:kiwi/kiwi.dart';
-import 'package:raintool/app/app_repository.dart';
+import 'package:raintool/app/respository/app_repository.dart';
 
-import '../app_service.dart';
+import 'app_service.dart';
 
 class AppServiceImpl extends AppService {
   final AppRepository repo = KiwiContainer().resolve<AppRepository>();

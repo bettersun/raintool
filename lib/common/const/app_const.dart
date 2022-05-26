@@ -1,5 +1,5 @@
 /// 常量
-class Const {
+class AppConst {
   static const String title = 'Title';
   static const String defaultTitle = 'Rain Tool';
 

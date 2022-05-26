@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '_i18n/strings.g.dart';
 import 'app/app.dart';
-import 'common/env_util.dart';
-import 'common/hive_util.dart';
+import 'common/i18n/strings.g.dart';
+import 'common/util.dart';
 import 'kiwi.dart';
 
 void main() async {
