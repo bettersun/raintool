@@ -1,4 +1,7 @@
+import '../entity/app_setting.dart';
+
 abstract class AppRepository {
   Future<String> helloWorld();
-  bool checkEnv();
+
+  Future<List<NaviItem>> loadMenu();
 }

@@ -1,8 +1,12 @@
+import 'dart:convert';
+
 import 'package:basic_utils/basic_utils.dart';
+import 'package:flutter/services.dart';
 
 import '../../common/const.dart';
 import '../../common/util/hive_util.dart';
 import '../../rpc/rpc_hello.dart';
+import '../entity/app_setting.dart';
 import 'app_repository.dart';
 
 class AppRepositoryImpl extends AppRepository {
@@ -19,15 +23,15 @@ class AppRepositoryImpl extends AppRepository {
   }
 
   @override
-  bool checkEnv() {
-    String? apiServer = HiveUtil.appBox().get(HiveKey.apiServer);
-    String? rpcServerIp = HiveUtil.appBox().get(HiveKey.rpcServerIp);
-    int? rpcServerPort = HiveUtil.appBox().get(HiveKey.rpcServerPort);
+  Future<List<NaviItem>> loadMenu() async {
+    final String s = await rootBundle.loadString(AssetConst.menu);
+    final List m = const JsonDecoder().convert(s);
 
-    if (StringUtils.isNullOrEmpty(apiServer) || StringUtils.isNullOrEmpty(rpcServerIp) || rpcServerPort == null) {
-      return false;
+    final List<NaviItem> list = [];
+    for (var item in m) {
+      list.add(NaviItem.fromJson(item));
     }
 
-    return true;
+    return list;
   }
 }

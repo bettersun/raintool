@@ -1,30 +1,30 @@
 [
   {
-    "flag" : "setting",
-    "index" : 0,
-    "label" : "设定",
-    "tooltip" : " 设定",
-    "enabled": true
-  },
-  {
     "flag" : "home",
     "index" : 1,
-    "label" : "设定",
-    "tooltip" : " 设定",
+    "label" : "BB",
+    "tooltip" : "设定222",
     "enabled": true
   },
   {
-    "flag" : "login",
+    "flag" : "email",
     "index" : 2,
-    "label" : "设定",
-    "tooltip" : " 设定",
+    "label" : "CC",
+    "tooltip" : "设定333",
     "enabled": true
   },
   {
-    "flag" : "logout",
+    "flag" : "pages",
     "index" : 3,
-    "label" : "设定",
-    "tooltip" : " 设定",
+    "label" : "DD",
+    "tooltip" : "设定444",
+    "enabled": true
+  },
+  {
+    "flag" : "setting",
+    "index" : 0,
+    "label" : "AA",
+    "tooltip" : "设定111",
     "enabled": true
   }
 ]

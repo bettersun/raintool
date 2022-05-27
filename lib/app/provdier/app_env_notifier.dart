@@ -3,15 +3,19 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:grpc/grpc.dart';
+import 'package:kiwi/kiwi.dart';
 
 import '../../_grpc/hello.pbgrpc.dart';
 import '../../common/const.dart';
 import '../../common/i18n/strings.g.dart';
 import '../../common/util.dart';
 import '../entity/app_env.dart';
+import '../service/app_service.dart';
 
 class AppEnvNotifier extends StateNotifier<AppEnv> {
   AppEnvNotifier(AppEnv? state) : super(state ?? const AppEnv());
+
+  final AppService _appService = KiwiContainer().resolve<AppService>();
 
   /// 初始化
   void init() async {
@@ -110,71 +114,11 @@ class AppEnvNotifier extends StateNotifier<AppEnv> {
 
   /// 切换主题
   void toggle() {
-    // 明亮模式 -> 黑暗模式
-    if (state.theme == AppConst.light) {
-      state = state.copyWith(
-        theme: AppConst.dark,
-        label: AppConst.labelLight,
-      );
-
-      // 持久化
-      HiveUtil.appBox().put(HiveKey.appTheme, AppConst.dark);
-      return;
-    }
-    // 黑暗模式 -> 明亮模式
-    if (state.theme == AppConst.dark) {
-      state = state.copyWith(
-        theme: AppConst.light,
-        label: AppConst.labelDark,
-      );
-
-      // 持久化
-      HiveUtil.appBox().put(HiveKey.appTheme, AppConst.light);
-      return;
-    }
+    state = _appService.toggleTheme(state);
   }
 
   /// 切换语言
   void changeLocale() {
-    switch (state.locale) {
-      // 英语
-      case AppConst.localEnUs:
-        state = state.copyWith(
-          // 汉语（中国）
-          locale: AppConst.localZhCn,
-        );
-        break;
-      // 汉语（中国）
-      case AppConst.localZhCn:
-        state = state.copyWith(
-          // 汉语（香港）
-          locale: AppConst.localZhHk,
-        );
-        break;
-      // 汉语（香港）
-      case AppConst.localZhHk:
-        state = state.copyWith(
-          // 日语
-          locale: AppConst.localJaJp,
-        );
-        break;
-      // 日语
-      case AppConst.localJaJp:
-        state = state.copyWith(
-          // 英语
-          locale: AppConst.localEnUs,
-        );
-        break;
-      default:
-        state = state.copyWith(
-          // 默认语言
-          locale: AppConst.localDefault,
-        );
-    }
-
-    // 反映
-    LocaleSettings.setLocaleRaw(state.locale);
-    // 持久化
-    HiveUtil.appBox().put(HiveKey.appLocale, state.locale);
+    state = _appService.changeLocale(state);
   }
 }

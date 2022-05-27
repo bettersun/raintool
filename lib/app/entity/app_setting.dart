@@ -10,7 +10,9 @@ part 'app_setting.g.dart';
 class AppSetting with _$AppSetting {
   const factory AppSetting({
     @Default([]) List<NaviItem> naviItemList, // 底边栏项目列表
-    @Default([]) List<MenuItem> menuItemList, // 菜单项目列表
+    @Default([]) List<BMenuItem> menuItemList, // 菜单项目列表
+    @Default(0) int naviItemIndex,
+    @Default(0) int menuItemIndex,
   }) = _AppSetting;
 
   factory AppSetting.fromJson(Map<String, Object?> json) => _$AppSettingFromJson(json);
@@ -22,6 +24,7 @@ class NaviItem with _$NaviItem {
   const factory NaviItem({
     @Default(0) int index, //  下标
     @Default('') String label, // 标题
+    @JsonKey(ignore: true) IconData? icon, // 图标
     @Default('') String flag, // 标志
     @Default('') String tooltip, // 提示信息
     @Default(false) bool enabled, // 可用
@@ -32,14 +35,15 @@ class NaviItem with _$NaviItem {
 
 /// 菜单项目
 @freezed
-class MenuItem with _$MenuItem {
-  const factory MenuItem({
+class BMenuItem with _$BMenuItem {
+  const factory BMenuItem({
     @Default(0) int index, //  下标
     @Default('') String label, // 标题
+    @JsonKey(ignore: true) IconData? icon, // 图标
     @Default('') String flag, // 标志
     @Default('') String tooltip, // 提示信息
     @Default(false) bool enabled, // 可用
-  }) = _MenuItem;
+  }) = _BMenuItem;
 
-  factory MenuItem.fromJson(Map<String, Object?> json) => _$MenuItemFromJson(json);
+  factory BMenuItem.fromJson(Map<String, Object?> json) => _$BMenuItemFromJson(json);
 }

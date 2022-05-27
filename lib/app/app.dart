@@ -21,7 +21,7 @@ class RainAppState extends ConsumerState<RainApp> {
   void initState() {
     super.initState();
     // 初始化
-    ref.read(appEnvProvider.notifier).init();
+    // ref.read(appEnvProvider.notifier).init();
     ref.read(appSettingProvider.notifier).init();
   }
 
@@ -69,39 +69,9 @@ class RainAppState extends ConsumerState<RainApp> {
             ],
           ),
         ),
-        bottomNavigationBar: BottomNavigationBar(
-          items: [
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.home,
-              ),
-              label: '1',
-              backgroundColor: Colors.blueAccent,
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.email,
-              ),
-              label: '2',
-              backgroundColor: Colors.blueAccent,
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.pages,
-              ),
-              label: '3',
-              backgroundColor: Colors.blueAccent,
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.airplay,
-              ),
-              label: '4',
-              backgroundColor: Colors.blueAccent,
-            )
-          ],
-          currentIndex: 0,
-          onTap: (int index) {},
+        bottomNavigationBar: NaviBar(
+          itemList: appSetting.naviItemList,
+          currentIndex: appSetting.naviItemIndex,
         ),
         body: const HomeView(),
       ),

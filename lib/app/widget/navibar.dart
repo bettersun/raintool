@@ -1,46 +1,44 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:raintool/app/provdier/app_provider.dart';
 
+import '../entity/app_setting.dart';
+
+/// 底边栏
 class NaviBar extends ConsumerWidget {
-  int _currentIndex = 0;
+  final int currentIndex;
+  final List<NaviItem> itemList;
 
-  NaviBar({Key? key}) : super(key: key);
+  const NaviBar({Key? key, required this.itemList, required this.currentIndex}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    if (itemList.length < 2) {
+      return Container();
+    }
+
+    final List<BottomNavigationBarItem> naviBarItemList = [];
+    for (var item in itemList) {
+      naviBarItemList.add(
+        BottomNavigationBarItem(
+          icon: Icon(
+            item.icon,
+          ),
+          label: item.label,
+          backgroundColor: Colors.blueAccent,
+          tooltip: item.tooltip,
+        ),
+      );
+    }
+
     return BottomNavigationBar(
-      items: [
-        BottomNavigationBarItem(
-          icon: Icon(
-            Icons.home,
-          ),
-          label: '1',
-          backgroundColor: Colors.blueAccent,
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(
-            Icons.email,
-          ),
-          label: '2',
-          backgroundColor: Colors.blueAccent,
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(
-            Icons.pages,
-          ),
-          label: '3',
-          backgroundColor: Colors.blueAccent,
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(
-            Icons.airplay,
-          ),
-          label: '4',
-          backgroundColor: Colors.blueAccent,
-        )
-      ],
-      currentIndex: _currentIndex,
-      onTap: (int index) {},
+      selectedItemColor: Colors.indigo,
+      items: naviBarItemList,
+      currentIndex: currentIndex,
+      onTap: (int index) {
+        // 切换
+        ref.read(appSettingProvider.notifier).changeNaviIndex(index);
+      },
     );
   }
 }

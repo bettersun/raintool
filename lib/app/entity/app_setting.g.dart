@@ -13,15 +13,19 @@ _$_AppSetting _$$_AppSettingFromJson(Map<String, dynamic> json) =>
               .toList() ??
           const [],
       menuItemList: (json['menuItemList'] as List<dynamic>?)
-              ?.map((e) => MenuItem.fromJson(e as Map<String, dynamic>))
+              ?.map((e) => BMenuItem.fromJson(e as Map<String, dynamic>))
               .toList() ??
           const [],
+      naviItemIndex: json['naviItemIndex'] as int? ?? 0,
+      menuItemIndex: json['menuItemIndex'] as int? ?? 0,
     );
 
 Map<String, dynamic> _$$_AppSettingToJson(_$_AppSetting instance) =>
     <String, dynamic>{
       'naviItemList': instance.naviItemList,
       'menuItemList': instance.menuItemList,
+      'naviItemIndex': instance.naviItemIndex,
+      'menuItemIndex': instance.menuItemIndex,
     };
 
 _$_NaviItem _$$_NaviItemFromJson(Map<String, dynamic> json) => _$_NaviItem(
@@ -41,7 +45,7 @@ Map<String, dynamic> _$$_NaviItemToJson(_$_NaviItem instance) =>
       'enabled': instance.enabled,
     };
 
-_$_MenuItem _$$_MenuItemFromJson(Map<String, dynamic> json) => _$_MenuItem(
+_$_BMenuItem _$$_BMenuItemFromJson(Map<String, dynamic> json) => _$_BMenuItem(
       index: json['index'] as int? ?? 0,
       label: json['label'] as String? ?? '',
       flag: json['flag'] as String? ?? '',
@@ -49,7 +53,7 @@ _$_MenuItem _$$_MenuItemFromJson(Map<String, dynamic> json) => _$_MenuItem(
       enabled: json['enabled'] as bool? ?? false,
     );
 
-Map<String, dynamic> _$$_MenuItemToJson(_$_MenuItem instance) =>
+Map<String, dynamic> _$$_BMenuItemToJson(_$_BMenuItem instance) =>
     <String, dynamic>{
       'index': instance.index,
       'label': instance.label,
