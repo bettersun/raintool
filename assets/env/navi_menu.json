@@ -1,42 +1,35 @@
 [
   {
     "flag" : "home",
-    "orderNum" : 10,
+    "orderNum" : 4,
     "label" : "BB",
     "tooltip" : "设定222",
     "enabled": true
   },
   {
     "flag" : "email",
-    "orderNum" : 20,
+    "orderNum" : 2,
     "label" : "CC",
     "tooltip" : "设定333",
-    "enabled": true
+    "enabled": false
   },
   {
     "flag" : "pages",
-    "orderNum" : 2,
-    "label" : "切换底边栏",
+    "orderNum" : 9,
+    "label" : "DD",
     "tooltip" : "设定444",
     "enabled": true
   },
   {
-    "flag" : "locale",
-    "orderNum" : 3,
-    "label" : "切换语言",
-    "tooltip" : "设定444",
-    "enabled": true
-  },
-  {
-    "flag" : "theme",
-    "orderNum" : 4,
-    "label" : "切换主题",
-    "tooltip" : "设定444",
+    "flag" : "test",
+    "orderNum" : 9,
+    "label" : "TEST",
+    "tooltip" : "TESTESTSETE",
     "enabled": true
   },
   {
     "flag" : "setting",
-    "orderNum" : 5,
+    "orderNum" : 3,
     "label" : "AA",
     "tooltip" : "设定111",
     "enabled": true

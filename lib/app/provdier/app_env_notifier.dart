@@ -113,12 +113,17 @@ class AppEnvNotifier extends StateNotifier<AppEnv> {
   }
 
   /// 切换主题
-  void toggle() {
+  void toggleTheme() {
     state = _appService.toggleTheme(state);
   }
 
   /// 切换语言
   void changeLocale() {
     state = _appService.changeLocale(state);
+  }
+
+  /// 切换底边栏
+  void toggleNavibar() {
+    state = _appService.toggleNavibar(state);
   }
 }

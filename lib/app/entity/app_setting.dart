@@ -22,7 +22,8 @@ class AppSetting with _$AppSetting {
 @freezed
 class NaviItem with _$NaviItem {
   const factory NaviItem({
-    @Default(0) int index, //  下标
+    @JsonKey(ignore: true) @Default(0) int index, // 下标
+    @Default(0) int orderNum, // 顺序
     @Default('') String label, // 标题
     @JsonKey(ignore: true) IconData? icon, // 图标
     @Default('') String flag, // 标志
@@ -37,7 +38,8 @@ class NaviItem with _$NaviItem {
 @freezed
 class BMenuItem with _$BMenuItem {
   const factory BMenuItem({
-    @Default(0) int index, //  下标
+    @JsonKey(ignore: true) @Default(0) int index, // 下标
+    @Default(0) int orderNum, // 顺序
     @Default('') String label, // 标题
     @JsonKey(ignore: true) IconData? icon, // 图标
     @Default('') String flag, // 标志

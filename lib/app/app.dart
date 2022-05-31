@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:raintool/app/entity/app_setting.dart';
 import 'package:raintool/app/widget/home_view.dart';
-import 'package:raintool/app/widget/navibar.dart';
+import './widget/navibar.dart';
+import './widget/menu.dart';
 
 import '../common/i18n/strings.g.dart';
 import 'entity/app_env.dart';
@@ -29,50 +30,27 @@ class RainAppState extends ConsumerState<RainApp> {
   Widget build(BuildContext context) {
     // 应用配置
     final AppEnv appEnv = ref.watch(appEnvProvider);
-    // 主题
-    final ThemeData themeData = ref.watch(themeProvider);
-    // print(appEnv.theme);
-
     // 应用设定
     final AppSetting appSetting = ref.watch(appSettingProvider);
 
     return MaterialApp(
-      theme: themeData,
+      theme: appEnv.themeData,
       home: Scaffold(
         appBar: AppBar(
           title: Text(t.hello),
         ),
-        drawer: Drawer(
-          child: ListView(
-            padding: EdgeInsets.zero,
-            children: [
-              const DrawerHeader(
-                decoration: BoxDecoration(
-                  color: Colors.blue,
-                ),
-                child: Text('Drawer Header'),
-              ),
-              ListTile(
-                title: Text(t.hello),
-                onTap: () {
-                  // 切换语言
-                  ref.read(appEnvProvider.notifier).changeLocale();
-                },
-              ),
-              ListTile(
-                title: Text(appEnv.label),
-                onTap: () {
-                  // 切换主题
-                  ref.read(appEnvProvider.notifier).toggle();
-                },
-              ),
-            ],
-          ),
+        // 菜单
+        drawer: Menu(
+          itemList: appSetting.menuItemList,
+          currentIndex: appSetting.menuItemIndex,
         ),
-        bottomNavigationBar: NaviBar(
-          itemList: appSetting.naviItemList,
-          currentIndex: appSetting.naviItemIndex,
-        ),
+        // 底边栏
+        bottomNavigationBar: !appEnv.showNavibar
+            ? null
+            : NaviBar(
+                itemList: appSetting.naviItemList,
+                currentIndex: appSetting.naviItemIndex,
+              ),
         body: const HomeView(),
       ),
     );

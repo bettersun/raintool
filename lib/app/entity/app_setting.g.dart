@@ -29,7 +29,7 @@ Map<String, dynamic> _$$_AppSettingToJson(_$_AppSetting instance) =>
     };
 
 _$_NaviItem _$$_NaviItemFromJson(Map<String, dynamic> json) => _$_NaviItem(
-      index: json['index'] as int? ?? 0,
+      orderNum: json['orderNum'] as int? ?? 0,
       label: json['label'] as String? ?? '',
       flag: json['flag'] as String? ?? '',
       tooltip: json['tooltip'] as String? ?? '',
@@ -38,7 +38,7 @@ _$_NaviItem _$$_NaviItemFromJson(Map<String, dynamic> json) => _$_NaviItem(
 
 Map<String, dynamic> _$$_NaviItemToJson(_$_NaviItem instance) =>
     <String, dynamic>{
-      'index': instance.index,
+      'orderNum': instance.orderNum,
       'label': instance.label,
       'flag': instance.flag,
       'tooltip': instance.tooltip,
@@ -46,7 +46,7 @@ Map<String, dynamic> _$$_NaviItemToJson(_$_NaviItem instance) =>
     };
 
 _$_BMenuItem _$$_BMenuItemFromJson(Map<String, dynamic> json) => _$_BMenuItem(
-      index: json['index'] as int? ?? 0,
+      orderNum: json['orderNum'] as int? ?? 0,
       label: json['label'] as String? ?? '',
       flag: json['flag'] as String? ?? '',
       tooltip: json['tooltip'] as String? ?? '',
@@ -55,7 +55,7 @@ _$_BMenuItem _$$_BMenuItemFromJson(Map<String, dynamic> json) => _$_BMenuItem(
 
 Map<String, dynamic> _$$_BMenuItemToJson(_$_BMenuItem instance) =>
     <String, dynamic>{
-      'index': instance.index,
+      'orderNum': instance.orderNum,
       'label': instance.label,
       'flag': instance.flag,
       'tooltip': instance.tooltip,

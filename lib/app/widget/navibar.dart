@@ -17,9 +17,10 @@ class NaviBar extends ConsumerWidget {
       return Container();
     }
 
-    final List<BottomNavigationBarItem> naviBarItemList = [];
+    // 底边栏项目
+    final List<BottomNavigationBarItem> list = [];
     for (var item in itemList) {
-      naviBarItemList.add(
+      list.add(
         BottomNavigationBarItem(
           icon: Icon(
             item.icon,
@@ -33,11 +34,11 @@ class NaviBar extends ConsumerWidget {
 
     return BottomNavigationBar(
       selectedItemColor: Colors.indigo,
-      items: naviBarItemList,
+      items: list,
       currentIndex: currentIndex,
       onTap: (int index) {
         // 切换
-        ref.read(appSettingProvider.notifier).changeNaviIndex(index);
+        ref.read(appSettingProvider.notifier).changeNavi(index);
       },
     );
   }

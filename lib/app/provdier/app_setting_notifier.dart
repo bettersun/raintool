@@ -11,16 +11,16 @@ class AppSettingNotifier extends StateNotifier<AppSetting> {
 
   /// 初始化
   void init() async {
-    state = await _appService.init(state);
+    state = await _appService.initAppSetting(state);
   }
 
-  /// 改变下标
-  void changeMenuIndex(int index) async {
-    state = await _appService.changeMenuIndex(state, index);
+  /// 改变菜单下标
+  void changeMenu(int index) {
+    state = _appService.changeMenu(state, index);
   }
 
-  /// 改变下标
-  void changeNaviIndex(int index) async {
-    state = await _appService.changeNaviIndex(state, index);
+  /// 改变底边栏下标
+  void changeNavi(int index) {
+    state = _appService.changeNavi(state, index);
   }
 }

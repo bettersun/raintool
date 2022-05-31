@@ -37,6 +37,7 @@ class AppServiceImpl extends AppService {
     if (state.theme == AppConst.light) {
       state = state.copyWith(
         theme: AppConst.dark,
+        themeData: ThemeData.dark(),
         label: AppConst.labelLight,
       );
 
@@ -48,6 +49,7 @@ class AppServiceImpl extends AppService {
     if (state.theme == AppConst.dark) {
       state = state.copyWith(
         theme: AppConst.light,
+        themeData: ThemeData.light(),
         label: AppConst.labelDark,
       );
 
@@ -57,6 +59,11 @@ class AppServiceImpl extends AppService {
     }
 
     return state;
+  }
+
+  @override
+  AppEnv toggleNavibar(AppEnv state) {
+    return state.copyWith(showNavibar: !state.showNavibar);
   }
 
   @override
@@ -106,53 +113,83 @@ class AppServiceImpl extends AppService {
   }
 
   @override
-  Future<AppSetting> init(AppSetting state) async {
-    final List<NaviItem> l = await repo.loadMenu();
+  Future<AppSetting> initAppSetting(AppSetting state) async {
+    // 底边栏项目
+    List<NaviItem> l = await repo.loadNaviMenu();
+    // 排序
+    l.sort((a, b) => a.orderNum.compareTo(b.orderNum));
 
     final List<NaviItem> list = [];
+
+    int i = 0;
     for (NaviItem item in l) {
-      IconData iconData = loadIconData(item.flag);
-      list.add(item.copyWith(icon: iconData));
+      if (item.enabled) {
+        IconData iconData = AppUtil.loadIconData(item.flag);
+        list.add(item.copyWith(
+          index: i,
+          icon: iconData,
+        ));
+        i++;
+      }
+    }
+
+    // 菜单项目
+    List<BMenuItem> bl = await repo.loadMenu();
+    // 排序
+    bl.sort((a, b) => a.orderNum.compareTo(b.orderNum));
+
+    final List<BMenuItem> mList = [];
+
+    int j = 0;
+    for (BMenuItem item in bl) {
+      if (item.enabled) {
+        IconData iconData = AppUtil.loadIconData(item.flag);
+        mList.add(item.copyWith(
+          index: j,
+          icon: iconData,
+        ));
+        j++;
+      }
     }
 
     state = state.copyWith(
+      menuItemList: mList,
       naviItemList: list,
     );
 
     return state;
   }
 
-  /// 图标
-  IconData loadIconData(String flag) {
-    if (flag == 'home') {
-      return Icons.home;
-    }
-    if (flag == 'email') {
-      return Icons.email;
-    }
-    if (flag == 'address') {
-      return Icons.airplay;
-    }
-    if (flag == 'pages') {
-      return Icons.pages;
-    }
-    if (flag == 'setting') {
-      return Icons.settings;
-    }
-
-    return Icons.home;
-  }
-
   @override
-  AppSetting changeMenuIndex(AppSetting state, int index) {
+  AppSetting changeMenu(AppSetting state, int index) {
+    // 对应的底边栏下标
+    int naviIndex = 0; // 下标 > 0
+    BMenuItem m = state.menuItemList[index];
+    for (NaviItem item in state.naviItemList) {
+      if (m.flag == item.flag) {
+        naviIndex = item.index;
+      }
+    }
+
     return state.copyWith(
       menuItemIndex: index,
+      naviItemIndex: naviIndex,
     );
   }
 
   @override
-  AppSetting changeNaviIndex(AppSetting state, int index) {
+  AppSetting changeNavi(AppSetting state, int index) {
+    // 对应的菜单下标
+    int menuIndex = -1; // 默认不选中
+    NaviItem n = state.naviItemList[index];
+    for (BMenuItem item in state.menuItemList) {
+      if (n.flag == item.flag) {
+        menuIndex = item.index;
+      }
+    }
+
     return state.copyWith(
+      menuItemIndex: menuIndex,
       naviItemIndex: index,
     );
   }

@@ -23,13 +23,26 @@ class AppRepositoryImpl extends AppRepository {
   }
 
   @override
-  Future<List<NaviItem>> loadMenu() async {
-    final String s = await rootBundle.loadString(AssetConst.menu);
+  Future<List<NaviItem>> loadNaviMenu() async {
+    final String s = await rootBundle.loadString(AssetConst.naviMenu);
     final List m = const JsonDecoder().convert(s);
 
     final List<NaviItem> list = [];
     for (var item in m) {
       list.add(NaviItem.fromJson(item));
+    }
+
+    return list;
+  }
+
+  @override
+  Future<List<BMenuItem>> loadMenu() async {
+    final String s = await rootBundle.loadString(AssetConst.menu);
+    final List m = const JsonDecoder().convert(s);
+
+    final List<BMenuItem> list = [];
+    for (var item in m) {
+      list.add(BMenuItem.fromJson(item));
     }
 
     return list;

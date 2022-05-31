@@ -254,7 +254,9 @@ NaviItem _$NaviItemFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$NaviItem {
-  int get index => throw _privateConstructorUsedError; //  下标
+  @JsonKey(ignore: true)
+  int get index => throw _privateConstructorUsedError; // 下标
+  int get orderNum => throw _privateConstructorUsedError; // 顺序
   String get label => throw _privateConstructorUsedError; // 标题
   @JsonKey(ignore: true)
   IconData? get icon => throw _privateConstructorUsedError; // 图标
@@ -273,7 +275,8 @@ abstract class $NaviItemCopyWith<$Res> {
   factory $NaviItemCopyWith(NaviItem value, $Res Function(NaviItem) then) =
       _$NaviItemCopyWithImpl<$Res>;
   $Res call(
-      {int index,
+      {@JsonKey(ignore: true) int index,
+      int orderNum,
       String label,
       @JsonKey(ignore: true) IconData? icon,
       String flag,
@@ -292,6 +295,7 @@ class _$NaviItemCopyWithImpl<$Res> implements $NaviItemCopyWith<$Res> {
   @override
   $Res call({
     Object? index = freezed,
+    Object? orderNum = freezed,
     Object? label = freezed,
     Object? icon = freezed,
     Object? flag = freezed,
@@ -302,6 +306,10 @@ class _$NaviItemCopyWithImpl<$Res> implements $NaviItemCopyWith<$Res> {
       index: index == freezed
           ? _value.index
           : index // ignore: cast_nullable_to_non_nullable
+              as int,
+      orderNum: orderNum == freezed
+          ? _value.orderNum
+          : orderNum // ignore: cast_nullable_to_non_nullable
               as int,
       label: label == freezed
           ? _value.label
@@ -334,7 +342,8 @@ abstract class _$$_NaviItemCopyWith<$Res> implements $NaviItemCopyWith<$Res> {
       __$$_NaviItemCopyWithImpl<$Res>;
   @override
   $Res call(
-      {int index,
+      {@JsonKey(ignore: true) int index,
+      int orderNum,
       String label,
       @JsonKey(ignore: true) IconData? icon,
       String flag,
@@ -355,6 +364,7 @@ class __$$_NaviItemCopyWithImpl<$Res> extends _$NaviItemCopyWithImpl<$Res>
   @override
   $Res call({
     Object? index = freezed,
+    Object? orderNum = freezed,
     Object? label = freezed,
     Object? icon = freezed,
     Object? flag = freezed,
@@ -365,6 +375,10 @@ class __$$_NaviItemCopyWithImpl<$Res> extends _$NaviItemCopyWithImpl<$Res>
       index: index == freezed
           ? _value.index
           : index // ignore: cast_nullable_to_non_nullable
+              as int,
+      orderNum: orderNum == freezed
+          ? _value.orderNum
+          : orderNum // ignore: cast_nullable_to_non_nullable
               as int,
       label: label == freezed
           ? _value.label
@@ -394,7 +408,8 @@ class __$$_NaviItemCopyWithImpl<$Res> extends _$NaviItemCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_NaviItem with DiagnosticableTreeMixin implements _NaviItem {
   const _$_NaviItem(
-      {this.index = 0,
+      {@JsonKey(ignore: true) this.index = 0,
+      this.orderNum = 0,
       this.label = '',
       @JsonKey(ignore: true) this.icon,
       this.flag = '',
@@ -405,9 +420,13 @@ class _$_NaviItem with DiagnosticableTreeMixin implements _NaviItem {
       _$$_NaviItemFromJson(json);
 
   @override
-  @JsonKey()
+  @JsonKey(ignore: true)
   final int index;
-//  下标
+// 下标
+  @override
+  @JsonKey()
+  final int orderNum;
+// 顺序
   @override
   @JsonKey()
   final String label;
@@ -430,7 +449,7 @@ class _$_NaviItem with DiagnosticableTreeMixin implements _NaviItem {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'NaviItem(index: $index, label: $label, icon: $icon, flag: $flag, tooltip: $tooltip, enabled: $enabled)';
+    return 'NaviItem(index: $index, orderNum: $orderNum, label: $label, icon: $icon, flag: $flag, tooltip: $tooltip, enabled: $enabled)';
   }
 
   @override
@@ -439,6 +458,7 @@ class _$_NaviItem with DiagnosticableTreeMixin implements _NaviItem {
     properties
       ..add(DiagnosticsProperty('type', 'NaviItem'))
       ..add(DiagnosticsProperty('index', index))
+      ..add(DiagnosticsProperty('orderNum', orderNum))
       ..add(DiagnosticsProperty('label', label))
       ..add(DiagnosticsProperty('icon', icon))
       ..add(DiagnosticsProperty('flag', flag))
@@ -452,6 +472,7 @@ class _$_NaviItem with DiagnosticableTreeMixin implements _NaviItem {
         (other.runtimeType == runtimeType &&
             other is _$_NaviItem &&
             const DeepCollectionEquality().equals(other.index, index) &&
+            const DeepCollectionEquality().equals(other.orderNum, orderNum) &&
             const DeepCollectionEquality().equals(other.label, label) &&
             const DeepCollectionEquality().equals(other.icon, icon) &&
             const DeepCollectionEquality().equals(other.flag, flag) &&
@@ -464,6 +485,7 @@ class _$_NaviItem with DiagnosticableTreeMixin implements _NaviItem {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(index),
+      const DeepCollectionEquality().hash(orderNum),
       const DeepCollectionEquality().hash(label),
       const DeepCollectionEquality().hash(icon),
       const DeepCollectionEquality().hash(flag),
@@ -483,7 +505,8 @@ class _$_NaviItem with DiagnosticableTreeMixin implements _NaviItem {
 
 abstract class _NaviItem implements NaviItem {
   const factory _NaviItem(
-      {final int index,
+      {@JsonKey(ignore: true) final int index,
+      final int orderNum,
       final String label,
       @JsonKey(ignore: true) final IconData? icon,
       final String flag,
@@ -493,8 +516,11 @@ abstract class _NaviItem implements NaviItem {
   factory _NaviItem.fromJson(Map<String, dynamic> json) = _$_NaviItem.fromJson;
 
   @override
+  @JsonKey(ignore: true)
   int get index => throw _privateConstructorUsedError;
-  @override //  下标
+  @override // 下标
+  int get orderNum => throw _privateConstructorUsedError;
+  @override // 顺序
   String get label => throw _privateConstructorUsedError;
   @override // 标题
   @JsonKey(ignore: true)
@@ -517,7 +543,9 @@ BMenuItem _$BMenuItemFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$BMenuItem {
-  int get index => throw _privateConstructorUsedError; //  下标
+  @JsonKey(ignore: true)
+  int get index => throw _privateConstructorUsedError; // 下标
+  int get orderNum => throw _privateConstructorUsedError; // 顺序
   String get label => throw _privateConstructorUsedError; // 标题
   @JsonKey(ignore: true)
   IconData? get icon => throw _privateConstructorUsedError; // 图标
@@ -536,7 +564,8 @@ abstract class $BMenuItemCopyWith<$Res> {
   factory $BMenuItemCopyWith(BMenuItem value, $Res Function(BMenuItem) then) =
       _$BMenuItemCopyWithImpl<$Res>;
   $Res call(
-      {int index,
+      {@JsonKey(ignore: true) int index,
+      int orderNum,
       String label,
       @JsonKey(ignore: true) IconData? icon,
       String flag,
@@ -555,6 +584,7 @@ class _$BMenuItemCopyWithImpl<$Res> implements $BMenuItemCopyWith<$Res> {
   @override
   $Res call({
     Object? index = freezed,
+    Object? orderNum = freezed,
     Object? label = freezed,
     Object? icon = freezed,
     Object? flag = freezed,
@@ -565,6 +595,10 @@ class _$BMenuItemCopyWithImpl<$Res> implements $BMenuItemCopyWith<$Res> {
       index: index == freezed
           ? _value.index
           : index // ignore: cast_nullable_to_non_nullable
+              as int,
+      orderNum: orderNum == freezed
+          ? _value.orderNum
+          : orderNum // ignore: cast_nullable_to_non_nullable
               as int,
       label: label == freezed
           ? _value.label
@@ -597,7 +631,8 @@ abstract class _$$_BMenuItemCopyWith<$Res> implements $BMenuItemCopyWith<$Res> {
       __$$_BMenuItemCopyWithImpl<$Res>;
   @override
   $Res call(
-      {int index,
+      {@JsonKey(ignore: true) int index,
+      int orderNum,
       String label,
       @JsonKey(ignore: true) IconData? icon,
       String flag,
@@ -618,6 +653,7 @@ class __$$_BMenuItemCopyWithImpl<$Res> extends _$BMenuItemCopyWithImpl<$Res>
   @override
   $Res call({
     Object? index = freezed,
+    Object? orderNum = freezed,
     Object? label = freezed,
     Object? icon = freezed,
     Object? flag = freezed,
@@ -628,6 +664,10 @@ class __$$_BMenuItemCopyWithImpl<$Res> extends _$BMenuItemCopyWithImpl<$Res>
       index: index == freezed
           ? _value.index
           : index // ignore: cast_nullable_to_non_nullable
+              as int,
+      orderNum: orderNum == freezed
+          ? _value.orderNum
+          : orderNum // ignore: cast_nullable_to_non_nullable
               as int,
       label: label == freezed
           ? _value.label
@@ -657,7 +697,8 @@ class __$$_BMenuItemCopyWithImpl<$Res> extends _$BMenuItemCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_BMenuItem with DiagnosticableTreeMixin implements _BMenuItem {
   const _$_BMenuItem(
-      {this.index = 0,
+      {@JsonKey(ignore: true) this.index = 0,
+      this.orderNum = 0,
       this.label = '',
       @JsonKey(ignore: true) this.icon,
       this.flag = '',
@@ -668,9 +709,13 @@ class _$_BMenuItem with DiagnosticableTreeMixin implements _BMenuItem {
       _$$_BMenuItemFromJson(json);
 
   @override
-  @JsonKey()
+  @JsonKey(ignore: true)
   final int index;
-//  下标
+// 下标
+  @override
+  @JsonKey()
+  final int orderNum;
+// 顺序
   @override
   @JsonKey()
   final String label;
@@ -693,7 +738,7 @@ class _$_BMenuItem with DiagnosticableTreeMixin implements _BMenuItem {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'BMenuItem(index: $index, label: $label, icon: $icon, flag: $flag, tooltip: $tooltip, enabled: $enabled)';
+    return 'BMenuItem(index: $index, orderNum: $orderNum, label: $label, icon: $icon, flag: $flag, tooltip: $tooltip, enabled: $enabled)';
   }
 
   @override
@@ -702,6 +747,7 @@ class _$_BMenuItem with DiagnosticableTreeMixin implements _BMenuItem {
     properties
       ..add(DiagnosticsProperty('type', 'BMenuItem'))
       ..add(DiagnosticsProperty('index', index))
+      ..add(DiagnosticsProperty('orderNum', orderNum))
       ..add(DiagnosticsProperty('label', label))
       ..add(DiagnosticsProperty('icon', icon))
       ..add(DiagnosticsProperty('flag', flag))
@@ -715,6 +761,7 @@ class _$_BMenuItem with DiagnosticableTreeMixin implements _BMenuItem {
         (other.runtimeType == runtimeType &&
             other is _$_BMenuItem &&
             const DeepCollectionEquality().equals(other.index, index) &&
+            const DeepCollectionEquality().equals(other.orderNum, orderNum) &&
             const DeepCollectionEquality().equals(other.label, label) &&
             const DeepCollectionEquality().equals(other.icon, icon) &&
             const DeepCollectionEquality().equals(other.flag, flag) &&
@@ -727,6 +774,7 @@ class _$_BMenuItem with DiagnosticableTreeMixin implements _BMenuItem {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(index),
+      const DeepCollectionEquality().hash(orderNum),
       const DeepCollectionEquality().hash(label),
       const DeepCollectionEquality().hash(icon),
       const DeepCollectionEquality().hash(flag),
@@ -746,7 +794,8 @@ class _$_BMenuItem with DiagnosticableTreeMixin implements _BMenuItem {
 
 abstract class _BMenuItem implements BMenuItem {
   const factory _BMenuItem(
-      {final int index,
+      {@JsonKey(ignore: true) final int index,
+      final int orderNum,
       final String label,
       @JsonKey(ignore: true) final IconData? icon,
       final String flag,
@@ -757,8 +806,11 @@ abstract class _BMenuItem implements BMenuItem {
       _$_BMenuItem.fromJson;
 
   @override
+  @JsonKey(ignore: true)
   int get index => throw _privateConstructorUsedError;
-  @override //  下标
+  @override // 下标
+  int get orderNum => throw _privateConstructorUsedError;
+  @override // 顺序
   String get label => throw _privateConstructorUsedError;
   @override // 标题
   @JsonKey(ignore: true)

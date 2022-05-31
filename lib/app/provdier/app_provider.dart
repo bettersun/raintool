@@ -17,22 +17,22 @@ final helloWorldProvider = FutureProvider<String>((ref) async {
   return await _appService.helloWorld();
 });
 
-// 主题 Provider
-final themeProvider = Provider<ThemeData>((ref) {
-  final appEnv = ref.watch(appEnvProvider);
-
-  ThemeData themeData = ThemeData.light();
-  // 明亮模式
-  if (appEnv.theme == AppConst.light) {
-    themeData = ThemeData.light();
-  }
-  // 黑暗模式
-  if (appEnv.theme == AppConst.dark) {
-    themeData = ThemeData.dark();
-  }
-
-  return themeData;
-});
+// // 主题 Provider
+// final themeProvider = Provider<ThemeData>((ref) {
+//   final appEnv = ref.watch(appEnvProvider);
+//
+//   ThemeData themeData = ThemeData.light();
+//   // 明亮模式
+//   if (appEnv.theme == AppConst.light) {
+//     themeData = ThemeData.light();
+//   }
+//   // 黑暗模式
+//   if (appEnv.theme == AppConst.dark) {
+//     themeData = ThemeData.dark();
+//   }
+//
+//   return themeData;
+// });
 
 // 应用配置 Provider
 final appEnvProvider = StateNotifierProvider<AppEnvNotifier, AppEnv>((ref) {
@@ -47,13 +47,17 @@ final appEnvProvider = StateNotifierProvider<AppEnvNotifier, AppEnv>((ref) {
   // 主题切换标签
   String label = AppConst.labelDark;
 
+  ThemeData themeData = ThemeData.light();
+
   // 明亮模式
   if (theme == AppConst.light) {
     label = AppConst.labelDark;
+    themeData = ThemeData.light();
   }
   // 黑暗模式
   if (theme == AppConst.dark) {
     label = AppConst.labelLight;
+    themeData = ThemeData.dark();
   }
 
   // 国际化
@@ -67,6 +71,7 @@ final appEnvProvider = StateNotifierProvider<AppEnvNotifier, AppEnv>((ref) {
     title: title,
     label: label,
     theme: theme,
+    themeData: themeData,
     locale: locale,
   ));
 });
