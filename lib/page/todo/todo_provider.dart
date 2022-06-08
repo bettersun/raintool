@@ -1,5 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:raintool/todo/todo.dart';
+
+import 'todo.dart';
 
 /// Creates a [TodoList] and initialise it with pre-defined values.
 ///

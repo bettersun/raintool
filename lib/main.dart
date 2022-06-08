@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'app/app.dart';
+import 'page/app/app.dart';
 import 'common/i18n/strings.g.dart';
 import 'common/util.dart';
 import 'kiwi.dart';

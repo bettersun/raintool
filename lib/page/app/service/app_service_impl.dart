@@ -1,12 +1,14 @@
 import 'package:basic_utils/basic_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:kiwi/kiwi.dart';
-import 'package:raintool/app/entity/app_setting.dart';
-import 'package:raintool/app/respository/app_repository.dart';
 
-import '../../common/const.dart';
-import '../../common/i18n/strings.g.dart';
-import '../../common/util.dart';
+import '..//entity/app_setting.dart';
+import '../../../common/const/app_const.dart';
+import '../../../common/i18n/strings.g.dart';
+import '../../../common/util/app_util.dart';
+import '..//respository/app_repository.dart';
+import '../../../common/const/hive_key.dart';
+import '../../../common/util/hive_util.dart';
 import '../entity/app_env.dart';
 import 'app_service.dart';
 
@@ -192,5 +194,24 @@ class AppServiceImpl extends AppService {
       menuItemIndex: menuIndex,
       naviItemIndex: index,
     );
+  }
+
+  @override
+  AppSetting reorderMenuItem(AppSetting state, int oldIndex, int newIndex) {
+    if (newIndex == state.menuItemList.length) {
+      newIndex = state.menuItemList.length - 1;
+    }
+
+    List<BMenuItem> newMenuItemList = [];
+    for (var item in state.menuItemList) {
+      newMenuItemList.add(item);
+    }
+
+    var element = newMenuItemList.removeAt(oldIndex);
+    newMenuItemList.insert(newIndex, element);
+
+    //  TODO: 持久化
+
+    return state.copyWith(menuItemList: newMenuItemList);
   }
 }

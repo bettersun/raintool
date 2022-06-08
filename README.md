@@ -25,3 +25,24 @@ protoc --go_out=server/grpc --go_opt=paths=source_relative \
 ```
 flutter packages pub run build_runner build --delete-conflicting-outputs
 ```
+
+### 工具开发随想
+
+1. Excel 通用工具 （go）
+    1. 遗漏
+    1. 条件遗漏
+    1. 复制
+    1. 图片、图形
+1. Flutter 工具集 Riverpod
+    1. Tab 页   
+    1. 假服务工具完善（可设置超时时间，返回状态码）
+    1. 树
+    1. 纵横滚动条
+    1. 代码统计工具
+    1. json 工具
+    1. 日历（每日事件管理）
+    1. 目标管理
+    1. 白板
+    1. 电脑硬件信息
+    1. 类postman工具
+    1. 数据库UI

@@ -2,10 +2,10 @@ import 'package:kiwi/kiwi.dart';
 
 import 'api/api_get_hello_world.dart';
 import 'api/impl/api_get_hello_world_impl.dart';
-import 'app/respository/app_repository.dart';
-import 'app/respository/app_repository_impl.dart';
-import 'app/service/app_service.dart';
-import 'app/service/app_service_impl.dart';
+import 'page/app/respository/app_repository.dart';
+import 'page/app/respository/app_repository_impl.dart';
+import 'page/app/service/app_service.dart';
+import 'page/app/service/app_service_impl.dart';
 
 part 'kiwi.g.dart';
 

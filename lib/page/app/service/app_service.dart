@@ -22,4 +22,7 @@ abstract class AppService {
 
   /// 切换底边栏项目
   AppSetting changeNavi(AppSetting state, int index);
+
+  /// 重新排序菜单
+  AppSetting reorderMenuItem(AppSetting state, int oldIndex, int newIndex);
 }

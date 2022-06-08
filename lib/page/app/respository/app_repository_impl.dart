@@ -1,11 +1,9 @@
 import 'dart:convert';
 
-import 'package:basic_utils/basic_utils.dart';
 import 'package:flutter/services.dart';
 
-import '../../common/const.dart';
-import '../../common/util/hive_util.dart';
-import '../../rpc/rpc_hello.dart';
+import '../../../common/const/asset_const.dart';
+import '../../../rpc/rpc_hello.dart';
 import '../entity/app_setting.dart';
 import 'app_repository.dart';
 

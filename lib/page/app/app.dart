@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:raintool/app/entity/app_setting.dart';
-import 'package:raintool/app/widget/home_view.dart';
-import './widget/navibar.dart';
-import './widget/menu.dart';
 
-import '../common/i18n/strings.g.dart';
+import '../../common/i18n/strings.g.dart';
 import 'entity/app_env.dart';
+import 'entity/app_setting.dart';
 import 'provdier/app_provider.dart';
+import 'setting.dart';
+import 'widget/menu.dart';
+import 'widget/navibar.dart';
 
 /// Rain 工具应用
 class RainApp extends ConsumerStatefulWidget {
@@ -51,7 +51,7 @@ class RainAppState extends ConsumerState<RainApp> {
                 itemList: appSetting.naviItemList,
                 currentIndex: appSetting.naviItemIndex,
               ),
-        body: const HomeView(),
+        body: const Setting(),
       ),
     );
   }

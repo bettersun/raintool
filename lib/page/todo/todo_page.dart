@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:raintool/todo/todo_provider.dart';
 
 import 'todo.dart';
+import 'todo_provider.dart';
 
 class TodoPage extends ConsumerWidget {
   const TodoPage({Key? key}) : super(key: key);
@@ -80,12 +80,10 @@ class Toolbar extends ConsumerWidget {
           Tooltip(
             message: 'All todos',
             child: TextButton(
-              onPressed: () =>
-                  ref.read(todoListFilter.notifier).state = TodoListFilter.all,
+              onPressed: () => ref.read(todoListFilter.notifier).state = TodoListFilter.all,
               style: ButtonStyle(
                 visualDensity: VisualDensity.compact,
-                foregroundColor:
-                    MaterialStateProperty.all(textColorFor(TodoListFilter.all)),
+                foregroundColor: MaterialStateProperty.all(textColorFor(TodoListFilter.all)),
               ),
               child: const Text('All'),
             ),
@@ -93,8 +91,7 @@ class Toolbar extends ConsumerWidget {
           Tooltip(
             message: 'Only uncompleted todos',
             child: TextButton(
-              onPressed: () => ref.read(todoListFilter.notifier).state =
-                  TodoListFilter.active,
+              onPressed: () => ref.read(todoListFilter.notifier).state = TodoListFilter.active,
               style: ButtonStyle(
                 visualDensity: VisualDensity.compact,
                 foregroundColor: MaterialStateProperty.all(
@@ -107,8 +104,7 @@ class Toolbar extends ConsumerWidget {
           Tooltip(
             message: 'Only completed todos',
             child: TextButton(
-              onPressed: () => ref.read(todoListFilter.notifier).state =
-                  TodoListFilter.completed,
+              onPressed: () => ref.read(todoListFilter.notifier).state = TodoListFilter.completed,
               style: ButtonStyle(
                 visualDensity: VisualDensity.compact,
                 foregroundColor: MaterialStateProperty.all(
@@ -173,9 +169,7 @@ class TodoItem extends ConsumerWidget {
             textEditingController.text = todo.description;
           } else {
             // Commit changes only when the textfield is unfocused, for performance
-            ref
-                .read(todoListProvider.notifier)
-                .edit(id: todo.id, description: textEditingController.text);
+            ref.read(todoListProvider.notifier).edit(id: todo.id, description: textEditingController.text);
           }
         },
         child: ListTile(
@@ -185,8 +179,7 @@ class TodoItem extends ConsumerWidget {
           },
           leading: Checkbox(
             value: todo.completed,
-            onChanged: (value) =>
-                ref.read(todoListProvider.notifier).toggle(todo.id),
+            onChanged: (value) => ref.read(todoListProvider.notifier).toggle(todo.id),
           ),
           title: itemIsFocused
               ? TextField(

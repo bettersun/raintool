@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:raintool/app/provdier/app_provider.dart';
 
 import '../entity/app_setting.dart';
+import '../provdier/app_provider.dart';
 
 /// 底边栏
 class NaviBar extends ConsumerWidget {

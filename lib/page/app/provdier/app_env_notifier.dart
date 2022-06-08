@@ -5,10 +5,12 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:grpc/grpc.dart';
 import 'package:kiwi/kiwi.dart';
 
-import '../../_grpc/hello.pbgrpc.dart';
-import '../../common/const.dart';
-import '../../common/i18n/strings.g.dart';
-import '../../common/util.dart';
+import '../../../_grpc/hello.pbgrpc.dart';
+import '../../../common/const/app_const.dart';
+import '../../../common/const/code.dart';
+import '../../../common/const/hive_key.dart';
+import '../../../common/util/hive_util.dart';
+import '../../../common/util/rpc_util.dart';
 import '../entity/app_env.dart';
 import '../service/app_service.dart';
 
