@@ -12,7 +12,7 @@ abstract class AppService {
   AppEnv changeLocale(AppEnv state);
 
   /// 切换底边栏
-  AppEnv toggleNavibar(AppEnv state);
+  AppSetting toggleNavibar(AppSetting state);
 
   /// App 设定初始化
   Future<AppSetting> initAppSetting(AppSetting state);

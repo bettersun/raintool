@@ -123,9 +123,4 @@ class AppEnvNotifier extends StateNotifier<AppEnv> {
   void changeLocale() {
     state = _appService.changeLocale(state);
   }
-
-  /// 切换底边栏
-  void toggleNavibar() {
-    state = _appService.toggleNavibar(state);
-  }
 }

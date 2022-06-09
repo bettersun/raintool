@@ -26,6 +26,7 @@ mixin _$AppSetting {
       throw _privateConstructorUsedError; // 菜单项目列表
   int get naviItemIndex => throw _privateConstructorUsedError;
   int get menuItemIndex => throw _privateConstructorUsedError;
+  bool get showNavibar => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -42,7 +43,8 @@ abstract class $AppSettingCopyWith<$Res> {
       {List<NaviItem> naviItemList,
       List<BMenuItem> menuItemList,
       int naviItemIndex,
-      int menuItemIndex});
+      int menuItemIndex,
+      bool showNavibar});
 }
 
 /// @nodoc
@@ -59,6 +61,7 @@ class _$AppSettingCopyWithImpl<$Res> implements $AppSettingCopyWith<$Res> {
     Object? menuItemList = freezed,
     Object? naviItemIndex = freezed,
     Object? menuItemIndex = freezed,
+    Object? showNavibar = freezed,
   }) {
     return _then(_value.copyWith(
       naviItemList: naviItemList == freezed
@@ -77,6 +80,10 @@ class _$AppSettingCopyWithImpl<$Res> implements $AppSettingCopyWith<$Res> {
           ? _value.menuItemIndex
           : menuItemIndex // ignore: cast_nullable_to_non_nullable
               as int,
+      showNavibar: showNavibar == freezed
+          ? _value.showNavibar
+          : showNavibar // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -92,7 +99,8 @@ abstract class _$$_AppSettingCopyWith<$Res>
       {List<NaviItem> naviItemList,
       List<BMenuItem> menuItemList,
       int naviItemIndex,
-      int menuItemIndex});
+      int menuItemIndex,
+      bool showNavibar});
 }
 
 /// @nodoc
@@ -111,6 +119,7 @@ class __$$_AppSettingCopyWithImpl<$Res> extends _$AppSettingCopyWithImpl<$Res>
     Object? menuItemList = freezed,
     Object? naviItemIndex = freezed,
     Object? menuItemIndex = freezed,
+    Object? showNavibar = freezed,
   }) {
     return _then(_$_AppSetting(
       naviItemList: naviItemList == freezed
@@ -129,6 +138,10 @@ class __$$_AppSettingCopyWithImpl<$Res> extends _$AppSettingCopyWithImpl<$Res>
           ? _value.menuItemIndex
           : menuItemIndex // ignore: cast_nullable_to_non_nullable
               as int,
+      showNavibar: showNavibar == freezed
+          ? _value.showNavibar
+          : showNavibar // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -140,7 +153,8 @@ class _$_AppSetting with DiagnosticableTreeMixin implements _AppSetting {
       {final List<NaviItem> naviItemList = const [],
       final List<BMenuItem> menuItemList = const [],
       this.naviItemIndex = 0,
-      this.menuItemIndex = 0})
+      this.menuItemIndex = 0,
+      this.showNavibar = true})
       : _naviItemList = naviItemList,
         _menuItemList = menuItemList;
 
@@ -172,10 +186,13 @@ class _$_AppSetting with DiagnosticableTreeMixin implements _AppSetting {
   @override
   @JsonKey()
   final int menuItemIndex;
+  @override
+  @JsonKey()
+  final bool showNavibar;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'AppSetting(naviItemList: $naviItemList, menuItemList: $menuItemList, naviItemIndex: $naviItemIndex, menuItemIndex: $menuItemIndex)';
+    return 'AppSetting(naviItemList: $naviItemList, menuItemList: $menuItemList, naviItemIndex: $naviItemIndex, menuItemIndex: $menuItemIndex, showNavibar: $showNavibar)';
   }
 
   @override
@@ -186,7 +203,8 @@ class _$_AppSetting with DiagnosticableTreeMixin implements _AppSetting {
       ..add(DiagnosticsProperty('naviItemList', naviItemList))
       ..add(DiagnosticsProperty('menuItemList', menuItemList))
       ..add(DiagnosticsProperty('naviItemIndex', naviItemIndex))
-      ..add(DiagnosticsProperty('menuItemIndex', menuItemIndex));
+      ..add(DiagnosticsProperty('menuItemIndex', menuItemIndex))
+      ..add(DiagnosticsProperty('showNavibar', showNavibar));
   }
 
   @override
@@ -201,7 +219,9 @@ class _$_AppSetting with DiagnosticableTreeMixin implements _AppSetting {
             const DeepCollectionEquality()
                 .equals(other.naviItemIndex, naviItemIndex) &&
             const DeepCollectionEquality()
-                .equals(other.menuItemIndex, menuItemIndex));
+                .equals(other.menuItemIndex, menuItemIndex) &&
+            const DeepCollectionEquality()
+                .equals(other.showNavibar, showNavibar));
   }
 
   @JsonKey(ignore: true)
@@ -211,7 +231,8 @@ class _$_AppSetting with DiagnosticableTreeMixin implements _AppSetting {
       const DeepCollectionEquality().hash(_naviItemList),
       const DeepCollectionEquality().hash(_menuItemList),
       const DeepCollectionEquality().hash(naviItemIndex),
-      const DeepCollectionEquality().hash(menuItemIndex));
+      const DeepCollectionEquality().hash(menuItemIndex),
+      const DeepCollectionEquality().hash(showNavibar));
 
   @JsonKey(ignore: true)
   @override
@@ -229,7 +250,8 @@ abstract class _AppSetting implements AppSetting {
       {final List<NaviItem> naviItemList,
       final List<BMenuItem> menuItemList,
       final int naviItemIndex,
-      final int menuItemIndex}) = _$_AppSetting;
+      final int menuItemIndex,
+      final bool showNavibar}) = _$_AppSetting;
 
   factory _AppSetting.fromJson(Map<String, dynamic> json) =
       _$_AppSetting.fromJson;
@@ -242,6 +264,8 @@ abstract class _AppSetting implements AppSetting {
   int get naviItemIndex => throw _privateConstructorUsedError;
   @override
   int get menuItemIndex => throw _privateConstructorUsedError;
+  @override
+  bool get showNavibar => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$_AppSettingCopyWith<_$_AppSetting> get copyWith =>

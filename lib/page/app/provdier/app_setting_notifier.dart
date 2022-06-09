@@ -28,4 +28,9 @@ class AppSettingNotifier extends StateNotifier<AppSetting> {
   void reorderMenuItem(int oldIndex, int newIndex) {
     state = _appService.reorderMenuItem(state, oldIndex, newIndex);
   }
+
+  /// 切换底边栏
+  void toggleNavibar() {
+    state = _appService.toggleNavibar(state);
+  }
 }

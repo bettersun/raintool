@@ -1,6 +1,6 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:flutter/foundation.dart';
 
 part 'app_setting.freezed.dart';
 part 'app_setting.g.dart';
@@ -13,6 +13,7 @@ class AppSetting with _$AppSetting {
     @Default([]) List<BMenuItem> menuItemList, // 菜单项目列表
     @Default(0) int naviItemIndex,
     @Default(0) int menuItemIndex,
+    @Default(true) bool showNavibar, // 显示底边栏标志
   }) = _AppSetting;
 
   factory AppSetting.fromJson(Map<String, Object?> json) => _$AppSettingFromJson(json);

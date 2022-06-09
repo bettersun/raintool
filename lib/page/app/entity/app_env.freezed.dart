@@ -28,7 +28,6 @@ mixin _$AppEnv {
   ThemeData? get themeData => throw _privateConstructorUsedError; // 应用主题
   String get locale => throw _privateConstructorUsedError; // 应用语言标志
   String get label => throw _privateConstructorUsedError; // 主题切换标签
-  bool get showNavibar => throw _privateConstructorUsedError; // 显示底边栏标志
   String get apiServer => throw _privateConstructorUsedError; // API服务 URL
   String get rpcServerIp => throw _privateConstructorUsedError; // RPC服务 IP
   int get rpcServerPort => throw _privateConstructorUsedError;
@@ -50,7 +49,6 @@ abstract class $AppEnvCopyWith<$Res> {
       @JsonKey(ignore: true) ThemeData? themeData,
       String locale,
       String label,
-      bool showNavibar,
       String apiServer,
       String rpcServerIp,
       int rpcServerPort});
@@ -73,7 +71,6 @@ class _$AppEnvCopyWithImpl<$Res> implements $AppEnvCopyWith<$Res> {
     Object? themeData = freezed,
     Object? locale = freezed,
     Object? label = freezed,
-    Object? showNavibar = freezed,
     Object? apiServer = freezed,
     Object? rpcServerIp = freezed,
     Object? rpcServerPort = freezed,
@@ -107,10 +104,6 @@ class _$AppEnvCopyWithImpl<$Res> implements $AppEnvCopyWith<$Res> {
           ? _value.label
           : label // ignore: cast_nullable_to_non_nullable
               as String,
-      showNavibar: showNavibar == freezed
-          ? _value.showNavibar
-          : showNavibar // ignore: cast_nullable_to_non_nullable
-              as bool,
       apiServer: apiServer == freezed
           ? _value.apiServer
           : apiServer // ignore: cast_nullable_to_non_nullable
@@ -140,7 +133,6 @@ abstract class _$$_AppEnvCopyWith<$Res> implements $AppEnvCopyWith<$Res> {
       @JsonKey(ignore: true) ThemeData? themeData,
       String locale,
       String label,
-      bool showNavibar,
       String apiServer,
       String rpcServerIp,
       int rpcServerPort});
@@ -164,7 +156,6 @@ class __$$_AppEnvCopyWithImpl<$Res> extends _$AppEnvCopyWithImpl<$Res>
     Object? themeData = freezed,
     Object? locale = freezed,
     Object? label = freezed,
-    Object? showNavibar = freezed,
     Object? apiServer = freezed,
     Object? rpcServerIp = freezed,
     Object? rpcServerPort = freezed,
@@ -198,10 +189,6 @@ class __$$_AppEnvCopyWithImpl<$Res> extends _$AppEnvCopyWithImpl<$Res>
           ? _value.label
           : label // ignore: cast_nullable_to_non_nullable
               as String,
-      showNavibar: showNavibar == freezed
-          ? _value.showNavibar
-          : showNavibar // ignore: cast_nullable_to_non_nullable
-              as bool,
       apiServer: apiServer == freezed
           ? _value.apiServer
           : apiServer // ignore: cast_nullable_to_non_nullable
@@ -229,7 +216,6 @@ class _$_AppEnv with DiagnosticableTreeMixin implements _AppEnv {
       @JsonKey(ignore: true) this.themeData = null,
       this.locale = '',
       this.label = '',
-      this.showNavibar = true,
       this.apiServer = '',
       this.rpcServerIp = '',
       this.rpcServerPort = 0});
@@ -267,10 +253,6 @@ class _$_AppEnv with DiagnosticableTreeMixin implements _AppEnv {
 // 主题切换标签
   @override
   @JsonKey()
-  final bool showNavibar;
-// 显示底边栏标志
-  @override
-  @JsonKey()
   final String apiServer;
 // API服务 URL
   @override
@@ -283,7 +265,7 @@ class _$_AppEnv with DiagnosticableTreeMixin implements _AppEnv {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'AppEnv(code: $code, message: $message, title: $title, theme: $theme, themeData: $themeData, locale: $locale, label: $label, showNavibar: $showNavibar, apiServer: $apiServer, rpcServerIp: $rpcServerIp, rpcServerPort: $rpcServerPort)';
+    return 'AppEnv(code: $code, message: $message, title: $title, theme: $theme, themeData: $themeData, locale: $locale, label: $label, apiServer: $apiServer, rpcServerIp: $rpcServerIp, rpcServerPort: $rpcServerPort)';
   }
 
   @override
@@ -298,7 +280,6 @@ class _$_AppEnv with DiagnosticableTreeMixin implements _AppEnv {
       ..add(DiagnosticsProperty('themeData', themeData))
       ..add(DiagnosticsProperty('locale', locale))
       ..add(DiagnosticsProperty('label', label))
-      ..add(DiagnosticsProperty('showNavibar', showNavibar))
       ..add(DiagnosticsProperty('apiServer', apiServer))
       ..add(DiagnosticsProperty('rpcServerIp', rpcServerIp))
       ..add(DiagnosticsProperty('rpcServerPort', rpcServerPort));
@@ -316,8 +297,6 @@ class _$_AppEnv with DiagnosticableTreeMixin implements _AppEnv {
             const DeepCollectionEquality().equals(other.themeData, themeData) &&
             const DeepCollectionEquality().equals(other.locale, locale) &&
             const DeepCollectionEquality().equals(other.label, label) &&
-            const DeepCollectionEquality()
-                .equals(other.showNavibar, showNavibar) &&
             const DeepCollectionEquality().equals(other.apiServer, apiServer) &&
             const DeepCollectionEquality()
                 .equals(other.rpcServerIp, rpcServerIp) &&
@@ -336,7 +315,6 @@ class _$_AppEnv with DiagnosticableTreeMixin implements _AppEnv {
       const DeepCollectionEquality().hash(themeData),
       const DeepCollectionEquality().hash(locale),
       const DeepCollectionEquality().hash(label),
-      const DeepCollectionEquality().hash(showNavibar),
       const DeepCollectionEquality().hash(apiServer),
       const DeepCollectionEquality().hash(rpcServerIp),
       const DeepCollectionEquality().hash(rpcServerPort));
@@ -361,7 +339,6 @@ abstract class _AppEnv implements AppEnv {
       @JsonKey(ignore: true) final ThemeData? themeData,
       final String locale,
       final String label,
-      final bool showNavibar,
       final String apiServer,
       final String rpcServerIp,
       final int rpcServerPort}) = _$_AppEnv;
@@ -384,8 +361,6 @@ abstract class _AppEnv implements AppEnv {
   @override // 应用语言标志
   String get label => throw _privateConstructorUsedError;
   @override // 主题切换标签
-  bool get showNavibar => throw _privateConstructorUsedError;
-  @override // 显示底边栏标志
   String get apiServer => throw _privateConstructorUsedError;
   @override // API服务 URL
   String get rpcServerIp => throw _privateConstructorUsedError;

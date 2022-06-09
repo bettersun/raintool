@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class Scrollable extends ConsumerWidget {
-  const Scrollable({Key? key}) : super(key: key);
+class ScrollablePage extends ConsumerWidget {
+  const ScrollablePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -34,6 +34,10 @@ class Scrollable extends ConsumerWidget {
       child: inner,
     );
 
-    return outer;
+    return Scaffold(
+      body: Container(
+        child: outer,
+      ),
+    );
   }
 }

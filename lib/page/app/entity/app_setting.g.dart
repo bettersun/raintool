@@ -18,6 +18,7 @@ _$_AppSetting _$$_AppSettingFromJson(Map<String, dynamic> json) =>
           const [],
       naviItemIndex: json['naviItemIndex'] as int? ?? 0,
       menuItemIndex: json['menuItemIndex'] as int? ?? 0,
+      showNavibar: json['showNavibar'] as bool? ?? true,
     );
 
 Map<String, dynamic> _$$_AppSettingToJson(_$_AppSetting instance) =>
@@ -26,6 +27,7 @@ Map<String, dynamic> _$$_AppSettingToJson(_$_AppSetting instance) =>
       'menuItemList': instance.menuItemList,
       'naviItemIndex': instance.naviItemIndex,
       'menuItemIndex': instance.menuItemIndex,
+      'showNavibar': instance.showNavibar,
     };
 
 _$_NaviItem _$$_NaviItemFromJson(Map<String, dynamic> json) => _$_NaviItem(

@@ -2,14 +2,14 @@ import 'package:basic_utils/basic_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:kiwi/kiwi.dart';
 
-import '..//entity/app_setting.dart';
 import '../../../common/const/app_const.dart';
+import '../../../common/const/hive_key.dart';
 import '../../../common/i18n/strings.g.dart';
 import '../../../common/util/app_util.dart';
-import '..//respository/app_repository.dart';
-import '../../../common/const/hive_key.dart';
 import '../../../common/util/hive_util.dart';
 import '../entity/app_env.dart';
+import '../entity/app_setting.dart';
+import '../respository/app_repository.dart';
 import 'app_service.dart';
 
 class AppServiceImpl extends AppService {
@@ -64,7 +64,7 @@ class AppServiceImpl extends AppService {
   }
 
   @override
-  AppEnv toggleNavibar(AppEnv state) {
+  AppSetting toggleNavibar(AppSetting state) {
     return state.copyWith(showNavibar: !state.showNavibar);
   }
 

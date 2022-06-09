@@ -23,7 +23,7 @@ class Menu extends ConsumerWidget {
     }
     // 切换底边栏
     if (item.flag == 'pages') {
-      ref.read(appEnvProvider.notifier).toggleNavibar();
+      ref.read(appSettingProvider.notifier).toggleNavibar();
     }
 
     // 改变菜单

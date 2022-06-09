@@ -5,8 +5,8 @@ import 'package:uuid/uuid.dart';
 import 'entity/app_setting.dart';
 import 'provdier/app_provider.dart';
 
-class Setting extends ConsumerWidget {
-  const Setting({Key? key}) : super(key: key);
+class SettingPage extends ConsumerWidget {
+  const SettingPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
