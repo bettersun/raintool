@@ -3,11 +3,13 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:raintool/page/app/provdier/app_provider.dart';
 
+import '../../common/const.dart';
 import '../../common/i18n/strings.g.dart';
 import 'entity/app_setting.dart';
 import 'widget/menu.dart';
 import 'widget/navibar.dart';
 
+/// 主页
 class HomePage extends ConsumerStatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
@@ -26,7 +28,7 @@ class HomePageState extends ConsumerState<HomePage> {
       appBar: AppBar(
         leading: Builder(builder: (BuildContext context) {
           return IconButton(
-              icon: Icon(Icons.home),
+              icon: const Icon(Icons.menu),
               onPressed: () {
                 Scaffold.of(context).openDrawer();
               });
@@ -35,32 +37,23 @@ class HomePageState extends ConsumerState<HomePage> {
       ),
 
       // 菜单
-      drawer: Menu(
-        itemList: appSetting.menuItemList,
-        currentIndex: appSetting.menuItemIndex,
-      ),
+      drawer: const Menu(),
       // 底边栏
-      bottomNavigationBar: !appSetting.showNavibar
-          ? null
-          : NaviBar(
-              itemList: appSetting.naviItemList,
-              currentIndex: appSetting.naviItemIndex,
-            ),
+      bottomNavigationBar: !appSetting.showNavibar ? null : const NaviBar(),
       body: SingleChildScrollView(
         child: Column(
           children: [
             TextButton(
               child: Text('Test'),
               onPressed: () {
-                print('TextButton Pressed.');
-                GoRouter.of(context).go('/scrollable');
+                context.push(RouterConst.pathScrollable);
               },
             ),
             TextButton(
               child: Text('Setting'),
               onPressed: () {
                 print('TextButton Pressed.');
-                GoRouter.of(context).go('/setting');
+                context.push(RouterConst.pathSetting);
               },
             ),
           ],

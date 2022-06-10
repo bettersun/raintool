@@ -116,47 +116,59 @@ class AppServiceImpl extends AppService {
 
   @override
   Future<AppSetting> initAppSetting(AppSetting state) async {
-    // 底边栏项目
-    List<NaviItem> l = await repo.loadNaviMenu();
-    // 排序
-    l.sort((a, b) => a.orderNum.compareTo(b.orderNum));
-
-    final List<NaviItem> list = [];
-
-    int i = 0;
-    for (NaviItem item in l) {
-      if (item.enabled) {
-        IconData iconData = AppUtil.loadIconData(item.flag);
-        list.add(item.copyWith(
-          index: i,
-          icon: iconData,
-        ));
-        i++;
-      }
-    }
+    List<BMenuItem> list = await repo.loadMenu();
 
     // 菜单项目
-    List<BMenuItem> bl = await repo.loadMenu();
     // 排序
-    bl.sort((a, b) => a.orderNum.compareTo(b.orderNum));
+    list.sort((a, b) => a.orderNum.compareTo(b.orderNum));
 
     final List<BMenuItem> mList = [];
 
     int j = 0;
-    for (BMenuItem item in bl) {
+    for (BMenuItem item in list) {
       if (item.enabled) {
         IconData iconData = AppUtil.loadIconData(item.flag);
+        String path = AppUtil.routerPath(item.flag);
         mList.add(item.copyWith(
           index: j,
           icon: iconData,
+          path: path,
         ));
         j++;
       }
     }
 
+    // 底边栏项目
+    // 排序
+    list.sort((a, b) => a.naviOrder.compareTo(b.naviOrder));
+
+    final List<BMenuItem> nList = [];
+
+    int i = 0;
+    for (BMenuItem item in list) {
+      if (item.naviItem) {
+        IconData iconData = AppUtil.loadIconData(item.flag);
+        String path = AppUtil.routerPath(item.flag);
+        nList.add(item.copyWith(
+          index: i,
+          icon: iconData,
+          path: path,
+        ));
+        i++;
+      }
+    }
+
+    bool showNavibar = state.showNavibar;
+    // 底边栏项目数少于2时，不显示底边栏
+    if (nList.length < 2) {
+      showNavibar = false;
+    }
+
+    //
     state = state.copyWith(
       menuItemList: mList,
-      naviItemList: list,
+      naviItemList: nList,
+      showNavibar: showNavibar,
     );
 
     return state;
@@ -167,15 +179,15 @@ class AppServiceImpl extends AppService {
     // 对应的底边栏下标
     int naviIndex = 0; // 下标 > 0
     BMenuItem m = state.menuItemList[index];
-    for (NaviItem item in state.naviItemList) {
+    for (BMenuItem item in state.naviItemList) {
       if (m.flag == item.flag) {
         naviIndex = item.index;
       }
     }
 
     return state.copyWith(
-      menuItemIndex: index,
-      naviItemIndex: naviIndex,
+      selectedMenuIndex: index,
+      selectedNaviIndex: naviIndex,
     );
   }
 
@@ -183,7 +195,7 @@ class AppServiceImpl extends AppService {
   AppSetting changeNavi(AppSetting state, int index) {
     // 对应的菜单下标
     int menuIndex = -1; // 默认不选中
-    NaviItem n = state.naviItemList[index];
+    BMenuItem n = state.naviItemList[index];
     for (BMenuItem item in state.menuItemList) {
       if (n.flag == item.flag) {
         menuIndex = item.index;
@@ -191,8 +203,8 @@ class AppServiceImpl extends AppService {
     }
 
     return state.copyWith(
-      menuItemIndex: menuIndex,
-      naviItemIndex: index,
+      selectedMenuIndex: menuIndex,
+      selectedNaviIndex: index,
     );
   }
 

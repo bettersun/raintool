@@ -1,4 +1,5 @@
 {
   "hello": "你好，世界！",
-  "msg":"{} are written in the {} language"
+  "msg":"{} are written in the {} language",
+  "login": "登录"
 }

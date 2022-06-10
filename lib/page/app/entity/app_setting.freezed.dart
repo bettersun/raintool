@@ -20,12 +20,12 @@ AppSetting _$AppSettingFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$AppSetting {
-  List<NaviItem> get naviItemList =>
+  List<BMenuItem> get naviItemList =>
       throw _privateConstructorUsedError; // 底边栏项目列表
   List<BMenuItem> get menuItemList =>
       throw _privateConstructorUsedError; // 菜单项目列表
-  int get naviItemIndex => throw _privateConstructorUsedError;
-  int get menuItemIndex => throw _privateConstructorUsedError;
+  int get selectedNaviIndex => throw _privateConstructorUsedError; // 当前的底边栏下标
+  int get selectedMenuIndex => throw _privateConstructorUsedError; // 当前的菜单栏下标
   bool get showNavibar => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -40,10 +40,10 @@ abstract class $AppSettingCopyWith<$Res> {
           AppSetting value, $Res Function(AppSetting) then) =
       _$AppSettingCopyWithImpl<$Res>;
   $Res call(
-      {List<NaviItem> naviItemList,
+      {List<BMenuItem> naviItemList,
       List<BMenuItem> menuItemList,
-      int naviItemIndex,
-      int menuItemIndex,
+      int selectedNaviIndex,
+      int selectedMenuIndex,
       bool showNavibar});
 }
 
@@ -59,26 +59,26 @@ class _$AppSettingCopyWithImpl<$Res> implements $AppSettingCopyWith<$Res> {
   $Res call({
     Object? naviItemList = freezed,
     Object? menuItemList = freezed,
-    Object? naviItemIndex = freezed,
-    Object? menuItemIndex = freezed,
+    Object? selectedNaviIndex = freezed,
+    Object? selectedMenuIndex = freezed,
     Object? showNavibar = freezed,
   }) {
     return _then(_value.copyWith(
       naviItemList: naviItemList == freezed
           ? _value.naviItemList
           : naviItemList // ignore: cast_nullable_to_non_nullable
-              as List<NaviItem>,
+              as List<BMenuItem>,
       menuItemList: menuItemList == freezed
           ? _value.menuItemList
           : menuItemList // ignore: cast_nullable_to_non_nullable
               as List<BMenuItem>,
-      naviItemIndex: naviItemIndex == freezed
-          ? _value.naviItemIndex
-          : naviItemIndex // ignore: cast_nullable_to_non_nullable
+      selectedNaviIndex: selectedNaviIndex == freezed
+          ? _value.selectedNaviIndex
+          : selectedNaviIndex // ignore: cast_nullable_to_non_nullable
               as int,
-      menuItemIndex: menuItemIndex == freezed
-          ? _value.menuItemIndex
-          : menuItemIndex // ignore: cast_nullable_to_non_nullable
+      selectedMenuIndex: selectedMenuIndex == freezed
+          ? _value.selectedMenuIndex
+          : selectedMenuIndex // ignore: cast_nullable_to_non_nullable
               as int,
       showNavibar: showNavibar == freezed
           ? _value.showNavibar
@@ -96,10 +96,10 @@ abstract class _$$_AppSettingCopyWith<$Res>
       __$$_AppSettingCopyWithImpl<$Res>;
   @override
   $Res call(
-      {List<NaviItem> naviItemList,
+      {List<BMenuItem> naviItemList,
       List<BMenuItem> menuItemList,
-      int naviItemIndex,
-      int menuItemIndex,
+      int selectedNaviIndex,
+      int selectedMenuIndex,
       bool showNavibar});
 }
 
@@ -117,26 +117,26 @@ class __$$_AppSettingCopyWithImpl<$Res> extends _$AppSettingCopyWithImpl<$Res>
   $Res call({
     Object? naviItemList = freezed,
     Object? menuItemList = freezed,
-    Object? naviItemIndex = freezed,
-    Object? menuItemIndex = freezed,
+    Object? selectedNaviIndex = freezed,
+    Object? selectedMenuIndex = freezed,
     Object? showNavibar = freezed,
   }) {
     return _then(_$_AppSetting(
       naviItemList: naviItemList == freezed
           ? _value._naviItemList
           : naviItemList // ignore: cast_nullable_to_non_nullable
-              as List<NaviItem>,
+              as List<BMenuItem>,
       menuItemList: menuItemList == freezed
           ? _value._menuItemList
           : menuItemList // ignore: cast_nullable_to_non_nullable
               as List<BMenuItem>,
-      naviItemIndex: naviItemIndex == freezed
-          ? _value.naviItemIndex
-          : naviItemIndex // ignore: cast_nullable_to_non_nullable
+      selectedNaviIndex: selectedNaviIndex == freezed
+          ? _value.selectedNaviIndex
+          : selectedNaviIndex // ignore: cast_nullable_to_non_nullable
               as int,
-      menuItemIndex: menuItemIndex == freezed
-          ? _value.menuItemIndex
-          : menuItemIndex // ignore: cast_nullable_to_non_nullable
+      selectedMenuIndex: selectedMenuIndex == freezed
+          ? _value.selectedMenuIndex
+          : selectedMenuIndex // ignore: cast_nullable_to_non_nullable
               as int,
       showNavibar: showNavibar == freezed
           ? _value.showNavibar
@@ -150,10 +150,10 @@ class __$$_AppSettingCopyWithImpl<$Res> extends _$AppSettingCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_AppSetting with DiagnosticableTreeMixin implements _AppSetting {
   const _$_AppSetting(
-      {final List<NaviItem> naviItemList = const [],
+      {final List<BMenuItem> naviItemList = const [],
       final List<BMenuItem> menuItemList = const [],
-      this.naviItemIndex = 0,
-      this.menuItemIndex = 0,
+      this.selectedNaviIndex = 0,
+      this.selectedMenuIndex = 0,
       this.showNavibar = true})
       : _naviItemList = naviItemList,
         _menuItemList = menuItemList;
@@ -161,10 +161,10 @@ class _$_AppSetting with DiagnosticableTreeMixin implements _AppSetting {
   factory _$_AppSetting.fromJson(Map<String, dynamic> json) =>
       _$$_AppSettingFromJson(json);
 
-  final List<NaviItem> _naviItemList;
+  final List<BMenuItem> _naviItemList;
   @override
   @JsonKey()
-  List<NaviItem> get naviItemList {
+  List<BMenuItem> get naviItemList {
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_naviItemList);
   }
@@ -182,17 +182,19 @@ class _$_AppSetting with DiagnosticableTreeMixin implements _AppSetting {
 // 菜单项目列表
   @override
   @JsonKey()
-  final int naviItemIndex;
+  final int selectedNaviIndex;
+// 当前的底边栏下标
   @override
   @JsonKey()
-  final int menuItemIndex;
+  final int selectedMenuIndex;
+// 当前的菜单栏下标
   @override
   @JsonKey()
   final bool showNavibar;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'AppSetting(naviItemList: $naviItemList, menuItemList: $menuItemList, naviItemIndex: $naviItemIndex, menuItemIndex: $menuItemIndex, showNavibar: $showNavibar)';
+    return 'AppSetting(naviItemList: $naviItemList, menuItemList: $menuItemList, selectedNaviIndex: $selectedNaviIndex, selectedMenuIndex: $selectedMenuIndex, showNavibar: $showNavibar)';
   }
 
   @override
@@ -202,8 +204,8 @@ class _$_AppSetting with DiagnosticableTreeMixin implements _AppSetting {
       ..add(DiagnosticsProperty('type', 'AppSetting'))
       ..add(DiagnosticsProperty('naviItemList', naviItemList))
       ..add(DiagnosticsProperty('menuItemList', menuItemList))
-      ..add(DiagnosticsProperty('naviItemIndex', naviItemIndex))
-      ..add(DiagnosticsProperty('menuItemIndex', menuItemIndex))
+      ..add(DiagnosticsProperty('selectedNaviIndex', selectedNaviIndex))
+      ..add(DiagnosticsProperty('selectedMenuIndex', selectedMenuIndex))
       ..add(DiagnosticsProperty('showNavibar', showNavibar));
   }
 
@@ -217,9 +219,9 @@ class _$_AppSetting with DiagnosticableTreeMixin implements _AppSetting {
             const DeepCollectionEquality()
                 .equals(other._menuItemList, _menuItemList) &&
             const DeepCollectionEquality()
-                .equals(other.naviItemIndex, naviItemIndex) &&
+                .equals(other.selectedNaviIndex, selectedNaviIndex) &&
             const DeepCollectionEquality()
-                .equals(other.menuItemIndex, menuItemIndex) &&
+                .equals(other.selectedMenuIndex, selectedMenuIndex) &&
             const DeepCollectionEquality()
                 .equals(other.showNavibar, showNavibar));
   }
@@ -230,8 +232,8 @@ class _$_AppSetting with DiagnosticableTreeMixin implements _AppSetting {
       runtimeType,
       const DeepCollectionEquality().hash(_naviItemList),
       const DeepCollectionEquality().hash(_menuItemList),
-      const DeepCollectionEquality().hash(naviItemIndex),
-      const DeepCollectionEquality().hash(menuItemIndex),
+      const DeepCollectionEquality().hash(selectedNaviIndex),
+      const DeepCollectionEquality().hash(selectedMenuIndex),
       const DeepCollectionEquality().hash(showNavibar));
 
   @JsonKey(ignore: true)
@@ -247,317 +249,28 @@ class _$_AppSetting with DiagnosticableTreeMixin implements _AppSetting {
 
 abstract class _AppSetting implements AppSetting {
   const factory _AppSetting(
-      {final List<NaviItem> naviItemList,
+      {final List<BMenuItem> naviItemList,
       final List<BMenuItem> menuItemList,
-      final int naviItemIndex,
-      final int menuItemIndex,
+      final int selectedNaviIndex,
+      final int selectedMenuIndex,
       final bool showNavibar}) = _$_AppSetting;
 
   factory _AppSetting.fromJson(Map<String, dynamic> json) =
       _$_AppSetting.fromJson;
 
   @override
-  List<NaviItem> get naviItemList => throw _privateConstructorUsedError;
+  List<BMenuItem> get naviItemList => throw _privateConstructorUsedError;
   @override // 底边栏项目列表
   List<BMenuItem> get menuItemList => throw _privateConstructorUsedError;
   @override // 菜单项目列表
-  int get naviItemIndex => throw _privateConstructorUsedError;
-  @override
-  int get menuItemIndex => throw _privateConstructorUsedError;
-  @override
+  int get selectedNaviIndex => throw _privateConstructorUsedError;
+  @override // 当前的底边栏下标
+  int get selectedMenuIndex => throw _privateConstructorUsedError;
+  @override // 当前的菜单栏下标
   bool get showNavibar => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$_AppSettingCopyWith<_$_AppSetting> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-NaviItem _$NaviItemFromJson(Map<String, dynamic> json) {
-  return _NaviItem.fromJson(json);
-}
-
-/// @nodoc
-mixin _$NaviItem {
-  @JsonKey(ignore: true)
-  int get index => throw _privateConstructorUsedError; // 下标
-  int get orderNum => throw _privateConstructorUsedError; // 顺序
-  String get label => throw _privateConstructorUsedError; // 标题
-  @JsonKey(ignore: true)
-  IconData? get icon => throw _privateConstructorUsedError; // 图标
-  String get flag => throw _privateConstructorUsedError; // 标志
-  String get tooltip => throw _privateConstructorUsedError; // 提示信息
-  bool get enabled => throw _privateConstructorUsedError;
-
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $NaviItemCopyWith<NaviItem> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $NaviItemCopyWith<$Res> {
-  factory $NaviItemCopyWith(NaviItem value, $Res Function(NaviItem) then) =
-      _$NaviItemCopyWithImpl<$Res>;
-  $Res call(
-      {@JsonKey(ignore: true) int index,
-      int orderNum,
-      String label,
-      @JsonKey(ignore: true) IconData? icon,
-      String flag,
-      String tooltip,
-      bool enabled});
-}
-
-/// @nodoc
-class _$NaviItemCopyWithImpl<$Res> implements $NaviItemCopyWith<$Res> {
-  _$NaviItemCopyWithImpl(this._value, this._then);
-
-  final NaviItem _value;
-  // ignore: unused_field
-  final $Res Function(NaviItem) _then;
-
-  @override
-  $Res call({
-    Object? index = freezed,
-    Object? orderNum = freezed,
-    Object? label = freezed,
-    Object? icon = freezed,
-    Object? flag = freezed,
-    Object? tooltip = freezed,
-    Object? enabled = freezed,
-  }) {
-    return _then(_value.copyWith(
-      index: index == freezed
-          ? _value.index
-          : index // ignore: cast_nullable_to_non_nullable
-              as int,
-      orderNum: orderNum == freezed
-          ? _value.orderNum
-          : orderNum // ignore: cast_nullable_to_non_nullable
-              as int,
-      label: label == freezed
-          ? _value.label
-          : label // ignore: cast_nullable_to_non_nullable
-              as String,
-      icon: icon == freezed
-          ? _value.icon
-          : icon // ignore: cast_nullable_to_non_nullable
-              as IconData?,
-      flag: flag == freezed
-          ? _value.flag
-          : flag // ignore: cast_nullable_to_non_nullable
-              as String,
-      tooltip: tooltip == freezed
-          ? _value.tooltip
-          : tooltip // ignore: cast_nullable_to_non_nullable
-              as String,
-      enabled: enabled == freezed
-          ? _value.enabled
-          : enabled // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ));
-  }
-}
-
-/// @nodoc
-abstract class _$$_NaviItemCopyWith<$Res> implements $NaviItemCopyWith<$Res> {
-  factory _$$_NaviItemCopyWith(
-          _$_NaviItem value, $Res Function(_$_NaviItem) then) =
-      __$$_NaviItemCopyWithImpl<$Res>;
-  @override
-  $Res call(
-      {@JsonKey(ignore: true) int index,
-      int orderNum,
-      String label,
-      @JsonKey(ignore: true) IconData? icon,
-      String flag,
-      String tooltip,
-      bool enabled});
-}
-
-/// @nodoc
-class __$$_NaviItemCopyWithImpl<$Res> extends _$NaviItemCopyWithImpl<$Res>
-    implements _$$_NaviItemCopyWith<$Res> {
-  __$$_NaviItemCopyWithImpl(
-      _$_NaviItem _value, $Res Function(_$_NaviItem) _then)
-      : super(_value, (v) => _then(v as _$_NaviItem));
-
-  @override
-  _$_NaviItem get _value => super._value as _$_NaviItem;
-
-  @override
-  $Res call({
-    Object? index = freezed,
-    Object? orderNum = freezed,
-    Object? label = freezed,
-    Object? icon = freezed,
-    Object? flag = freezed,
-    Object? tooltip = freezed,
-    Object? enabled = freezed,
-  }) {
-    return _then(_$_NaviItem(
-      index: index == freezed
-          ? _value.index
-          : index // ignore: cast_nullable_to_non_nullable
-              as int,
-      orderNum: orderNum == freezed
-          ? _value.orderNum
-          : orderNum // ignore: cast_nullable_to_non_nullable
-              as int,
-      label: label == freezed
-          ? _value.label
-          : label // ignore: cast_nullable_to_non_nullable
-              as String,
-      icon: icon == freezed
-          ? _value.icon
-          : icon // ignore: cast_nullable_to_non_nullable
-              as IconData?,
-      flag: flag == freezed
-          ? _value.flag
-          : flag // ignore: cast_nullable_to_non_nullable
-              as String,
-      tooltip: tooltip == freezed
-          ? _value.tooltip
-          : tooltip // ignore: cast_nullable_to_non_nullable
-              as String,
-      enabled: enabled == freezed
-          ? _value.enabled
-          : enabled // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ));
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-class _$_NaviItem with DiagnosticableTreeMixin implements _NaviItem {
-  const _$_NaviItem(
-      {@JsonKey(ignore: true) this.index = 0,
-      this.orderNum = 0,
-      this.label = '',
-      @JsonKey(ignore: true) this.icon,
-      this.flag = '',
-      this.tooltip = '',
-      this.enabled = false});
-
-  factory _$_NaviItem.fromJson(Map<String, dynamic> json) =>
-      _$$_NaviItemFromJson(json);
-
-  @override
-  @JsonKey(ignore: true)
-  final int index;
-// 下标
-  @override
-  @JsonKey()
-  final int orderNum;
-// 顺序
-  @override
-  @JsonKey()
-  final String label;
-// 标题
-  @override
-  @JsonKey(ignore: true)
-  final IconData? icon;
-// 图标
-  @override
-  @JsonKey()
-  final String flag;
-// 标志
-  @override
-  @JsonKey()
-  final String tooltip;
-// 提示信息
-  @override
-  @JsonKey()
-  final bool enabled;
-
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'NaviItem(index: $index, orderNum: $orderNum, label: $label, icon: $icon, flag: $flag, tooltip: $tooltip, enabled: $enabled)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'NaviItem'))
-      ..add(DiagnosticsProperty('index', index))
-      ..add(DiagnosticsProperty('orderNum', orderNum))
-      ..add(DiagnosticsProperty('label', label))
-      ..add(DiagnosticsProperty('icon', icon))
-      ..add(DiagnosticsProperty('flag', flag))
-      ..add(DiagnosticsProperty('tooltip', tooltip))
-      ..add(DiagnosticsProperty('enabled', enabled));
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_NaviItem &&
-            const DeepCollectionEquality().equals(other.index, index) &&
-            const DeepCollectionEquality().equals(other.orderNum, orderNum) &&
-            const DeepCollectionEquality().equals(other.label, label) &&
-            const DeepCollectionEquality().equals(other.icon, icon) &&
-            const DeepCollectionEquality().equals(other.flag, flag) &&
-            const DeepCollectionEquality().equals(other.tooltip, tooltip) &&
-            const DeepCollectionEquality().equals(other.enabled, enabled));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(index),
-      const DeepCollectionEquality().hash(orderNum),
-      const DeepCollectionEquality().hash(label),
-      const DeepCollectionEquality().hash(icon),
-      const DeepCollectionEquality().hash(flag),
-      const DeepCollectionEquality().hash(tooltip),
-      const DeepCollectionEquality().hash(enabled));
-
-  @JsonKey(ignore: true)
-  @override
-  _$$_NaviItemCopyWith<_$_NaviItem> get copyWith =>
-      __$$_NaviItemCopyWithImpl<_$_NaviItem>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$_NaviItemToJson(this);
-  }
-}
-
-abstract class _NaviItem implements NaviItem {
-  const factory _NaviItem(
-      {@JsonKey(ignore: true) final int index,
-      final int orderNum,
-      final String label,
-      @JsonKey(ignore: true) final IconData? icon,
-      final String flag,
-      final String tooltip,
-      final bool enabled}) = _$_NaviItem;
-
-  factory _NaviItem.fromJson(Map<String, dynamic> json) = _$_NaviItem.fromJson;
-
-  @override
-  @JsonKey(ignore: true)
-  int get index => throw _privateConstructorUsedError;
-  @override // 下标
-  int get orderNum => throw _privateConstructorUsedError;
-  @override // 顺序
-  String get label => throw _privateConstructorUsedError;
-  @override // 标题
-  @JsonKey(ignore: true)
-  IconData? get icon => throw _privateConstructorUsedError;
-  @override // 图标
-  String get flag => throw _privateConstructorUsedError;
-  @override // 标志
-  String get tooltip => throw _privateConstructorUsedError;
-  @override // 提示信息
-  bool get enabled => throw _privateConstructorUsedError;
-  @override
-  @JsonKey(ignore: true)
-  _$$_NaviItemCopyWith<_$_NaviItem> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -575,7 +288,11 @@ mixin _$BMenuItem {
   IconData? get icon => throw _privateConstructorUsedError; // 图标
   String get flag => throw _privateConstructorUsedError; // 标志
   String get tooltip => throw _privateConstructorUsedError; // 提示信息
-  bool get enabled => throw _privateConstructorUsedError;
+  bool get enabled => throw _privateConstructorUsedError; // 可用
+  bool get naviItem => throw _privateConstructorUsedError; // 底边栏项目标志
+  int get naviOrder => throw _privateConstructorUsedError; // 底边栏顺序
+  @JsonKey(ignore: true)
+  String get path => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -594,7 +311,10 @@ abstract class $BMenuItemCopyWith<$Res> {
       @JsonKey(ignore: true) IconData? icon,
       String flag,
       String tooltip,
-      bool enabled});
+      bool enabled,
+      bool naviItem,
+      int naviOrder,
+      @JsonKey(ignore: true) String path});
 }
 
 /// @nodoc
@@ -614,6 +334,9 @@ class _$BMenuItemCopyWithImpl<$Res> implements $BMenuItemCopyWith<$Res> {
     Object? flag = freezed,
     Object? tooltip = freezed,
     Object? enabled = freezed,
+    Object? naviItem = freezed,
+    Object? naviOrder = freezed,
+    Object? path = freezed,
   }) {
     return _then(_value.copyWith(
       index: index == freezed
@@ -644,6 +367,18 @@ class _$BMenuItemCopyWithImpl<$Res> implements $BMenuItemCopyWith<$Res> {
           ? _value.enabled
           : enabled // ignore: cast_nullable_to_non_nullable
               as bool,
+      naviItem: naviItem == freezed
+          ? _value.naviItem
+          : naviItem // ignore: cast_nullable_to_non_nullable
+              as bool,
+      naviOrder: naviOrder == freezed
+          ? _value.naviOrder
+          : naviOrder // ignore: cast_nullable_to_non_nullable
+              as int,
+      path: path == freezed
+          ? _value.path
+          : path // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -661,7 +396,10 @@ abstract class _$$_BMenuItemCopyWith<$Res> implements $BMenuItemCopyWith<$Res> {
       @JsonKey(ignore: true) IconData? icon,
       String flag,
       String tooltip,
-      bool enabled});
+      bool enabled,
+      bool naviItem,
+      int naviOrder,
+      @JsonKey(ignore: true) String path});
 }
 
 /// @nodoc
@@ -683,6 +421,9 @@ class __$$_BMenuItemCopyWithImpl<$Res> extends _$BMenuItemCopyWithImpl<$Res>
     Object? flag = freezed,
     Object? tooltip = freezed,
     Object? enabled = freezed,
+    Object? naviItem = freezed,
+    Object? naviOrder = freezed,
+    Object? path = freezed,
   }) {
     return _then(_$_BMenuItem(
       index: index == freezed
@@ -713,6 +454,18 @@ class __$$_BMenuItemCopyWithImpl<$Res> extends _$BMenuItemCopyWithImpl<$Res>
           ? _value.enabled
           : enabled // ignore: cast_nullable_to_non_nullable
               as bool,
+      naviItem: naviItem == freezed
+          ? _value.naviItem
+          : naviItem // ignore: cast_nullable_to_non_nullable
+              as bool,
+      naviOrder: naviOrder == freezed
+          ? _value.naviOrder
+          : naviOrder // ignore: cast_nullable_to_non_nullable
+              as int,
+      path: path == freezed
+          ? _value.path
+          : path // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -727,7 +480,10 @@ class _$_BMenuItem with DiagnosticableTreeMixin implements _BMenuItem {
       @JsonKey(ignore: true) this.icon,
       this.flag = '',
       this.tooltip = '',
-      this.enabled = false});
+      this.enabled = false,
+      this.naviItem = false,
+      this.naviOrder = 0,
+      @JsonKey(ignore: true) this.path = ''});
 
   factory _$_BMenuItem.fromJson(Map<String, dynamic> json) =>
       _$$_BMenuItemFromJson(json);
@@ -759,10 +515,22 @@ class _$_BMenuItem with DiagnosticableTreeMixin implements _BMenuItem {
   @override
   @JsonKey()
   final bool enabled;
+// 可用
+  @override
+  @JsonKey()
+  final bool naviItem;
+// 底边栏项目标志
+  @override
+  @JsonKey()
+  final int naviOrder;
+// 底边栏顺序
+  @override
+  @JsonKey(ignore: true)
+  final String path;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'BMenuItem(index: $index, orderNum: $orderNum, label: $label, icon: $icon, flag: $flag, tooltip: $tooltip, enabled: $enabled)';
+    return 'BMenuItem(index: $index, orderNum: $orderNum, label: $label, icon: $icon, flag: $flag, tooltip: $tooltip, enabled: $enabled, naviItem: $naviItem, naviOrder: $naviOrder, path: $path)';
   }
 
   @override
@@ -776,7 +544,10 @@ class _$_BMenuItem with DiagnosticableTreeMixin implements _BMenuItem {
       ..add(DiagnosticsProperty('icon', icon))
       ..add(DiagnosticsProperty('flag', flag))
       ..add(DiagnosticsProperty('tooltip', tooltip))
-      ..add(DiagnosticsProperty('enabled', enabled));
+      ..add(DiagnosticsProperty('enabled', enabled))
+      ..add(DiagnosticsProperty('naviItem', naviItem))
+      ..add(DiagnosticsProperty('naviOrder', naviOrder))
+      ..add(DiagnosticsProperty('path', path));
   }
 
   @override
@@ -790,7 +561,10 @@ class _$_BMenuItem with DiagnosticableTreeMixin implements _BMenuItem {
             const DeepCollectionEquality().equals(other.icon, icon) &&
             const DeepCollectionEquality().equals(other.flag, flag) &&
             const DeepCollectionEquality().equals(other.tooltip, tooltip) &&
-            const DeepCollectionEquality().equals(other.enabled, enabled));
+            const DeepCollectionEquality().equals(other.enabled, enabled) &&
+            const DeepCollectionEquality().equals(other.naviItem, naviItem) &&
+            const DeepCollectionEquality().equals(other.naviOrder, naviOrder) &&
+            const DeepCollectionEquality().equals(other.path, path));
   }
 
   @JsonKey(ignore: true)
@@ -803,7 +577,10 @@ class _$_BMenuItem with DiagnosticableTreeMixin implements _BMenuItem {
       const DeepCollectionEquality().hash(icon),
       const DeepCollectionEquality().hash(flag),
       const DeepCollectionEquality().hash(tooltip),
-      const DeepCollectionEquality().hash(enabled));
+      const DeepCollectionEquality().hash(enabled),
+      const DeepCollectionEquality().hash(naviItem),
+      const DeepCollectionEquality().hash(naviOrder),
+      const DeepCollectionEquality().hash(path));
 
   @JsonKey(ignore: true)
   @override
@@ -824,7 +601,10 @@ abstract class _BMenuItem implements BMenuItem {
       @JsonKey(ignore: true) final IconData? icon,
       final String flag,
       final String tooltip,
-      final bool enabled}) = _$_BMenuItem;
+      final bool enabled,
+      final bool naviItem,
+      final int naviOrder,
+      @JsonKey(ignore: true) final String path}) = _$_BMenuItem;
 
   factory _BMenuItem.fromJson(Map<String, dynamic> json) =
       _$_BMenuItem.fromJson;
@@ -845,6 +625,13 @@ abstract class _BMenuItem implements BMenuItem {
   String get tooltip => throw _privateConstructorUsedError;
   @override // 提示信息
   bool get enabled => throw _privateConstructorUsedError;
+  @override // 可用
+  bool get naviItem => throw _privateConstructorUsedError;
+  @override // 底边栏项目标志
+  int get naviOrder => throw _privateConstructorUsedError;
+  @override // 底边栏顺序
+  @JsonKey(ignore: true)
+  String get path => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$_BMenuItemCopyWith<_$_BMenuItem> get copyWith =>

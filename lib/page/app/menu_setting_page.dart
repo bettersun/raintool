@@ -6,9 +6,9 @@ import 'entity/app_setting.dart';
 import 'provdier/app_provider.dart';
 import 'widget/menu.dart';
 
-/// 设定
-class SettingPage extends ConsumerWidget {
-  const SettingPage({Key? key}) : super(key: key);
+/// 菜单设定
+class MenuSettingPage extends ConsumerWidget {
+  const MenuSettingPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

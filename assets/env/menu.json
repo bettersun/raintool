@@ -2,43 +2,64 @@
   {
     "flag" : "home",
     "orderNum" : 10,
-    "label" : "BB",
-    "tooltip" : "设定222",
-    "enabled": true
+    "label" : "主页",
+    "tooltip" : "主页",
+    "enabled": true,
+    "naviItem": true,
+    "naviOrder": 0
   },
   {
-    "flag" : "email",
+    "flag" : "todo",
     "orderNum" : 20,
-    "label" : "CC",
-    "tooltip" : "设定333",
-    "enabled": true
+    "label" : "Todo",
+    "tooltip" : "跳转到TODO页面",
+    "enabled": true,
+    "naviItem": true,
+    "naviOrder": 1
+  },
+  {
+    "flag" : "toggleNavi",
+    "orderNum" : 2,
+    "label" : "底边栏表示/隐藏",
+    "tooltip" : "切换底边栏的表示",
+    "enabled": true,
+    "naviItem": false,
+    "naviOrder": 2
   },
   {
     "flag" : "pages",
-    "orderNum" : 2,
-    "label" : "切换底边栏",
-    "tooltip" : "设定444",
-    "enabled": true
+    "orderNum" : 6,
+    "label" : "scrollable",
+    "tooltip" : "跳转到可滚动的页面",
+    "enabled": true,
+    "naviItem": false,
+    "naviOrder": 2
   },
   {
     "flag" : "locale",
     "orderNum" : 3,
     "label" : "切换语言",
-    "tooltip" : "设定444",
-    "enabled": true
+    "tooltip" : "切换应用的语言",
+    "enabled": true,
+    "naviItem": false,
+    "naviOrder": 3
   },
   {
     "flag" : "theme",
     "orderNum" : 4,
     "label" : "切换主题",
-    "tooltip" : "设定444",
-    "enabled": true
+    "tooltip" : "切换应用的主题",
+    "enabled": true,
+    "naviItem": false,
+    "naviOrder": 1
   },
   {
     "flag" : "setting",
     "orderNum" : 5,
-    "label" : "AA",
-    "tooltip" : "设定111",
-    "enabled": true
+    "label" : "设定",
+    "tooltip" : "应用的设定",
+    "enabled": true,
+    "naviItem": true,
+    "naviOrder": 5
   }
 ]

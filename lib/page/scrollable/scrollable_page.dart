@@ -35,6 +35,7 @@ class ScrollablePage extends ConsumerWidget {
     );
 
     return Scaffold(
+      appBar: AppBar(),
       body: Container(
         child: outer,
       ),

@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 
 import '../api_get_hello_world.dart';
+import '../url_const.dart';
 
 class ApiGetHelloWorldImpl extends ApiGetHelloWorld {
   //
@@ -12,7 +13,7 @@ class ApiGetHelloWorldImpl extends ApiGetHelloWorld {
         baseUrl: 'http://192.168.3.2:9527',
       ),
     );
-    response = await dio.get('/helloworld');
+    response = await dio.get(UrlConst.helloWorld);
     return response.data;
   }
 }
