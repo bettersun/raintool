@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../common/const.dart';
+import '../../../common/i18n/strings.g.dart';
 import '../entity/app_setting.dart';
 import '../provdier/app_provider.dart';
 
@@ -66,6 +67,21 @@ class Menu extends ConsumerWidget {
         ),
       );
     }
+
+    list.add(
+      ListTile(
+        title: Text(t.logout),
+        trailing: const Icon(Icons.add_to_home_screen_outlined),
+        selectedColor: Colors.blueAccent,
+        selected: list.length == appSetting.selectedMenuIndex,
+        onTap: () {
+          // 退出登录
+          ref.read(userProvider.notifier).logout();
+          Navigator.pop(context);
+          context.go(RouterConst.pathLogin);
+        },
+      ),
+    );
 
     return Drawer(
       child: ListView(

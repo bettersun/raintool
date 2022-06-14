@@ -1,5 +1,6 @@
 {
   "hello": "你好，世界！",
   "msg":"{} are written in the {} language",
-  "login": "登录"
+  "login": "登录",
+  "logout": "退出登录"
 }

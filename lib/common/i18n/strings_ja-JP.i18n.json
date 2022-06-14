@@ -1,5 +1,6 @@
 {
   "hello": "こんにちは、世界！",
   "msg":"{} are written in the {} language",
-  "login": "ログイン"
+  "login": "ログイン",
+  "logout": "ログアウト"
 }

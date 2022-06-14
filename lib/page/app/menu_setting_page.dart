@@ -19,15 +19,27 @@ class MenuSettingPage extends ConsumerWidget {
 
     for (var item in appSetting.menuItemList) {
       list.add(
-        TextButton(
+        Row(
           key: Key(const Uuid().v4()),
-          child: Text(
-            item.label,
-            softWrap: false,
-          ),
-          onPressed: () {
-            print(item.index);
-          },
+          children: [
+            Expanded(
+              child: Container(
+                key: Key(const Uuid().v4()),
+                alignment: Alignment.centerLeft,
+                padding: const EdgeInsets.all(8.0),
+                margin: const EdgeInsets.all(1.0),
+                // color: Colors.tealAccent,
+                decoration: BoxDecoration(
+                  borderRadius: const BorderRadius.all(Radius.circular(1.0)),
+                  border: Border.all(color: Colors.lightBlueAccent),
+                ),
+                child: Text(
+                  item.label,
+                  softWrap: false,
+                ),
+              ),
+            ),
+          ],
         ),
       );
     }
@@ -42,17 +54,23 @@ class MenuSettingPage extends ConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        leading: Builder(builder: (BuildContext context) {
-          return IconButton(
+        leading: Builder(
+          builder: (BuildContext context) {
+            return IconButton(
               icon: const Icon(Icons.arrow_back_ios),
               onPressed: () {
                 Navigator.pop(context);
-              });
-        }),
+              },
+            );
+          },
+        ),
       ),
       // 菜单
       drawer: const Menu(),
-      body: view,
+      body: Container(
+        padding: const EdgeInsets.all(8.0),
+        child: view,
+      ),
     );
   }
 }

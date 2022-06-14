@@ -3,9 +3,9 @@
  * Generated file. Do not edit.
  *
  * Locales: 5
- * Strings: 15 (3.0 per locale)
+ * Strings: 20 (4.0 per locale)
  *
- * Built on 2022-06-10 at 08:18 UTC
+ * Built on 2022-06-13 at 09:39 UTC
  */
 
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, library_private_types_in_public_api
@@ -154,6 +154,7 @@ class _StringsEn implements BaseTranslations {
 	String get hello => 'hello, world';
 	String get msg => '{} are written in the {} language';
 	String get login => 'login';
+	String get logout => 'logout';
 }
 
 // Path: <root>
@@ -180,6 +181,7 @@ class _StringsEnUs implements _StringsEn {
 	@override String get hello => 'hello, world';
 	@override String get msg => '{} are written in the {} language';
 	@override String get login => 'login';
+	@override String get logout => 'logout';
 }
 
 // Path: <root>
@@ -206,6 +208,7 @@ class _StringsJaJp implements _StringsEn {
 	@override String get hello => 'こんにちは、世界！';
 	@override String get msg => '{} are written in the {} language';
 	@override String get login => 'ログイン';
+	@override String get logout => 'ログアウト';
 }
 
 // Path: <root>
@@ -232,6 +235,7 @@ class _StringsZhCn implements _StringsEn {
 	@override String get hello => '你好，世界！';
 	@override String get msg => '{} are written in the {} language';
 	@override String get login => '登录';
+	@override String get logout => '退出登录';
 }
 
 // Path: <root>
@@ -258,6 +262,7 @@ class _StringsZhHk implements _StringsEn {
 	@override String get hello => '你好，世界！~~~~';
 	@override String get msg => '{} are written in the {} language';
 	@override String get login => '登录~~~';
+	@override String get logout => '退出登录~~~';
 }
 
 /// Flat map(s) containing all translations.
@@ -269,6 +274,7 @@ extension on _StringsEn {
 			'hello': 'hello, world',
 			'msg': '{} are written in the {} language',
 			'login': 'login',
+			'logout': 'logout',
 		};
 	}
 }
@@ -279,6 +285,7 @@ extension on _StringsEnUs {
 			'hello': 'hello, world',
 			'msg': '{} are written in the {} language',
 			'login': 'login',
+			'logout': 'logout',
 		};
 	}
 }
@@ -289,6 +296,7 @@ extension on _StringsJaJp {
 			'hello': 'こんにちは、世界！',
 			'msg': '{} are written in the {} language',
 			'login': 'ログイン',
+			'logout': 'ログアウト',
 		};
 	}
 }
@@ -299,6 +307,7 @@ extension on _StringsZhCn {
 			'hello': '你好，世界！',
 			'msg': '{} are written in the {} language',
 			'login': '登录',
+			'logout': '退出登录',
 		};
 	}
 }
@@ -309,6 +318,7 @@ extension on _StringsZhHk {
 			'hello': '你好，世界！~~~~',
 			'msg': '{} are written in the {} language',
 			'login': '登录~~~',
+			'logout': '退出登录~~~',
 		};
 	}
 }

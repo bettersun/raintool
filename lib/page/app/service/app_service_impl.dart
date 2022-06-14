@@ -64,11 +64,6 @@ class AppServiceImpl extends AppService {
   }
 
   @override
-  AppSetting toggleNavibar(AppSetting state) {
-    return state.copyWith(showNavibar: !state.showNavibar);
-  }
-
-  @override
   AppEnv changeLocale(AppEnv state) {
     switch (state.locale) {
       // 英语
@@ -158,7 +153,7 @@ class AppServiceImpl extends AppService {
       }
     }
 
-    bool showNavibar = state.showNavibar;
+    bool showNavibar = HiveUtil.appBox().get(HiveKey.showNavibar) ?? false;
     // 底边栏项目数少于2时，不显示底边栏
     if (nList.length < 2) {
       showNavibar = false;
@@ -172,6 +167,13 @@ class AppServiceImpl extends AppService {
     );
 
     return state;
+  }
+
+  @override
+  AppSetting toggleNavibar(AppSetting state) {
+    final bool showNavibar = !state.showNavibar;
+    HiveUtil.appBox().put(HiveKey.showNavibar, showNavibar);
+    return state.copyWith(showNavibar: showNavibar);
   }
 
   @override
@@ -210,13 +212,13 @@ class AppServiceImpl extends AppService {
 
   @override
   AppSetting reorderMenuItem(AppSetting state, int oldIndex, int newIndex) {
-    if (newIndex == state.menuItemList.length) {
-      newIndex = state.menuItemList.length - 1;
-    }
-
     List<BMenuItem> newMenuItemList = [];
     for (var item in state.menuItemList) {
       newMenuItemList.add(item);
+    }
+
+    if (newIndex > oldIndex) {
+      newIndex = newIndex - 1;
     }
 
     var element = newMenuItemList.removeAt(oldIndex);

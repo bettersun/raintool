@@ -8,4 +8,6 @@ class HiveKey {
 
   static const String appTheme = 'appTheme';
   static const String appLocale = 'appLocale';
+
+  static const String showNavibar = 'showNavibar';
 }

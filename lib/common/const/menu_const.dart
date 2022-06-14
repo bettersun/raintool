@@ -8,4 +8,6 @@ class MenuConst {
   static String todo = 'todo';
   static String toggleNavi = 'toggleNavi';
   static String scrollable = 'scrollable';
+
+  static String menuSetting = 'menuSetting';
 }

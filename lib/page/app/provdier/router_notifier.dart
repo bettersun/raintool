@@ -8,6 +8,7 @@ import '../../todo/todo_page.dart';
 import '../entity/user.dart';
 import '../home_page.dart';
 import '../login_page.dart';
+import '../menu_setting_page.dart';
 import '../setting_page.dart';
 import 'app_provider.dart';
 
@@ -34,6 +35,7 @@ class RouterNotifier extends ChangeNotifier {
     final areWeLoggingIn = state.location == '/login';
 
     // 未登录，跳转到登录页面
+    // TODO: 开发模式下注释
     if (user == null) {
       return areWeLoggingIn ? null : '/login';
     }
@@ -46,29 +48,34 @@ class RouterNotifier extends ChangeNotifier {
 
   List<GoRoute> get routes => [
         GoRoute(
-          name: "home",
+          // name: "home",
           path: '/',
           builder: (context, _) => const HomePage(),
         ),
         GoRoute(
-          name: "login",
+          // name: "login",
           path: RouterConst.pathLogin,
           builder: (context, _) => const LoginPage(),
         ),
         GoRoute(
-          name: "scrollable",
+          // name: "scrollable",
           path: RouterConst.pathScrollable,
           builder: (context, _) => const ScrollablePage(),
         ),
         GoRoute(
-          name: MenuConst.setting,
+          // name: MenuConst.setting,
           path: RouterConst.pathSetting,
           builder: (context, _) => const SettingPage(),
         ),
         GoRoute(
-          name: MenuConst.todo,
+          // name: MenuConst.todo,
           path: RouterConst.pathTodo,
           builder: (context, _) => const TodoPage(),
+        ),
+        GoRoute(
+          // name: MenuConst.menuSetting,
+          path: RouterConst.pathMenuSetting,
+          builder: (context, _) => const MenuSettingPage(),
         ),
       ];
 }

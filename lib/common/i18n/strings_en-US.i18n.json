@@ -1,5 +1,7 @@
 {
   "hello": "hello, world",
   "msg":"{} are written in the {} language",
-  "login": "login"
+  "login": "login",
+
+  "logout": "logout"
 }

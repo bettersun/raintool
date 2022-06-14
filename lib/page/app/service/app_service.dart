@@ -11,11 +11,11 @@ abstract class AppService {
   /// 切换语言
   AppEnv changeLocale(AppEnv state);
 
-  /// 切换底边栏
-  AppSetting toggleNavibar(AppSetting state);
-
   /// App 设定初始化
   Future<AppSetting> initAppSetting(AppSetting state);
+
+  /// 切换底边栏
+  AppSetting toggleNavibar(AppSetting state);
 
   /// 切换菜单项目
   AppSetting changeMenu(AppSetting state, int index);
