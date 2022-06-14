@@ -1,9 +1,9 @@
 import 'package:dio/dio.dart';
 
-import '../api_get_hello_world.dart';
+import '../api_hello_world.dart';
 import '../url_const.dart';
 
-class ApiGetHelloWorldImpl extends ApiGetHelloWorld {
+class ApiHelloWorldImpl extends ApiHelloWorld {
   //
   @override
   Future<String> helloWorld() async {

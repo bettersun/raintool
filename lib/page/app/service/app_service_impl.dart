@@ -9,7 +9,7 @@ import '../../../common/util/app_util.dart';
 import '../../../common/util/hive_util.dart';
 import '../entity/app_env.dart';
 import '../entity/app_setting.dart';
-import '../respository/app_repository.dart';
+import '../repository/app_repository.dart';
 import 'app_service.dart';
 
 class AppServiceImpl extends AppService {

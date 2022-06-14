@@ -41,7 +41,6 @@ flutter packages pub run build_runner build --delete-conflicting-outputs
    1. 纵横滚动条(内层水平滚动，外层垂直滚动) 
    1. 代码统计工具
    1. json 工具
-   1. 日历（每日事件管理）
    1. 目标管理
    1. 白板
    1. 电脑硬件信息

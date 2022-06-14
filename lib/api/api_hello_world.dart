@@ -1,4 +1,4 @@
-abstract class ApiGetHelloWorld {
+abstract class ApiHelloWorld {
   //
   Future<String> helloWorld();
 }

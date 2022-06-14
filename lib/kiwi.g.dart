@@ -11,8 +11,10 @@ class _$Injector extends Injector {
   void configure() {
     final KiwiContainer container = KiwiContainer();
     container
+      ..registerFactory<ApiHelloWorld>((c) => ApiHelloWorldImpl())
       ..registerFactory<AppService>((c) => AppServiceImpl())
       ..registerFactory<AppRepository>((c) => AppRepositoryImpl())
-      ..registerFactory<ApiGetHelloWorld>((c) => ApiGetHelloWorldImpl());
+      ..registerFactory<TabService>((c) => TabServiceImpl())
+      ..registerFactory<TabRepository>((c) => TabRepositoryImpl());
   }
 }

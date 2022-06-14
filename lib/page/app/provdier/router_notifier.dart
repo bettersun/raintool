@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../../common/const.dart';
 import '../../scrollable/scrollable_page.dart';
+import '../../tab/tab_page.dart';
 import '../../todo/todo_page.dart';
 import '../entity/user.dart';
 import '../home_page.dart';
@@ -36,9 +37,9 @@ class RouterNotifier extends ChangeNotifier {
 
     // 未登录，跳转到登录页面
     // TODO: 开发模式下注释
-    if (user == null) {
-      return areWeLoggingIn ? null : '/login';
-    }
+    // if (user == null) {
+    //   return areWeLoggingIn ? null : '/login';
+    // }
 
     // 已登录，访问登录页面的场合，直接跳转到主页。
     if (areWeLoggingIn) return '/';
@@ -76,6 +77,11 @@ class RouterNotifier extends ChangeNotifier {
           // name: MenuConst.menuSetting,
           path: RouterConst.pathMenuSetting,
           builder: (context, _) => const MenuSettingPage(),
+        ),
+        GoRoute(
+          // name: MenuConst.menuSetting,
+          path: RouterConst.pathTabbar,
+          builder: (context, _) => const TabPage(),
         ),
       ];
 }

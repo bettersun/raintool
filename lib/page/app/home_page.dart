@@ -56,6 +56,13 @@ class HomePageState extends ConsumerState<HomePage> {
                 context.push(RouterConst.pathSetting);
               },
             ),
+            TextButton(
+              child: Text('Tabbar'),
+              onPressed: () {
+                print('TextButton Pressed.');
+                context.push(RouterConst.pathTabbar);
+              },
+            ),
           ],
         ),
       ),

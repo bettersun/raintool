@@ -7,6 +7,7 @@ class RouterConst {
   static String pathLogin = '/login';
   static String pathLogout = '/logout';
   static String pathMenuSetting = '/menuSetting';
+  static String pathTabbar = '/tabbar';
 
   // static String path
 }
