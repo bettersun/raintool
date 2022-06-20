@@ -5,14 +5,14 @@ import 'package:go_router/go_router.dart';
 import '../../../common/const.dart';
 import '../../../common/i18n/strings.g.dart';
 import '../entity/app_setting.dart';
-import '../provdier/app_provider.dart';
+import '../provider/app_provider.dart';
 
-/// 菜单
-class Menu extends ConsumerWidget {
-  const Menu({Key? key}) : super(key: key);
+///  侧边栏菜单
+class DrawerMenu extends ConsumerWidget {
+  const DrawerMenu({Key? key}) : super(key: key);
 
   /// 点击菜单
-  void tapItem(BuildContext context, WidgetRef ref, BMenuItem item) {
+  static void tapItem(BuildContext context, WidgetRef ref, BMenuItem item) {
     // 切换语言
     if (item.flag == MenuConst.locale) {
       ref.read(appEnvProvider.notifier).changeLocale();

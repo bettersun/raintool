@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import '../../../common/const.dart';
 import '../../scrollable/scrollable_page.dart';
 import '../../tab/tab_page.dart';
+import '../../tab/tab_setting_page.dart';
 import '../../todo/todo_page.dart';
 import '../entity/user.dart';
 import '../home_page.dart';
@@ -74,14 +75,16 @@ class RouterNotifier extends ChangeNotifier {
           builder: (context, _) => const TodoPage(),
         ),
         GoRoute(
-          // name: MenuConst.menuSetting,
           path: RouterConst.pathMenuSetting,
           builder: (context, _) => const MenuSettingPage(),
         ),
         GoRoute(
-          // name: MenuConst.menuSetting,
           path: RouterConst.pathTabbar,
           builder: (context, _) => const TabPage(),
+        ),
+        GoRoute(
+          path: RouterConst.pathTabbarSetting,
+          builder: (context, _) => const TabSettingPage(),
         ),
       ];
 }

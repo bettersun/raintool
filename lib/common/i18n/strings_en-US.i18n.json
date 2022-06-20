@@ -2,6 +2,6 @@
   "hello": "hello, world",
   "msg":"{} are written in the {} language",
   "login": "login",
-
-  "logout": "logout"
+  "logout": "logout",
+  "setting": "setting"
 }

@@ -4,7 +4,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../../common/const.dart';
 import '../entity/app_setting.dart';
-import '../provdier/app_provider.dart';
+import '../provider/app_provider.dart';
 
 /// 底边栏
 class NaviBar extends ConsumerWidget {

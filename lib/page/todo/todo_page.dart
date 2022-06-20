@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:raintool/common/widget/rain_back_button.dart';
 
 import 'todo.dart';
 import 'todo_provider.dart';
@@ -49,6 +50,7 @@ class TodoPage extends ConsumerWidget {
             ],
           ],
         ),
+        floatingActionButton: const RainBackButton(),
       ),
     );
   }

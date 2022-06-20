@@ -1,3 +1,4 @@
+import 'package:flutter_reorderable_grid_view/entities/order_update_entity.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kiwi/kiwi.dart';
 
@@ -12,6 +13,11 @@ class TabNotifier extends StateNotifier<TabInfo> {
   /// 初始化
   void init() async {
     state = await _tabService.init();
+  }
+
+  /// 重新排序
+  void reorder(List<OrderUpdateEntity> orderUpdateEntities) async {
+    state = await _tabService.reorder(state, orderUpdateEntities);
   }
 
   /// 过滤

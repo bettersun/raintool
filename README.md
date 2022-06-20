@@ -46,3 +46,15 @@ flutter packages pub run build_runner build --delete-conflicting-outputs
    1. 电脑硬件信息
    1. 类postman工具
    1. 数据库UI
+   
+
+### Tab
+
+https://api.flutter.dev/flutter/material/TabController-class.html
+https://blog.logrocket.com/flutter-tabbar-a-complete-tutorial-with-examples/
+https://www.freesion.com/article/23711034166/
+
+
+The provided ScrollController is currently attached to more than one ScrollPosition
+
+https://github.com/flutter/flutter/issues/93862

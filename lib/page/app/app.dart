@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'entity/app_env.dart';
-import 'provdier/app_provider.dart';
+import 'provider/app_provider.dart';
 
 /// RainApp
 class RainApp extends ConsumerStatefulWidget {

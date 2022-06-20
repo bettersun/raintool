@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:uuid/uuid.dart';
 
+import '../../common/widget.dart';
 import 'entity/app_setting.dart';
-import 'provdier/app_provider.dart';
-import 'widget/menu.dart';
+import 'provider/app_provider.dart';
+import 'widget/drawer_menu.dart';
 
 /// 菜单设定
 class MenuSettingPage extends ConsumerWidget {
@@ -66,9 +67,8 @@ class MenuSettingPage extends ConsumerWidget {
         ),
       ),
       // 菜单
-      drawer: const Menu(),
-      body: Container(
-        padding: const EdgeInsets.all(8.0),
+      drawer: const DrawerMenu(),
+      body: RainFrame(
         child: view,
       ),
     );

@@ -3,9 +3,9 @@
  * Generated file. Do not edit.
  *
  * Locales: 5
- * Strings: 20 (4.0 per locale)
+ * Strings: 25 (5.0 per locale)
  *
- * Built on 2022-06-13 at 09:39 UTC
+ * Built on 2022-06-17 at 06:11 UTC
  */
 
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, library_private_types_in_public_api
@@ -155,6 +155,7 @@ class _StringsEn implements BaseTranslations {
 	String get msg => '{} are written in the {} language';
 	String get login => 'login';
 	String get logout => 'logout';
+	String get setting => 'setting';
 }
 
 // Path: <root>
@@ -182,6 +183,7 @@ class _StringsEnUs implements _StringsEn {
 	@override String get msg => '{} are written in the {} language';
 	@override String get login => 'login';
 	@override String get logout => 'logout';
+	@override String get setting => 'setting';
 }
 
 // Path: <root>
@@ -209,6 +211,7 @@ class _StringsJaJp implements _StringsEn {
 	@override String get msg => '{} are written in the {} language';
 	@override String get login => 'ログイン';
 	@override String get logout => 'ログアウト';
+	@override String get setting => '設定';
 }
 
 // Path: <root>
@@ -236,6 +239,7 @@ class _StringsZhCn implements _StringsEn {
 	@override String get msg => '{} are written in the {} language';
 	@override String get login => '登录';
 	@override String get logout => '退出登录';
+	@override String get setting => '设定';
 }
 
 // Path: <root>
@@ -259,10 +263,11 @@ class _StringsZhHk implements _StringsEn {
 	@override late final _StringsZhHk _root = this; // ignore: unused_field
 
 	// Translations
-	@override String get hello => '你好，世界！~~~~';
+	@override String get hello => '你好，世界';
 	@override String get msg => '{} are written in the {} language';
-	@override String get login => '登录~~~';
-	@override String get logout => '退出登录~~~';
+	@override String get login => '登錄';
+	@override String get logout => '退出登錄';
+	@override String get setting => '設定';
 }
 
 /// Flat map(s) containing all translations.
@@ -275,6 +280,7 @@ extension on _StringsEn {
 			'msg': '{} are written in the {} language',
 			'login': 'login',
 			'logout': 'logout',
+			'setting': 'setting',
 		};
 	}
 }
@@ -286,6 +292,7 @@ extension on _StringsEnUs {
 			'msg': '{} are written in the {} language',
 			'login': 'login',
 			'logout': 'logout',
+			'setting': 'setting',
 		};
 	}
 }
@@ -297,6 +304,7 @@ extension on _StringsJaJp {
 			'msg': '{} are written in the {} language',
 			'login': 'ログイン',
 			'logout': 'ログアウト',
+			'setting': '設定',
 		};
 	}
 }
@@ -308,6 +316,7 @@ extension on _StringsZhCn {
 			'msg': '{} are written in the {} language',
 			'login': '登录',
 			'logout': '退出登录',
+			'setting': '设定',
 		};
 	}
 }
@@ -315,10 +324,11 @@ extension on _StringsZhCn {
 extension on _StringsZhHk {
 	Map<String, dynamic> _buildFlatMap() {
 		return <String, dynamic>{
-			'hello': '你好，世界！~~~~',
+			'hello': '你好，世界',
 			'msg': '{} are written in the {} language',
-			'login': '登录~~~',
-			'logout': '退出登录~~~',
+			'login': '登錄',
+			'logout': '退出登錄',
+			'setting': '設定',
 		};
 	}
 }

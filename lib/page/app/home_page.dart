@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:raintool/page/app/provdier/app_provider.dart';
 
 import '../../common/const.dart';
 import '../../common/i18n/strings.g.dart';
 import 'entity/app_setting.dart';
-import 'widget/menu.dart';
+import 'provider/app_provider.dart';
+import 'widget/drawer_menu.dart';
 import 'widget/navibar.dart';
 
 /// 主页
@@ -37,18 +37,12 @@ class HomePageState extends ConsumerState<HomePage> {
       ),
 
       // 菜单
-      drawer: const Menu(),
+      drawer: const DrawerMenu(),
       // 底边栏
       bottomNavigationBar: !appSetting.showNavibar ? null : const NaviBar(),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            TextButton(
-              child: Text('Test'),
-              onPressed: () {
-                context.push(RouterConst.pathScrollable);
-              },
-            ),
             TextButton(
               child: Text('Setting'),
               onPressed: () {
@@ -57,10 +51,23 @@ class HomePageState extends ConsumerState<HomePage> {
               },
             ),
             TextButton(
+              child: Text('Menu Setting'),
+              onPressed: () {
+                context.push(RouterConst.pathMenuSetting);
+              },
+            ),
+            TextButton(
               child: Text('Tabbar'),
               onPressed: () {
                 print('TextButton Pressed.');
                 context.push(RouterConst.pathTabbar);
+              },
+            ),
+            TextButton(
+              child: Text('Scrollable'),
+              onPressed: () {
+                print('TextButton Pressed.');
+                context.push(RouterConst.pathScrollable);
               },
             ),
           ],

@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:raintool/common/widget.dart';
+
+import '../../common/widget/rain_back_button.dart';
 
 class ScrollablePage extends ConsumerWidget {
   const ScrollablePage({Key? key}) : super(key: key);
@@ -12,7 +15,8 @@ class ScrollablePage extends ConsumerWidget {
       list.add(
         TextButton(
           child: Text(
-            i.toString() + "GWIOEUFGOIEUWGFOIUWEGFOIUWGEFOIUGEFIOUGWEIOUFGO",
+            i.toString() +
+                "GWIOEUFGOIEUWGFOIUWEGFOIUWGEFOIUGEFIOUGWEIOUFGOGWIOEUFGOIEUWGFOIUWEGFOIUWGEFOIUGEFIOUGWEIOUFGO",
             softWrap: false,
           ),
           onPressed: () {
@@ -35,10 +39,12 @@ class ScrollablePage extends ConsumerWidget {
     );
 
     return Scaffold(
-      appBar: AppBar(),
-      body: Container(
-        child: outer,
+      body: RainFrame(
+        child: SizedBox.expand(
+          child: outer,
+        ),
       ),
+      floatingActionButton: const RainBackButton(),
     );
   }
 }

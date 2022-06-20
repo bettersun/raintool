@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:raintool/page/app/provdier/app_provider.dart';
 
 import '../../common/i18n/strings.g.dart';
+import 'provider/app_provider.dart';
 
 /// 登录
 class LoginPage extends ConsumerStatefulWidget {
