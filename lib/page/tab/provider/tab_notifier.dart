@@ -16,12 +16,27 @@ class TabNotifier extends StateNotifier<TabInfo> {
   }
 
   /// 重新排序
-  void reorder(List<OrderUpdateEntity> orderUpdateEntities) async {
-    state = await _tabService.reorder(state, orderUpdateEntities);
+  void reorder(List<OrderUpdateEntity> orderUpdateEntities, bool enabled) async {
+    state = await _tabService.reorder(state, orderUpdateEntities, enabled);
   }
 
   /// 过滤
   void filter() {
-    // state = _appService.toggleNavibar(state);
+    // state = _tabService.filter(state);
+  }
+
+  /// 切换编辑模式
+  void toggleEditMode() {
+    state = _tabService.toggleEditMode(state);
+  }
+
+  /// 启用标签
+  void enableTab(String flag) {
+    state = _tabService.enableTab(state, flag);
+  }
+
+  /// 禁用标签
+  void disableTab(String flag) {
+    state = _tabService.disableTab(state, flag);
   }
 }
