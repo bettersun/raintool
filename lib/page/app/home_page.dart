@@ -44,30 +44,33 @@ class HomePageState extends ConsumerState<HomePage> {
         child: Column(
           children: [
             TextButton(
-              child: Text('Setting'),
+              child: const Text('Setting'),
               onPressed: () {
-                print('TextButton Pressed.');
                 context.push(RouterConst.pathSetting);
               },
             ),
             TextButton(
-              child: Text('Menu Setting'),
+              child: const Text('Menu Setting'),
               onPressed: () {
                 context.push(RouterConst.pathMenuSetting);
               },
             ),
             TextButton(
-              child: Text('Tabbar'),
+              child: const Text('Tabbar'),
               onPressed: () {
-                print('TextButton Pressed.');
                 context.push(RouterConst.pathTabbar);
               },
             ),
             TextButton(
-              child: Text('Scrollable'),
+              child: const Text('Scrollable'),
               onPressed: () {
-                print('TextButton Pressed.');
                 context.push(RouterConst.pathScrollable);
+              },
+            ),
+            TextButton(
+              child: const Text('Animation'),
+              onPressed: () {
+                context.push(RouterConst.pathAnimation);
               },
             ),
           ],

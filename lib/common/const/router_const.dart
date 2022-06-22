@@ -10,5 +10,7 @@ class RouterConst {
   static String pathTabbar = '/tabbar';
   static String pathTabbarSetting = '/tabbar_setting';
 
+  static String pathAnimation = '/animation';
+
   // static String path
 }

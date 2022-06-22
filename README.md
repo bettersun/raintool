@@ -58,3 +58,7 @@ https://www.freesion.com/article/23711034166/
 The provided ScrollController is currently attached to more than one ScrollPosition
 
 https://github.com/flutter/flutter/issues/93862
+
+### [张风捷特烈](https://juejin.cn/user/149189281194766)
+
+[Flutter 动画探索 - 流光幻影](https://juejin.cn/book/6965102582473687071)

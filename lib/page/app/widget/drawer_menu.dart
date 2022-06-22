@@ -49,7 +49,7 @@ class DrawerMenu extends ConsumerWidget {
         decoration: BoxDecoration(
           color: Colors.blue,
         ),
-        child: Text('Drawer Header'),
+        child: Text('Rain Tool'),
       ),
     );
 

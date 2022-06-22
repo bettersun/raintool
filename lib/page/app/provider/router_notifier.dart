@@ -2,16 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../common/const.dart';
-import '../../scrollable/scrollable_page.dart';
-import '../../tab/tab_page.dart';
-import '../../tab/tab_setting_page.dart';
-import '../../todo/todo_page.dart';
+import '../app_router.dart';
 import '../entity/user.dart';
-import '../home_page.dart';
-import '../login_page.dart';
-import '../menu_setting_page.dart';
-import '../setting_page.dart';
 import 'app_provider.dart';
 
 /// https://github.com/lucavenir/go_router_riverpod
@@ -48,43 +40,5 @@ class RouterNotifier extends ChangeNotifier {
     return null;
   }
 
-  List<GoRoute> get routes => [
-        GoRoute(
-          // name: "home",
-          path: '/',
-          builder: (context, _) => const HomePage(),
-        ),
-        GoRoute(
-          // name: "login",
-          path: RouterConst.pathLogin,
-          builder: (context, _) => const LoginPage(),
-        ),
-        GoRoute(
-          // name: "scrollable",
-          path: RouterConst.pathScrollable,
-          builder: (context, _) => const ScrollablePage(),
-        ),
-        GoRoute(
-          // name: MenuConst.setting,
-          path: RouterConst.pathSetting,
-          builder: (context, _) => const SettingPage(),
-        ),
-        GoRoute(
-          // name: MenuConst.todo,
-          path: RouterConst.pathTodo,
-          builder: (context, _) => const TodoPage(),
-        ),
-        GoRoute(
-          path: RouterConst.pathMenuSetting,
-          builder: (context, _) => const MenuSettingPage(),
-        ),
-        GoRoute(
-          path: RouterConst.pathTabbar,
-          builder: (context, _) => const TabPage(),
-        ),
-        GoRoute(
-          path: RouterConst.pathTabbarSetting,
-          builder: (context, _) => const TabSettingPage(),
-        ),
-      ];
+  List<GoRoute> get routes => AppRouter.routes;
 }

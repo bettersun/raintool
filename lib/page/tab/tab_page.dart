@@ -8,7 +8,7 @@ import 'entity/tab_info.dart';
 import 'provider/tab_provider.dart';
 import 'widget/tab_inner.dart';
 
-/// 带标签的页面
+/// 标签页面
 class TabPage extends ConsumerStatefulWidget {
   const TabPage({Key? key}) : super(key: key);
 
