@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:raintool/common/widget.dart';
-import 'package:raintool/page/animation/widget/anima_text.dart';
 
+import 'anima_panel.dart';
+import 'widget/anima_text.dart';
+import 'widget/circle_anima.dart';
 import 'widget/skew_shadow_text.dart';
 import 'widget/text_typer.dart';
 
@@ -29,10 +31,12 @@ class AnimationPageState extends ConsumerState<AnimationPage> {
             const AnimaText(),
             const SkewShadowText(),
             TextTyper(),
+            const CircleAnima(),
+            const AnimaPanel(),
           ],
         ),
       ),
-      floatingActionButton: RainBackButton(),
+      floatingActionButton: const RainBackButton(),
     );
   }
 }
