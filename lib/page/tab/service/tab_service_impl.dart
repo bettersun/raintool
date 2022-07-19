@@ -50,7 +50,7 @@ class TabServiceImpl extends TabService {
   }
 
   @override
-  TabInfo toggleEditMode(TabInfo state) {
+  TabInfo editTab(TabInfo state) {
     return state.copyWith(editMode: !state.editMode);
   }
 

@@ -73,6 +73,24 @@ class HomePageState extends ConsumerState<HomePage> {
                 context.push(RouterConst.pathAnimation);
               },
             ),
+            TextButton(
+              child: const Text('Call Api'),
+              onPressed: () {
+                context.push(RouterConst.pathCallApi);
+              },
+            ),
+            TextButton(
+              child: const Text('Datepicker'),
+              onPressed: () {
+                showDatePicker(
+                  context: context,
+                  initialDate: DateTime.now(),
+                  firstDate: DateTime.now(),
+                  lastDate: DateTime.now(),
+                  // locale: Locale(appEnv.locale),
+                );
+              },
+            ),
           ],
         ),
       ),

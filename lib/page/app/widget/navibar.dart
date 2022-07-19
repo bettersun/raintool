@@ -13,7 +13,7 @@ class NaviBar extends ConsumerWidget {
   /// 点击菜单
   void tapItem(BuildContext context, WidgetRef ref, int index) async {
     // 切换
-    ref.read(appSettingProvider.notifier).changeNavi(index);
+    ref.watch(appSettingProvider.notifier).changeNavi(index);
     // 画面跳转
     BMenuItem item = ref.watch(appSettingProvider).naviItemList[index];
     if (item.flag == MenuConst.setting || item.flag == MenuConst.pages || item.flag == MenuConst.todo) {

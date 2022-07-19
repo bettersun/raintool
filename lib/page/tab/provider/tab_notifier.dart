@@ -25,9 +25,9 @@ class TabNotifier extends StateNotifier<TabInfo> {
     // state = _tabService.filter(state);
   }
 
-  /// 切换编辑模式
+  /// 编辑标签
   void toggleEditMode() {
-    state = _tabService.toggleEditMode(state);
+    state = _tabService.editTab(state);
   }
 
   /// 启用标签

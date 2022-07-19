@@ -1,7 +1,8 @@
 import 'package:go_router/go_router.dart';
-import 'package:raintool/page/animation/animation_page.dart';
 
 import '../../common/const.dart';
+import '../animation/animation_page.dart';
+import '../call_api/call_api_page.dart';
 import '../scrollable/scrollable_page.dart';
 import '../tab/tab_page.dart';
 import '../tab/tab_setting_page.dart';
@@ -53,6 +54,10 @@ class AppRouter {
     GoRoute(
       path: RouterConst.pathAnimation,
       builder: (context, _) => const AnimationPage(),
+    ),
+    GoRoute(
+      path: RouterConst.pathCallApi,
+      builder: (context, _) => const CallApiPage(),
     ),
   ];
 }

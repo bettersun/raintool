@@ -32,6 +32,9 @@ class RainAppState extends ConsumerState<RainApp> {
     return MaterialApp.router(
       routeInformationParser: router.routeInformationParser,
       routerDelegate: router.routerDelegate,
+      // locale: Locale(appEnv.locale), // use provider
+      // supportedLocales: LocaleSettings.supportedLocales,
+      // localizationsDelegates: GlobalMaterialLocalizations.delegates,
       theme: appEnv.themeData,
     );
   }
