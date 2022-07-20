@@ -28,9 +28,9 @@ mixin _$AppEnv {
   ThemeData? get themeData => throw _privateConstructorUsedError; // 应用主题
   String get locale => throw _privateConstructorUsedError; // 应用语言标志
   String get label => throw _privateConstructorUsedError; // 主题切换标签
-  String get apiServer => throw _privateConstructorUsedError; // API服务 URL
-  String get rpcServerIp => throw _privateConstructorUsedError; // RPC服务 IP
-  int get rpcServerPort => throw _privateConstructorUsedError;
+  String get apiHost => throw _privateConstructorUsedError; // API服务 URL
+  String get rpcServer => throw _privateConstructorUsedError; // RPC服务 IP
+  int get rpcPort => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -49,9 +49,9 @@ abstract class $AppEnvCopyWith<$Res> {
       @JsonKey(ignore: true) ThemeData? themeData,
       String locale,
       String label,
-      String apiServer,
-      String rpcServerIp,
-      int rpcServerPort});
+      String apiHost,
+      String rpcServer,
+      int rpcPort});
 }
 
 /// @nodoc
@@ -71,9 +71,9 @@ class _$AppEnvCopyWithImpl<$Res> implements $AppEnvCopyWith<$Res> {
     Object? themeData = freezed,
     Object? locale = freezed,
     Object? label = freezed,
-    Object? apiServer = freezed,
-    Object? rpcServerIp = freezed,
-    Object? rpcServerPort = freezed,
+    Object? apiHost = freezed,
+    Object? rpcServer = freezed,
+    Object? rpcPort = freezed,
   }) {
     return _then(_value.copyWith(
       code: code == freezed
@@ -104,17 +104,17 @@ class _$AppEnvCopyWithImpl<$Res> implements $AppEnvCopyWith<$Res> {
           ? _value.label
           : label // ignore: cast_nullable_to_non_nullable
               as String,
-      apiServer: apiServer == freezed
-          ? _value.apiServer
-          : apiServer // ignore: cast_nullable_to_non_nullable
+      apiHost: apiHost == freezed
+          ? _value.apiHost
+          : apiHost // ignore: cast_nullable_to_non_nullable
               as String,
-      rpcServerIp: rpcServerIp == freezed
-          ? _value.rpcServerIp
-          : rpcServerIp // ignore: cast_nullable_to_non_nullable
+      rpcServer: rpcServer == freezed
+          ? _value.rpcServer
+          : rpcServer // ignore: cast_nullable_to_non_nullable
               as String,
-      rpcServerPort: rpcServerPort == freezed
-          ? _value.rpcServerPort
-          : rpcServerPort // ignore: cast_nullable_to_non_nullable
+      rpcPort: rpcPort == freezed
+          ? _value.rpcPort
+          : rpcPort // ignore: cast_nullable_to_non_nullable
               as int,
     ));
   }
@@ -133,9 +133,9 @@ abstract class _$$_AppEnvCopyWith<$Res> implements $AppEnvCopyWith<$Res> {
       @JsonKey(ignore: true) ThemeData? themeData,
       String locale,
       String label,
-      String apiServer,
-      String rpcServerIp,
-      int rpcServerPort});
+      String apiHost,
+      String rpcServer,
+      int rpcPort});
 }
 
 /// @nodoc
@@ -156,9 +156,9 @@ class __$$_AppEnvCopyWithImpl<$Res> extends _$AppEnvCopyWithImpl<$Res>
     Object? themeData = freezed,
     Object? locale = freezed,
     Object? label = freezed,
-    Object? apiServer = freezed,
-    Object? rpcServerIp = freezed,
-    Object? rpcServerPort = freezed,
+    Object? apiHost = freezed,
+    Object? rpcServer = freezed,
+    Object? rpcPort = freezed,
   }) {
     return _then(_$_AppEnv(
       code: code == freezed
@@ -189,17 +189,17 @@ class __$$_AppEnvCopyWithImpl<$Res> extends _$AppEnvCopyWithImpl<$Res>
           ? _value.label
           : label // ignore: cast_nullable_to_non_nullable
               as String,
-      apiServer: apiServer == freezed
-          ? _value.apiServer
-          : apiServer // ignore: cast_nullable_to_non_nullable
+      apiHost: apiHost == freezed
+          ? _value.apiHost
+          : apiHost // ignore: cast_nullable_to_non_nullable
               as String,
-      rpcServerIp: rpcServerIp == freezed
-          ? _value.rpcServerIp
-          : rpcServerIp // ignore: cast_nullable_to_non_nullable
+      rpcServer: rpcServer == freezed
+          ? _value.rpcServer
+          : rpcServer // ignore: cast_nullable_to_non_nullable
               as String,
-      rpcServerPort: rpcServerPort == freezed
-          ? _value.rpcServerPort
-          : rpcServerPort // ignore: cast_nullable_to_non_nullable
+      rpcPort: rpcPort == freezed
+          ? _value.rpcPort
+          : rpcPort // ignore: cast_nullable_to_non_nullable
               as int,
     ));
   }
@@ -216,9 +216,9 @@ class _$_AppEnv with DiagnosticableTreeMixin implements _AppEnv {
       @JsonKey(ignore: true) this.themeData = null,
       this.locale = '',
       this.label = '',
-      this.apiServer = '',
-      this.rpcServerIp = '',
-      this.rpcServerPort = 0});
+      this.apiHost = '',
+      this.rpcServer = '',
+      this.rpcPort = 0});
 
   factory _$_AppEnv.fromJson(Map<String, dynamic> json) =>
       _$$_AppEnvFromJson(json);
@@ -253,19 +253,19 @@ class _$_AppEnv with DiagnosticableTreeMixin implements _AppEnv {
 // 主题切换标签
   @override
   @JsonKey()
-  final String apiServer;
+  final String apiHost;
 // API服务 URL
   @override
   @JsonKey()
-  final String rpcServerIp;
+  final String rpcServer;
 // RPC服务 IP
   @override
   @JsonKey()
-  final int rpcServerPort;
+  final int rpcPort;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'AppEnv(code: $code, message: $message, title: $title, theme: $theme, themeData: $themeData, locale: $locale, label: $label, apiServer: $apiServer, rpcServerIp: $rpcServerIp, rpcServerPort: $rpcServerPort)';
+    return 'AppEnv(code: $code, message: $message, title: $title, theme: $theme, themeData: $themeData, locale: $locale, label: $label, apiHost: $apiHost, rpcServer: $rpcServer, rpcPort: $rpcPort)';
   }
 
   @override
@@ -280,9 +280,9 @@ class _$_AppEnv with DiagnosticableTreeMixin implements _AppEnv {
       ..add(DiagnosticsProperty('themeData', themeData))
       ..add(DiagnosticsProperty('locale', locale))
       ..add(DiagnosticsProperty('label', label))
-      ..add(DiagnosticsProperty('apiServer', apiServer))
-      ..add(DiagnosticsProperty('rpcServerIp', rpcServerIp))
-      ..add(DiagnosticsProperty('rpcServerPort', rpcServerPort));
+      ..add(DiagnosticsProperty('apiHost', apiHost))
+      ..add(DiagnosticsProperty('rpcServer', rpcServer))
+      ..add(DiagnosticsProperty('rpcPort', rpcPort));
   }
 
   @override
@@ -297,11 +297,9 @@ class _$_AppEnv with DiagnosticableTreeMixin implements _AppEnv {
             const DeepCollectionEquality().equals(other.themeData, themeData) &&
             const DeepCollectionEquality().equals(other.locale, locale) &&
             const DeepCollectionEquality().equals(other.label, label) &&
-            const DeepCollectionEquality().equals(other.apiServer, apiServer) &&
-            const DeepCollectionEquality()
-                .equals(other.rpcServerIp, rpcServerIp) &&
-            const DeepCollectionEquality()
-                .equals(other.rpcServerPort, rpcServerPort));
+            const DeepCollectionEquality().equals(other.apiHost, apiHost) &&
+            const DeepCollectionEquality().equals(other.rpcServer, rpcServer) &&
+            const DeepCollectionEquality().equals(other.rpcPort, rpcPort));
   }
 
   @JsonKey(ignore: true)
@@ -315,9 +313,9 @@ class _$_AppEnv with DiagnosticableTreeMixin implements _AppEnv {
       const DeepCollectionEquality().hash(themeData),
       const DeepCollectionEquality().hash(locale),
       const DeepCollectionEquality().hash(label),
-      const DeepCollectionEquality().hash(apiServer),
-      const DeepCollectionEquality().hash(rpcServerIp),
-      const DeepCollectionEquality().hash(rpcServerPort));
+      const DeepCollectionEquality().hash(apiHost),
+      const DeepCollectionEquality().hash(rpcServer),
+      const DeepCollectionEquality().hash(rpcPort));
 
   @JsonKey(ignore: true)
   @override
@@ -339,9 +337,9 @@ abstract class _AppEnv implements AppEnv {
       @JsonKey(ignore: true) final ThemeData? themeData,
       final String locale,
       final String label,
-      final String apiServer,
-      final String rpcServerIp,
-      final int rpcServerPort}) = _$_AppEnv;
+      final String apiHost,
+      final String rpcServer,
+      final int rpcPort}) = _$_AppEnv;
 
   factory _AppEnv.fromJson(Map<String, dynamic> json) = _$_AppEnv.fromJson;
 
@@ -361,11 +359,11 @@ abstract class _AppEnv implements AppEnv {
   @override // 应用语言标志
   String get label => throw _privateConstructorUsedError;
   @override // 主题切换标签
-  String get apiServer => throw _privateConstructorUsedError;
+  String get apiHost => throw _privateConstructorUsedError;
   @override // API服务 URL
-  String get rpcServerIp => throw _privateConstructorUsedError;
+  String get rpcServer => throw _privateConstructorUsedError;
   @override // RPC服务 IP
-  int get rpcServerPort => throw _privateConstructorUsedError;
+  int get rpcPort => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$_AppEnvCopyWith<_$_AppEnv> get copyWith =>

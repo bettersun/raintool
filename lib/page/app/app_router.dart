@@ -3,12 +3,12 @@ import 'package:go_router/go_router.dart';
 import '../../common/const.dart';
 import '../animation/animation_page.dart';
 import '../call_api/call_api_page.dart';
+import '../login/login_page.dart';
 import '../scrollable/scrollable_page.dart';
 import '../tab/tab_page.dart';
 import '../tab/tab_setting_page.dart';
 import '../todo/todo_page.dart';
 import 'home_page.dart';
-import 'login_page.dart';
 import 'menu_setting_page.dart';
 import 'setting_page.dart';
 

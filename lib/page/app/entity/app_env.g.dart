@@ -13,9 +13,9 @@ _$_AppEnv _$$_AppEnvFromJson(Map<String, dynamic> json) => _$_AppEnv(
       theme: json['theme'] as String? ?? '',
       locale: json['locale'] as String? ?? '',
       label: json['label'] as String? ?? '',
-      apiServer: json['apiServer'] as String? ?? '',
-      rpcServerIp: json['rpcServerIp'] as String? ?? '',
-      rpcServerPort: json['rpcServerPort'] as int? ?? 0,
+      apiHost: json['apiHost'] as String? ?? '',
+      rpcServer: json['rpcServer'] as String? ?? '',
+      rpcPort: json['rpcPort'] as int? ?? 0,
     );
 
 Map<String, dynamic> _$$_AppEnvToJson(_$_AppEnv instance) => <String, dynamic>{
@@ -25,7 +25,7 @@ Map<String, dynamic> _$$_AppEnvToJson(_$_AppEnv instance) => <String, dynamic>{
       'theme': instance.theme,
       'locale': instance.locale,
       'label': instance.label,
-      'apiServer': instance.apiServer,
-      'rpcServerIp': instance.rpcServerIp,
-      'rpcServerPort': instance.rpcServerPort,
+      'apiHost': instance.apiHost,
+      'rpcServer': instance.rpcServer,
+      'rpcPort': instance.rpcPort,
     };

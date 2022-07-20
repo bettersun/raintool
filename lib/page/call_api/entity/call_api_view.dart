@@ -4,7 +4,11 @@ import 'hello_info.dart';
 class CallApiView extends CommonView {
   final HelloInfo helloInfo;
 
-  const CallApiView({super.statusCode, super.data, super.message, this.helloInfo = const HelloInfo()});
+  const CallApiView({
+    super.statusCode,
+    super.message,
+    this.helloInfo = const HelloInfo(),
+  });
 
   CallApiView copyWith({
     int? statusCode,

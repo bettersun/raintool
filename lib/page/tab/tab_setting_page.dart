@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_reorderable_grid_view/entities/order_update_entity.dart';
 import 'package:flutter_reorderable_grid_view/widgets/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:raintool/common/widget.dart';
-import 'package:raintool/page/tab/widget/tab_label.dart';
 
+import '../../common/widget.dart';
 import 'entity/tab_info.dart';
 import 'provider/tab_provider.dart';
+import 'widget/tab_label.dart';
 
 /// 标签设定页面
 class TabSettingPage extends ConsumerStatefulWidget {

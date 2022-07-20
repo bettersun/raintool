@@ -19,7 +19,7 @@ class AppConst {
   static const String localDefault = localEnUs; // 默认：英语
 
   /// RPC 最多尝试连接次数
-  static const int maxRpcConnecdtTimes = 5;
+  static const int maxRpcConnectTimes = 5;
 
   /// HTTP 默认连接超时时长（毫秒）
   static const int defaultConnectTimeout = 10000;

@@ -4,7 +4,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../common/const.dart';
 import '../../common/i18n/strings.g.dart';
-import 'entity/app_setting.dart';
+import 'entity/entity.dart';
 import 'provider/app_provider.dart';
 import 'widget/drawer_menu.dart';
 import 'widget/navibar.dart';
@@ -23,8 +23,18 @@ class HomePageState extends ConsumerState<HomePage> {
     // 应用设定
     final AppSetting appSetting = ref.watch(appSettingProvider);
 
+    // 初始化消息
+    ref.listen<AppEnv>(appEnvProvider, (previous, next) {
+      final snackBar = SnackBar(
+        content: Text(next.message),
+      );
+
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+    });
+
     return Scaffold(
       key: const Key('home_page'),
+      // 标题栏
       appBar: AppBar(
         leading: Builder(builder: (BuildContext context) {
           return IconButton(
@@ -35,11 +45,11 @@ class HomePageState extends ConsumerState<HomePage> {
         }),
         title: Text(t.hello),
       ),
-
       // 菜单
       drawer: const DrawerMenu(),
       // 底边栏
       bottomNavigationBar: !appSetting.showNavibar ? null : const NaviBar(),
+      // 内容
       body: SingleChildScrollView(
         child: Column(
           children: [

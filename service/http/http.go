@@ -3,6 +3,7 @@ package http
 import (
 	"encoding/json"
 	"fmt"
+	"io/ioutil"
 	"log"
 	"net/http"
 )
@@ -15,7 +16,7 @@ type Hello struct {
 func RunHttp() {
 	// 监听端口
 	port := ":9527"
-	msg := fmt.Sprintf("服务运行中... 端口[%v]", port)
+	msg := fmt.Sprintf("HTTP 服务运行中... 端口[%v]", port)
 	log.Printf(msg)
 
 	// 监听服务
@@ -37,6 +38,15 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 			Code:    "12",
 			Message: "hello message",
 		}
+		// 读取请求Body
+		body, err := ioutil.ReadAll(r.Body)
+		if err != nil {
+			log.Println(fmt.Sprintf("%v", err))
+		}
+		log.Printf(string(body))
+	}
+	if r.Method == http.MethodGet {
+		log.Printf(r.URL.RawQuery)
 	}
 
 	// 转换成字节

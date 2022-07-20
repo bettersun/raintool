@@ -13,12 +13,12 @@ class AppEnv with _$AppEnv {
     @Default('') String message, // 消息
     @Default('') String title, // 应用标题
     @Default('') String theme, // 应用主题标志
-    @JsonKey(ignore: true) @Default(null) ThemeData? themeData, // 应用主题
+    @Default(null) @JsonKey(ignore: true) ThemeData? themeData, // 应用主题
     @Default('') String locale, // 应用语言标志
     @Default('') String label, // 主题切换标签
-    @Default('') String apiServer, // API服务 URL
-    @Default('') String rpcServerIp, // RPC服务 IP
-    @Default(0) int rpcServerPort, // RPC服务 端口
+    @Default('') String apiHost, // API服务 URL
+    @Default('') String rpcServer, // RPC服务 IP
+    @Default(0) int rpcPort, // RPC服务 端口
   }) = _AppEnv;
 
   factory AppEnv.fromJson(Map<String, Object?> json) => _$AppEnvFromJson(json);

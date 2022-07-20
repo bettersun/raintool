@@ -1,5 +1,4 @@
-import 'package:raintool/page/tab/entity/tab_info.dart';
-
+import '../entity/tab_info.dart';
 import 'tab_repository.dart';
 
 class TabRepositoryImpl extends TabRepository {

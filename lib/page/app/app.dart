@@ -17,7 +17,7 @@ class RainAppState extends ConsumerState<RainApp> {
   void initState() {
     super.initState();
     // 初始化
-    // ref.read(appEnvProvider.notifier).init();
+    ref.read(appEnvProvider.notifier).init();
     ref.read(appSettingProvider.notifier).init();
   }
 

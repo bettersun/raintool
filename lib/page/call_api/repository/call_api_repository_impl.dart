@@ -13,7 +13,7 @@ class CallApiRepositoryImpl extends CallApiRepository {
   Future<CallApiView> hello(CallApiView view) async {
     Result result = await api.hello();
 
-    // 2xx 以外
+    // 响应异常
     if (!HttpUtil.isOk(result.statusCode)) {
       return view.copyWith(
         statusCode: result.statusCode,
@@ -32,7 +32,7 @@ class CallApiRepositoryImpl extends CallApiRepository {
   Future<CallApiView> helloParam(CallApiView view, CallApiParam param) async {
     Result result = await api.helloParam(param.param);
 
-    // 2xx 以外
+    // 响应异常
     if (!HttpUtil.isOk(result.statusCode)) {
       return view.copyWith(
         statusCode: result.statusCode,

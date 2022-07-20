@@ -2,9 +2,9 @@ syntax = "proto3";
 option go_package="./entity;grpc";
 
 // The greeter service definition.
-service Greeter {
+service RainService {
 // Sends a greeting
-rpc SayHello (HelloRequest) returns (HelloReply) {}
+rpc Hello (HelloRequest) returns (HelloReply) {}
 }
 
 // The request message containing the user's name.

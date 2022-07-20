@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:raintool/common/widget.dart';
 
-import '../../common/widget/rain_back_button.dart';
+import '../../common/widget.dart';
 
 class ScrollablePage extends ConsumerWidget {
   const ScrollablePage({Key? key}) : super(key: key);
@@ -19,7 +18,7 @@ class ScrollablePage extends ConsumerWidget {
             softWrap: false,
           ),
           onPressed: () {
-            print(i.toString());
+            debugPrint(i.toString());
           },
         ),
       );

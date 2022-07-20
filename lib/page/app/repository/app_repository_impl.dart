@@ -9,12 +9,7 @@ import 'app_repository.dart';
 
 class AppRepositoryImpl extends AppRepository {
   @override
-  Future<String> helloWorld() async {
-    // final ApiGetHelloWorld api = KiwiContainer().resolve<ApiGetHelloWorld>();
-    // String s = await api.helloWorld();
-    //
-    // return s;
-
+  Future<String> rpcHello() async {
     String s = await RpcHello().hello(["BS"]);
 
     return s;

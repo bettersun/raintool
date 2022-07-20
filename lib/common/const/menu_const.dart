@@ -6,6 +6,7 @@ class MenuConst {
   static String theme = 'theme';
   static String home = 'home';
   static String todo = 'todo';
+  static String address = 'address';
   static String toggleNavi = 'toggleNavi';
   static String scrollable = 'scrollable';
 

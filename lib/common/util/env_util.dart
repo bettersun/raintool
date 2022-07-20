@@ -14,12 +14,12 @@ class EnvUtil {
     // 应用标题
     HiveUtil.appBox().put(HiveKey.title, mSetting[Env.title]);
 
-    // API IP:端口
-    HiveUtil.appBox().put(HiveKey.apiServer, mSetting[Env.apiServer]);
+    // API HOST
+    HiveUtil.appBox().put(HiveKey.apiHost, mSetting[Env.apiHost]);
 
-    // RPC IP
-    HiveUtil.appBox().put(HiveKey.rpcServerIp, mSetting[Env.rpcServerIp]);
+    // RPC Server
+    HiveUtil.appBox().put(HiveKey.rpcServer, mSetting[Env.rpcServer]);
     // RPC 端口
-    HiveUtil.appBox().put(HiveKey.rpcServerPort, mSetting[Env.rpcServerPort]);
+    HiveUtil.appBox().put(HiveKey.rpcPort, mSetting[Env.rpcPort]);
   }
 }

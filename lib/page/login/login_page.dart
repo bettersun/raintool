@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../common/i18n/strings.g.dart';
-import 'provider/app_provider.dart';
+import '../app/provider/app_provider.dart';
 
 /// 登录
 class LoginPage extends ConsumerStatefulWidget {

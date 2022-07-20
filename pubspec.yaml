@@ -38,7 +38,6 @@ dependencies:
   flutter_localizations: # add this
     sdk: flutter
   flutter_riverpod: ^2.0.0-dev.4
-#  equatable: ^2.0.3
   uuid: ^3.0.4
   kiwi: ^4.0.2
   dio: ^4.0.6

@@ -16,10 +16,10 @@ import 'app_setting_notifier.dart';
 import 'router_notifier.dart';
 import 'user_notifier.dart';
 
-final AppService _appService = KiwiContainer().resolve<AppService>();
+final AppService appService = KiwiContainer().resolve<AppService>();
 
 final helloWorldProvider = FutureProvider<String>((ref) async {
-  return await _appService.helloWorld();
+  return await appService.rpcHello();
 });
 
 /// 应用配置 Provider

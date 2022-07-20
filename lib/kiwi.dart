@@ -1,15 +1,15 @@
 import 'package:kiwi/kiwi.dart';
-import 'package:raintool/page/call_api/repository/call_api_repository.dart';
-import 'package:raintool/page/call_api/repository/call_api_repository_impl.dart';
-import 'package:raintool/page/call_api/service/call_api_service.dart';
-import 'package:raintool/page/call_api/service/call_api_service_impl.dart';
 
 import 'api/api_hello.dart';
-import 'api/impl/api_hello_impl.dart';
+import 'api/api_hello_impl.dart';
 import 'page/app/repository/app_repository.dart';
 import 'page/app/repository/app_repository_impl.dart';
 import 'page/app/service/app_service.dart';
 import 'page/app/service/app_service_impl.dart';
+import 'page/call_api/repository/call_api_repository.dart';
+import 'page/call_api/repository/call_api_repository_impl.dart';
+import 'page/call_api/service/call_api_service.dart';
+import 'page/call_api/service/call_api_service_impl.dart';
 import 'page/tab/repository/tab_repository.dart';
 import 'page/tab/repository/tab_repository_impl.dart';
 import 'page/tab/service/tab_service.dart';

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:raintool/common/widget.dart';
 
+import '../../common/widget.dart';
 import 'anima_panel.dart';
 import 'widget/anima_text.dart';
 import 'widget/circle_anima.dart';

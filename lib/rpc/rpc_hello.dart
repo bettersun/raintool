@@ -1,12 +1,12 @@
-import '../_grpc/hello.pbgrpc.dart';
 import '../common/util.dart';
+import 'entity/hello.pbgrpc.dart';
 
 class RpcHello {
   Future<String> hello(List<String> args) async {
-    final stub = GreeterClient(RpcUtil.channelRpc());
+    final stub = RainServiceClient(RpcUtil.channelRpc());
 
-    final name = args.isNotEmpty ? args[0] : 'world';
-    final response = await stub.sayHello(
+    final name = args.isNotEmpty ? args[0] : '';
+    final response = await stub.hello(
       HelloRequest()..name = name,
       // options: CallOptions(compression: const GzipCodec()),
     );

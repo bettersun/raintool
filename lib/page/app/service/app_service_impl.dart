@@ -1,36 +1,148 @@
-import 'package:basic_utils/basic_utils.dart';
+import 'dart:io';
+
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:grpc/grpc.dart';
 import 'package:kiwi/kiwi.dart';
 
-import '../../../common/const/app_const.dart';
-import '../../../common/const/hive_key.dart';
+import '../../../common/const.dart';
 import '../../../common/i18n/strings.g.dart';
-import '../../../common/util/app_util.dart';
-import '../../../common/util/hive_util.dart';
-import '../entity/app_env.dart';
-import '../entity/app_setting.dart';
+import '../../../common/util.dart';
+import '../../../rpc/entity/hello.pbgrpc.dart';
+import '../entity/entity.dart';
 import '../repository/app_repository.dart';
+import '../util/app_util.dart';
 import 'app_service.dart';
 
 class AppServiceImpl extends AppService {
   final AppRepository repo = KiwiContainer().resolve<AppRepository>();
 
   @override
-  Future<String> helloWorld() async {
-    return await repo.helloWorld();
+  Future<AppEnv> initAppEnv(AppEnv state) async {
+    String code = BizCode.c1001;
+    String message = '';
+
+    // API / RPC 配置
+    String? apiHost = HiveUtil.appBox().get(HiveKey.apiHost);
+    String? rpcServer = HiveUtil.appBox().get(HiveKey.rpcServer);
+    int? rpcPort = HiveUtil.appBox().get(HiveKey.rpcPort);
+
+    // API 或 RPC 配置不正确
+    if (apiHost == null || rpcServer == null || rpcPort == null) {
+      code = BizCode.e9001;
+      message = 'API服务或RPC服务配置不正确';
+      apiHost = '';
+      rpcServer = '';
+      rpcPort = 0;
+
+      return state.copyWith(
+        code: code,
+        message: message,
+        apiHost: apiHost,
+        rpcServer: rpcServer,
+        rpcPort: rpcPort,
+      );
+    }
+
+    List<String> messages = [];
+
+    // 检查 API 服务 START
+    bool isHttpOk = true;
+    final Dio dio = Dio(
+      BaseOptions(
+        baseUrl: apiHost,
+        connectTimeout: AppConst.defaultConnectTimeout,
+        receiveTimeout: AppConst.defaultReceiveTimeout,
+        sendTimeout: AppConst.defaultSendTimeout,
+      ),
+    );
+
+    try {
+      final response = await dio.get('/ping');
+      if (response.statusCode == HttpStatus.ok) {
+        messages.add('API服务已连接。');
+      }
+    } catch (e) {
+      isHttpOk = false;
+      code = BizCode.e9001;
+    }
+    // 检查 API 服务 END
+
+    // 检查 PRC 服务 START
+    bool isRpcOk = true;
+    const name = 'rain tool init';
+    int tryTime = 0;
+    while (tryTime < AppConst.maxRpcConnectTimes) {
+      try {
+        // 检查 RPC 服务
+        final ClientChannel channel = ClientChannel(
+          rpcServer,
+          port: rpcPort!,
+          options: const ChannelOptions(credentials: ChannelCredentials.insecure()),
+        );
+
+        // 创建 RPC 客户端
+        final stub = RainServiceClient(channel);
+
+        // 请求 RPC 服务
+        await stub.hello(
+          HelloRequest()..name = name,
+          // options: CallOptions(compression: const GzipCodec()),
+        );
+
+        // RPC 服务可用，设定应用的全局设置
+        RpcUtil.setChannel(rpcServer, rpcPort);
+
+        // 返回信息
+        code = BizCode.c1001;
+        if (tryTime == 0) {
+          messages.add('RPC服务已连接。端口: ' + rpcPort.toString());
+        } else {
+          messages.add('RPC服务的配置端口无法使用。使用端口: ' + rpcPort.toString());
+        }
+        break;
+      } catch (e) {
+        // 端口 + 1
+        rpcPort = rpcPort! + 1;
+        code = BizCode.e9001;
+        debugPrint('RPC服务的端口无法使用，正在尝试新端口: ' + rpcPort.toString());
+      }
+
+      // 重试次数 + 1
+      tryTime = tryTime + 1;
+    }
+
+    // 已达最大尝试次数，RPC服务不可用。
+    if (tryTime == AppConst.maxRpcConnectTimes) {
+      isRpcOk = false;
+      code = BizCode.e9001;
+    }
+
+    if (!isHttpOk) {
+      messages.add('API服务不可用。请检查应用权限或确认API服务状况。');
+    }
+    if (!isRpcOk) {
+      messages.add('RPC服务不可用。');
+    }
+
+    String msg = '';
+    for (String item in messages) {
+      msg = msg + item;
+    }
+    // 检查 PRC 服务 END
+
+    return state.copyWith(
+      code: code,
+      message: msg,
+      apiHost: apiHost,
+      rpcServer: rpcServer,
+      rpcPort: rpcPort!,
+    );
   }
 
   @override
-  bool checkEnv() {
-    String? apiServer = HiveUtil.appBox().get(HiveKey.apiServer);
-    String? rpcServerIp = HiveUtil.appBox().get(HiveKey.rpcServerIp);
-    int? rpcServerPort = HiveUtil.appBox().get(HiveKey.rpcServerPort);
-
-    if (StringUtils.isNullOrEmpty(apiServer) || StringUtils.isNullOrEmpty(rpcServerIp) || rpcServerPort == null) {
-      return false;
-    }
-
-    return true;
+  Future<String> rpcHello() async {
+    return await repo.rpcHello();
   }
 
   @override

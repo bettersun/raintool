@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../const.dart';
-import '../const/router_const.dart';
+import '../../../common/const.dart';
 
 class AppUtil {
   /// 图标
@@ -15,7 +14,7 @@ class AppUtil {
     if (flag == MenuConst.todo) {
       return Icons.email;
     }
-    if (flag == 'address') {
+    if (flag == MenuConst.address) {
       return Icons.airplay;
     }
     if (flag == MenuConst.pages) {

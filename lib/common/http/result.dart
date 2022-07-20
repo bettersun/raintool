@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 
-import 'http_status_ext.dart';
+import 'http_const.dart';
 
 class Result {
   final int statusCode;
@@ -8,14 +8,14 @@ class Result {
   final dynamic data;
 
   Result({
-    this.statusCode = HttpStatusExt.unknownError,
+    this.statusCode = HttpConst.unknownError,
     this.message = '',
     this.data,
   });
 
   factory Result.fromResponse(Response response) {
     return Result(
-      statusCode: response.statusCode ?? HttpStatusExt.unknownError,
+      statusCode: response.statusCode ?? HttpConst.unknownError,
       message: response.statusMessage ?? '',
       data: response.data,
     );

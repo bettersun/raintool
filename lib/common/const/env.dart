@@ -4,7 +4,7 @@ class Env {
   static const String title = 'title';
 
   /// API IP: 端口
-  static const String apiServer = 'apiServer';
+  static const String apiHost = 'apiHost';
 
   /// 连接超时时长
   static const String connectTimeout = 'connectTimeout';
@@ -16,8 +16,8 @@ class Env {
   static const String sendTimeout = 'sendTimeout';
 
   /// RPC IP
-  static const String rpcServerIp = 'rpcServerIp';
+  static const String rpcServer = 'rpcServer';
 
   /// RPC 端口
-  static const String rpcServerPort = 'rpcServerPort';
+  static const String rpcPort = 'rpcPort';
 }

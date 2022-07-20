@@ -2,8 +2,10 @@ import '../entity/app_env.dart';
 import '../entity/app_setting.dart';
 
 abstract class AppService {
-  Future<String> helloWorld();
-  bool checkEnv();
+  /// 初始化
+  Future<AppEnv> initAppEnv(AppEnv state);
+
+  Future<String> rpcHello();
 
   /// 切换主题
   AppEnv toggleTheme(AppEnv state);
