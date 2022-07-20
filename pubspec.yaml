@@ -51,6 +51,7 @@ dependencies:
   slang: ^2.3.1
   slang_flutter: ^2.5.0
   flutter_reorderable_grid_view: ^3.1.1
+  flutter_speed_dial: ^6.0.0
 
 dev_dependencies:
   flutter_test:

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:raintool/page/mock/entity/mock_service_info_view.dart';
 
 import '../../common/const.dart';
 import '../../common/i18n/strings.g.dart';
@@ -87,6 +88,19 @@ class HomePageState extends ConsumerState<HomePage> {
               child: const Text('Call Api'),
               onPressed: () {
                 context.push(RouterConst.pathCallApi);
+              },
+            ),
+            TextButton(
+              child: const Text('Mock'),
+              onPressed: () {
+                context.push(RouterConst.pathMock);
+              },
+            ),
+            TextButton(
+              child: const Text('Mock Item'),
+              onPressed: () {
+                // context.push(RouterConst.pathMockItem);
+                context.push(RouterConst.pathMockItem, extra: MockServiceInfoView());
               },
             ),
             TextButton(

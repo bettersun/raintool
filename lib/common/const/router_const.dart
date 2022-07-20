@@ -13,4 +13,6 @@ class RouterConst {
   static String pathAnimation = '/animation';
   static String pathInput = '/input';
   static String pathCallApi = '/call_api';
+  static String pathMock = '/mock';
+  static String pathMockItem = '/mockItem';
 }

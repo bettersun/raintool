@@ -1,9 +1,12 @@
 import 'package:go_router/go_router.dart';
+import 'package:raintool/page/mock/entity/mock_service_info_view.dart';
 
 import '../../common/const.dart';
 import '../animation/animation_page.dart';
 import '../call_api/call_api_page.dart';
 import '../login/login_page.dart';
+import '../mock/mock_page.dart';
+import '../mock_item/mock_item_page.dart';
 import '../scrollable/scrollable_page.dart';
 import '../tab/tab_page.dart';
 import '../tab/tab_setting_page.dart';
@@ -58,6 +61,14 @@ class AppRouter {
     GoRoute(
       path: RouterConst.pathCallApi,
       builder: (context, _) => const CallApiPage(),
+    ),
+    GoRoute(
+      path: RouterConst.pathMock,
+      builder: (context, _) => const MockPage(),
+    ),
+    GoRoute(
+      path: RouterConst.pathMockItem,
+      builder: (context, state) => MockItemPage(infoView: state.extra! as MockServiceInfoView),
     ),
   ];
 }
