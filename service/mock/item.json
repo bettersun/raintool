@@ -1,0 +1,22 @@
+[
+  {
+    "url": "/bettersun/hello",
+    "method": "POST",
+    "DestHost": "http://127.0.0.1:9527",
+    "useMock": false,
+    "statusCode": 200,
+    "Header": null,
+    "responseFile": "mock/_json/hello.json",
+    "description": ""
+  },
+  {
+    "url": "/bettersun/hello",
+    "method": "GET",
+    "DestHost": "http://127.0.0.1:9527",
+    "useMock": true,
+    "statusCode": 200,
+    "Header": null,
+    "responseFile": "mock/_json/home.json",
+    "description": ""
+  }
+]

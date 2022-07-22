@@ -1,11 +1,15 @@
 package main
 
 import (
-	"sunjiahsu.cn/raintool/grpc"
 	"sunjiahsu.cn/raintool/http"
+	"sunjiahsu.cn/raintool/mock"
 )
 
 func main() {
-	go grpc.RunRpc()
-	http.RunHttp()
+	//go grpc.RunRpc()
+
+	go http.RunHttp()
+	mock.StartCommand()
+
+	//http.RunHttp()
 }

@@ -3,7 +3,6 @@ package http
 import (
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
 	"log"
 	"net/http"
 )
@@ -27,36 +26,37 @@ func RunHttp() {
 // Handler 响应函数
 func Handler(w http.ResponseWriter, r *http.Request) {
 	//log.Printf("%+v", *r)
-
-	helloWorld := Hello{
-		Code:    "12",
-		Message: "hello world",
-	}
+	var helloWorld Hello
 
 	if r.Method == http.MethodPost {
 		helloWorld = Hello{
 			Code:    "12",
-			Message: "hello message",
+			Message: "POST: hello message",
 		}
-		// 读取请求Body
-		body, err := ioutil.ReadAll(r.Body)
-		if err != nil {
-			log.Println(fmt.Sprintf("%v", err))
-		}
-		log.Printf(string(body))
+		//// 读取请求Body
+		//body, err := ioutil.ReadAll(r.Body)
+		//if err != nil {
+		//	log.Println(fmt.Sprintf("Error: %v", err))
+		//}
+		//msg := fmt.Sprintf("POST 请求体：%v", string(body))
+		//log.Printf(msg)
 	}
+
 	if r.Method == http.MethodGet {
-		log.Printf(r.URL.RawQuery)
+		helloWorld = Hello{
+			Code:    "12",
+			Message: "GET: hello world",
+		}
+		//msg := fmt.Sprintf("GET 参数：%v", r.URL.RawQuery)
+		//log.Printf(msg)
 	}
 
 	// 转换成字节
 	stream, err := json.Marshal(&helloWorld)
 	if err != nil {
-		log.Println(err)
-		log.Println("ERROR: json.Marshal(&helloWorld)")
+		log.Println("ERROR: json.Marshal(&helloWorld) ")
 	}
 
-	//log.Println(stream)
 	w.Header().Set("Content-Type", "application/json")
 	w.Write(stream)
 }

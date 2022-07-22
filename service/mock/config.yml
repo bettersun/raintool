@@ -1,0 +1,32 @@
+# 此文件内容修改后需重启
+# 端口
+port: 51721
+# 日志文件
+logFile: mock.log
+# 日志等级
+# -1: DEBUG
+# 0: INFO  默认为INFO
+# 1: WARN
+# 2: ERROR
+# 3: FATAL
+logLevel: 0
+proxy:
+  # 目标主机
+  destHost: http://127.0.0.1:9527
+  # TODO
+  rootPath: bettersun
+  # Mock 项目文件
+  mockItemFile: mock/item.json
+  # 使用 Mock 通用响应头 仅当URL对应的响应头不存在时使用
+  useCommonHeader: true
+path:
+  # 请求信息存放相对根目录(程序运行目录下的目录)
+  request: _request
+  # 响应信息存放相对根目录(程序运行目录下的目录)
+  response: _response
+  # 备份目录
+  backup: _backup
+  # 通用响应头文件
+  commonHeaderFile: mock/common_header.json
+  # 响应头信息文件
+  responseHeaderFile: header.json
