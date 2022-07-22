@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:raintool/page/mock/entity/mock_service_info_view.dart';
 
 import '../../common/const.dart';
 import '../../common/i18n/strings.g.dart';
+import '../../rpc/rpc_mock.dart';
+import '../mock/entity/vm.dart';
 import 'entity/entity.dart';
 import 'provider/app_provider.dart';
 import 'widget/drawer_menu.dart';
@@ -113,6 +114,24 @@ class HomePageState extends ConsumerState<HomePage> {
                   lastDate: DateTime.now(),
                   // locale: Locale(appEnv.locale),
                 );
+              },
+            ),
+            TextButton(
+              child: const Text('Hello DB'),
+              onPressed: () async {},
+            ),
+            TextButton(
+              child: const Text('Start Mock'),
+              onPressed: () async {
+                //
+                RpcMock().startMock([]);
+              },
+            ),
+            TextButton(
+              child: const Text('Stop Mock'),
+              onPressed: () async {
+                //
+                RpcMock().stopMock([]);
               },
             ),
           ],

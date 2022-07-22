@@ -27,12 +27,12 @@ func StartCommand() {
 func StartMock() {
 	// 监听端口
 	port := ":" + config.Port
-	server = http.Server{
-		Addr: port,
+	mockServer = http.Server{
+		Addr:    port,
+		Handler: http.HandlerFunc(DoHandle),
 	}
 
-	// TODO 需要确认端口是否被占用
-	go http.ListenAndServe(port, http.HandlerFunc(DoHandle))
+	go mockServer.ListenAndServe()
 
 	msg := fmt.Sprintf("服务运行中... 端口[%v]", config.Port)
 	logger.Info(msg)
@@ -40,7 +40,8 @@ func StartMock() {
 
 /// 关闭 Mock
 func StopMock() error {
-	err := server.Close()
+	err := mockServer.Close()
+	//server.Shutdown(context.Background())
 	if err != nil {
 		msg := "关闭服务发生错误"
 		logger.Warn(msg)

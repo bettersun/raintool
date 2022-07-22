@@ -9,7 +9,6 @@ func main() {
 	//go grpc.RunRpc()
 
 	go http.RunHttp()
-	mock.StartCommand()
-
-	//http.RunHttp()
+	//mock.StartCommand()
+	mock.RunRpc()
 }

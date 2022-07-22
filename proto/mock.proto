@@ -1,0 +1,17 @@
+syntax = "proto3";
+option go_package="./entity;grpc";
+
+// The greeter service definition.
+service MockService {
+  rpc startMock (MockRequest) returns (MockReply) {}
+
+  rpc stopMock (MockRequest) returns (MockReply) {}
+}
+
+message MockRequest {
+  string name = 1;
+}
+
+message MockReply {
+  string message = 1;
+}
