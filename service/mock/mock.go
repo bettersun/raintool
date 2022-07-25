@@ -38,7 +38,7 @@ func StartMock() {
 	logger.Info(msg)
 }
 
-/// 关闭 Mock
+// StopMock 关闭 Mock
 func StopMock() error {
 	err := mockServer.Close()
 	//server.Shutdown(context.Background())

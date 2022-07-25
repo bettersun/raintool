@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:raintool/page/mock_item/entity/info_detail_view.dart';
 
-import '../mock/entity/vm.dart';
+import '../mock/entity/entity.dart';
 import 'widget/widget.dart';
 
 /// 模拟服务信息详细画面

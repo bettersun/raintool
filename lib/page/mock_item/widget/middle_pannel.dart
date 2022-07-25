@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../entity/vm.dart';
+import '../entity/entity.dart';
 
 /// 中间面板
 class MiddlePanel extends StatelessWidget {

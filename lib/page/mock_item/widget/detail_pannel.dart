@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../entity/vm.dart';
+import '../entity/entity.dart';
 import 'response_card.dart';
 
 /// 详细面板

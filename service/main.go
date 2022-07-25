@@ -6,9 +6,7 @@ import (
 )
 
 func main() {
-	//go grpc.RunRpc()
-
 	go http.RunHttp()
-	//mock.StartCommand()
+	mock.StartMock()
 	mock.RunRpc()
 }

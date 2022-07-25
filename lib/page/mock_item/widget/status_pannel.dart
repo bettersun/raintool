@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../entity/vm.dart';
+import '../entity/entity.dart';
 
 /// 状态栏面板
 class StatusPannel extends StatelessWidget {

@@ -5,8 +5,7 @@
     "DestHost": "http://127.0.0.1:9527",
     "useMock": false,
     "statusCode": 200,
-    "Header": null,
-    "responseFile": "mock/_json/hello.json",
+    "responseFile": "",
     "description": ""
   },
   {
@@ -15,7 +14,6 @@
     "DestHost": "http://127.0.0.1:9527",
     "useMock": true,
     "statusCode": 200,
-    "Header": null,
     "responseFile": "mock/_json/home.json",
     "description": ""
   }

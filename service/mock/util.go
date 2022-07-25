@@ -251,10 +251,22 @@ func LoadResponseFile(relativePath string, url string, method string) ([]string,
 
 // OutputMockItem 保存 Mock 项目
 func OutputMockItem(config *Config, infoSlice []MockItem) error {
-	backItemFile := AbsoluteFile(config.Proxy.MockItemFile)
+
+	path := AbsoluteFile(config.Path.Backup)
+	// 目录不存在时创建
+	if !rain.IsExist(path) {
+		// 创建目录
+		err := os.MkdirAll(path, os.ModePerm)
+		if err != nil {
+			msg := fmt.Sprintf("创建目录失败。[%s]", path)
+			logger.Warn(msg)
+		}
+	}
+
+	backItemFile := rain.FileName(config.Proxy.MockItemFile, "/")
 	// 备份
 	bkFileName := strings.Replace(backItemFile, ".", fmt.Sprintf("_%v.", rain.NowYmdHms()), 1)
-	bkFile := fmt.Sprintf("%v/%v", config.Path.Backup, bkFileName)
+	bkFile := AbsoluteFile2(config.Path.Backup, bkFileName)
 
 	// 复制
 	itemFile := AbsoluteFile(config.Proxy.MockItemFile)

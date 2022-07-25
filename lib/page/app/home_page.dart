@@ -5,7 +5,7 @@ import 'package:go_router/go_router.dart';
 import '../../common/const.dart';
 import '../../common/i18n/strings.g.dart';
 import '../../rpc/rpc_mock.dart';
-import '../mock/entity/vm.dart';
+import '../mock/entity/entity.dart';
 import 'entity/entity.dart';
 import 'provider/app_provider.dart';
 import 'widget/drawer_menu.dart';

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../entity/vm.dart';
+import '../entity/entity.dart';
 
 /// 模拟服务信息详细响应Card
 class ResponseCard extends StatefulWidget {

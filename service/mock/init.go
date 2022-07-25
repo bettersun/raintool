@@ -5,6 +5,7 @@ import (
 	"github.com/bettersun/rain"
 	yml "github.com/bettersun/rain/yaml"
 	"github.com/sirupsen/logrus"
+	"log"
 	"net/http"
 )
 
@@ -53,8 +54,8 @@ func loadConfig(file string) *Config {
 	initLogger(cfg.LogFile, cfg.LogLevel)
 
 	// 输出日志
-	msg := fmt.Sprintf("配置: [%v]", config)
-	logger.Info(msg)
+	log.Println("=== 配置：===")
+	rain.OutTerminal(cfg)
 
 	return &cfg
 }

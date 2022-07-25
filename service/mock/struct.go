@@ -34,12 +34,12 @@ type PathConfig struct {
 
 // MockItem Mock 项目
 type MockItem struct {
-	URL          string      `yaml:"url" json:"url"`               // URL
-	Method       string      `yaml:"method" json:"method"`         // HTTP请求方法
-	DestHost     string      `yaml:"destHost"`                     // 目标主机
-	UseMock      bool        `yaml:"useMock" json:"useMock"`       // 使用 Mock
-	StatusCode   int         `yaml:"statusCode" json:"statusCode"` // 响应状态码
-	Header       http.Header // 响应头部
+	URL          string      `yaml:"url" json:"url"`                   // URL
+	Method       string      `yaml:"method" json:"method"`             // HTTP请求方法
+	DestHost     string      `yaml:"destHost"`                         // 目标主机
+	UseMock      bool        `yaml:"useMock" json:"useMock"`           // 使用 Mock
+	StatusCode   int         `yaml:"statusCode" json:"statusCode"`     // 响应状态码
+	Header       http.Header `yaml:"-" json:"-"`                       // 响应头部
 	ResponseFile string      `yaml:"responseFile" json:"responseFile"` // 响应文件
 	Description  string      `yaml:"description" json:"description"`   // 说明
 }

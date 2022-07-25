@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../entity/vm.dart';
+import '../entity/entity.dart';
 import '../theme_const.dart';
 
 /// 模拟服务信息Card
