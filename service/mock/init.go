@@ -83,7 +83,7 @@ func loadMockItem(file string) []MockItem {
 	}
 
 	// 调试模式输出
-	logger.WithFields(logrus.Fields{"Mock 项目": mockItemSlice}).Debug()
+	logger.WithFields(logrus.Fields{"Mock 项目": items}).Debug()
 	return items
 }
 
@@ -125,7 +125,7 @@ func loadResponseHeader(config *Config, items []MockItem) ([]MockItem, map[strin
 
 		// 空的响应头信息
 		m := make(map[string]http.Header)
-		return []MockItem{}, m
+		return items, m
 	}
 
 	// 读取
@@ -143,8 +143,8 @@ func loadResponseHeader(config *Config, items []MockItem) ([]MockItem, map[strin
 		header, ok := mHeader[key]
 		if ok {
 			item.Header = header
-			resultItems = append(resultItems, item)
 		}
+		resultItems = append(resultItems, item)
 	}
 
 	return resultItems, mHeader
