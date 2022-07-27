@@ -17,6 +17,8 @@ proxy:
   rootPath: bettersun
   # Mock 项目文件
   mockItemFile: mock/item.json
+  # 响应等待时间（毫秒）
+  duration: 200
   # 使用 Mock 通用响应头 仅当URL对应的响应头不存在时使用
   useCommonHeader: true
 path:

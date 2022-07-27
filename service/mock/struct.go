@@ -17,6 +17,7 @@ type ProxyConfig struct {
 	DestHost     string `yaml:"destHost"`     // 目标主机(包含 协议://IP:端口 )
 	RootPath     string `yaml:"rootPath"`     // 主机提供的服务的根路径
 	MockItemFile string `yaml:"mockItemFile"` // Mock项目文件
+	Duration     int    `yaml:"duration"`     // 响应等待时间（毫秒）
 
 	// 使用模拟服务通用响应头 仅当URL对应的响应头不存在时使用
 	UseCommonHeader bool `yaml:"useCommonHeader"`

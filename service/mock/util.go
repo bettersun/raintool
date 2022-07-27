@@ -40,16 +40,16 @@ func escapeURL(s string) string {
 	return result
 }
 
-/// 响应信息文件存放目录(绝对)
-func pathURL(relativePath string, url string, method string) string {
-	p := fmt.Sprintf("%v/%v", rain.CurrentDir(), pathURLRelative(relativePath, url, method))
+/// 文件存放目录(绝对)
+func pathURL(relativePath string, method string, url string) string {
+	p := fmt.Sprintf("%v/%v", rain.CurrentDir(), pathURLRelative(relativePath, method, url))
 	return p
 }
 
-/// 响应信息文件存放目录(相对)
-func pathURLRelative(relativePath string, url string, method string) string {
+/// 文件存放目录(相对)
+func pathURLRelative(relativePath string, method string, url string) string {
 	pURL := escapeURL(url)
-	p := fmt.Sprintf("%v/%v/%v", relativePath, pURL, method)
+	p := fmt.Sprintf("%v/%v/%v", relativePath, method, pURL)
 	return p
 }
 
@@ -78,7 +78,7 @@ func OutRequest(relativePath string, r *http.Request, body []byte) {
 	method := r.Method
 	header := r.Header
 
-	path := pathURL(relativePath, url, method)
+	path := pathURL(relativePath, method, url)
 	if !rain.IsExist(path) {
 		//递归创建目录
 		err := os.MkdirAll(path, os.ModePerm)
@@ -119,7 +119,8 @@ func OutRequest(relativePath string, r *http.Request, body []byte) {
 }
 
 // OutResponseBody 输出响应体到文件
-func OutResponseBody(config *Config, url string, method string, header *http.Header, data []byte) {
+//  TODO 返回值未使用
+func OutResponseBody(config *Config, url string, method string, header *http.Header, data []byte) string {
 
 	relativePath := config.Path.Response
 	// 响应为JSON判断
@@ -154,7 +155,7 @@ func OutResponseBody(config *Config, url string, method string, header *http.Hea
 	}
 
 	// 输出目录
-	path := pathURL(relativePath, url, method)
+	path := pathURL(relativePath, method, url)
 	if !rain.IsExist(path) {
 		// 创建目录
 		err := os.MkdirAll(path, os.ModePerm)
@@ -164,8 +165,13 @@ func OutResponseBody(config *Config, url string, method string, header *http.Hea
 		}
 	}
 
+	outputFileName := fileResponse(isJSON)
+	relativeFile := fmt.Sprintf("%v/%v", pathURLRelative(relativePath, method, url), outputFileName)
+	msg := fmt.Sprintf("=== 响应保息已保存 === 文件: [%v]", relativeFile)
+	logger.Info(msg)
+
 	// 文件完整路径
-	fileFullPath := fmt.Sprintf("%v/%v", path, fileResponse(isJSON))
+	fileFullPath := fmt.Sprintf("%v/%v", rain.CurrentDir(), relativeFile)
 
 	content := string(dataOutput)
 
@@ -177,7 +183,7 @@ func OutResponseBody(config *Config, url string, method string, header *http.Hea
 			if errOut != nil {
 				logger.Warn("保存响应信息失败")
 			}
-			return
+			return relativeFile
 		}
 	}
 
@@ -187,6 +193,8 @@ func OutResponseBody(config *Config, url string, method string, header *http.Hea
 	if err != nil {
 		logger.Warn("保存响应信息失败。")
 	}
+
+	return relativeFile
 }
 
 // OutResponseHeader 输出响应到文件
@@ -225,7 +233,7 @@ func OutResponseHeader(config *Config, mHeader map[string]http.Header, url strin
 // LoadResponseFile 获取URL的响应文件列表
 func LoadResponseFile(relativePath string, url string, method string) ([]string, error) {
 	// URL对应响应目录下的URL对应的目录
-	path := pathURL(relativePath, url, method)
+	path := pathURL(relativePath, method, url)
 
 	var file []string
 	sub, err := ioutil.ReadDir(path)
@@ -236,7 +244,7 @@ func LoadResponseFile(relativePath string, url string, method string) ([]string,
 		return file, nil
 	}
 
-	p := pathURLRelative(relativePath, url, method)
+	p := pathURLRelative(relativePath, method, url)
 
 	// 文件列表
 	for _, f := range sub {

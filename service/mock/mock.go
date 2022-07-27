@@ -9,6 +9,7 @@ import (
 	"io/ioutil"
 	"net/http"
 	"strings"
+	"time"
 
 	"github.com/bettersun/rain"
 )
@@ -64,6 +65,9 @@ func DoHandle(w http.ResponseWriter, r *http.Request) {
 
 	// ======================================================================================
 
+	duration := config.Proxy.Duration
+	time.Sleep(time.Duration(duration) * time.Millisecond)
+
 	existItem := false
 	// 存在 Mock 项目
 	for _, item := range mockItemSlice {
@@ -112,6 +116,10 @@ func DoHandle(w http.ResponseWriter, r *http.Request) {
 // defaultMockItem 默认 Mock 项目
 func defaultMockItem(url string, method string, host string) MockItem {
 
+	if strings.Contains(host, "/") && host[len(host)-1] == '/' {
+		host = host[:len(host)-1]
+	}
+
 	var item MockItem
 	item.URL = url                  // URL(有参数时，问号之前的部分)
 	item.Method = method            // 请求方法
@@ -140,11 +148,13 @@ func doProxy(w http.ResponseWriter, r *http.Request, host string) {
 	}
 
 	// 输出请求头
-	OutRequest(config.Path.Request, r, body)
+	go OutRequest(config.Path.Request, r, body)
 
 	url := r.URL.String()
 	// 转发的URL
 	reqURL := host + url
+	msg = fmt.Sprintf("=== 完整URL: [%s]", reqURL)
+	logger.Info(msg)
 
 	// 创建一个HttpClient用于转发请求
 	cli := &http.Client{}
@@ -187,7 +197,7 @@ func doProxy(w http.ResponseWriter, r *http.Request, host string) {
 	}
 
 	// 输出响应体到文件
-	OutResponseBody(config, url, r.Method, &responseProxy.Header, data)
+	go OutResponseBody(config, url, r.Method, &responseProxy.Header, data)
 
 	// response的Body不能多次读取，需要重新生成可读取的Body
 	resProxyBody := ioutil.NopCloser(bytes.NewBuffer(data))
