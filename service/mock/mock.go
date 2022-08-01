@@ -65,9 +65,6 @@ func DoHandle(w http.ResponseWriter, r *http.Request) {
 
 	// ======================================================================================
 
-	duration := config.Proxy.Duration
-	time.Sleep(time.Duration(duration) * time.Millisecond)
-
 	existItem := false
 	// 存在 Mock 项目
 	for _, item := range mockItemSlice {
@@ -219,6 +216,11 @@ func doProxy(w http.ResponseWriter, r *http.Request, host string) {
 // Mock
 func doMock(w http.ResponseWriter, r *http.Request, item MockItem, config *Config) {
 	msg := fmt.Sprintf("=== 使用Mock === Mock项目：[%v]", item)
+	logger.Info(msg)
+
+	duration := config.Proxy.Duration
+	time.Sleep(time.Duration(duration) * time.Millisecond)
+	msg = fmt.Sprintf("=== 响应等待时间：[%v]毫秒", duration)
 	logger.Info(msg)
 
 	// 读取请求的Body
