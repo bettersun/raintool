@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'app_setting.dart';
 
@@ -38,7 +38,8 @@ mixin _$AppSetting {
 abstract class $AppSettingCopyWith<$Res> {
   factory $AppSettingCopyWith(
           AppSetting value, $Res Function(AppSetting) then) =
-      _$AppSettingCopyWithImpl<$Res>;
+      _$AppSettingCopyWithImpl<$Res, AppSetting>;
+  @useResult
   $Res call(
       {List<BMenuItem> naviItemList,
       List<BMenuItem> menuItemList,
@@ -48,43 +49,46 @@ abstract class $AppSettingCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$AppSettingCopyWithImpl<$Res> implements $AppSettingCopyWith<$Res> {
+class _$AppSettingCopyWithImpl<$Res, $Val extends AppSetting>
+    implements $AppSettingCopyWith<$Res> {
   _$AppSettingCopyWithImpl(this._value, this._then);
 
-  final AppSetting _value;
   // ignore: unused_field
-  final $Res Function(AppSetting) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? naviItemList = freezed,
-    Object? menuItemList = freezed,
-    Object? selectedNaviIndex = freezed,
-    Object? selectedMenuIndex = freezed,
-    Object? showNavibar = freezed,
+    Object? naviItemList = null,
+    Object? menuItemList = null,
+    Object? selectedNaviIndex = null,
+    Object? selectedMenuIndex = null,
+    Object? showNavibar = null,
   }) {
     return _then(_value.copyWith(
-      naviItemList: naviItemList == freezed
+      naviItemList: null == naviItemList
           ? _value.naviItemList
           : naviItemList // ignore: cast_nullable_to_non_nullable
               as List<BMenuItem>,
-      menuItemList: menuItemList == freezed
+      menuItemList: null == menuItemList
           ? _value.menuItemList
           : menuItemList // ignore: cast_nullable_to_non_nullable
               as List<BMenuItem>,
-      selectedNaviIndex: selectedNaviIndex == freezed
+      selectedNaviIndex: null == selectedNaviIndex
           ? _value.selectedNaviIndex
           : selectedNaviIndex // ignore: cast_nullable_to_non_nullable
               as int,
-      selectedMenuIndex: selectedMenuIndex == freezed
+      selectedMenuIndex: null == selectedMenuIndex
           ? _value.selectedMenuIndex
           : selectedMenuIndex // ignore: cast_nullable_to_non_nullable
               as int,
-      showNavibar: showNavibar == freezed
+      showNavibar: null == showNavibar
           ? _value.showNavibar
           : showNavibar // ignore: cast_nullable_to_non_nullable
               as bool,
-    ));
+    ) as $Val);
   }
 }
 
@@ -95,6 +99,7 @@ abstract class _$$_AppSettingCopyWith<$Res>
           _$_AppSetting value, $Res Function(_$_AppSetting) then) =
       __$$_AppSettingCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {List<BMenuItem> naviItemList,
       List<BMenuItem> menuItemList,
@@ -104,41 +109,40 @@ abstract class _$$_AppSettingCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_AppSettingCopyWithImpl<$Res> extends _$AppSettingCopyWithImpl<$Res>
+class __$$_AppSettingCopyWithImpl<$Res>
+    extends _$AppSettingCopyWithImpl<$Res, _$_AppSetting>
     implements _$$_AppSettingCopyWith<$Res> {
   __$$_AppSettingCopyWithImpl(
       _$_AppSetting _value, $Res Function(_$_AppSetting) _then)
-      : super(_value, (v) => _then(v as _$_AppSetting));
+      : super(_value, _then);
 
-  @override
-  _$_AppSetting get _value => super._value as _$_AppSetting;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? naviItemList = freezed,
-    Object? menuItemList = freezed,
-    Object? selectedNaviIndex = freezed,
-    Object? selectedMenuIndex = freezed,
-    Object? showNavibar = freezed,
+    Object? naviItemList = null,
+    Object? menuItemList = null,
+    Object? selectedNaviIndex = null,
+    Object? selectedMenuIndex = null,
+    Object? showNavibar = null,
   }) {
     return _then(_$_AppSetting(
-      naviItemList: naviItemList == freezed
+      naviItemList: null == naviItemList
           ? _value._naviItemList
           : naviItemList // ignore: cast_nullable_to_non_nullable
               as List<BMenuItem>,
-      menuItemList: menuItemList == freezed
+      menuItemList: null == menuItemList
           ? _value._menuItemList
           : menuItemList // ignore: cast_nullable_to_non_nullable
               as List<BMenuItem>,
-      selectedNaviIndex: selectedNaviIndex == freezed
+      selectedNaviIndex: null == selectedNaviIndex
           ? _value.selectedNaviIndex
           : selectedNaviIndex // ignore: cast_nullable_to_non_nullable
               as int,
-      selectedMenuIndex: selectedMenuIndex == freezed
+      selectedMenuIndex: null == selectedMenuIndex
           ? _value.selectedMenuIndex
           : selectedMenuIndex // ignore: cast_nullable_to_non_nullable
               as int,
-      showNavibar: showNavibar == freezed
+      showNavibar: null == showNavibar
           ? _value.showNavibar
           : showNavibar // ignore: cast_nullable_to_non_nullable
               as bool,
@@ -165,6 +169,7 @@ class _$_AppSetting with DiagnosticableTreeMixin implements _AppSetting {
   @override
   @JsonKey()
   List<BMenuItem> get naviItemList {
+    if (_naviItemList is EqualUnmodifiableListView) return _naviItemList;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_naviItemList);
   }
@@ -175,6 +180,7 @@ class _$_AppSetting with DiagnosticableTreeMixin implements _AppSetting {
   @override
   @JsonKey()
   List<BMenuItem> get menuItemList {
+    if (_menuItemList is EqualUnmodifiableListView) return _menuItemList;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_menuItemList);
   }
@@ -218,12 +224,12 @@ class _$_AppSetting with DiagnosticableTreeMixin implements _AppSetting {
                 .equals(other._naviItemList, _naviItemList) &&
             const DeepCollectionEquality()
                 .equals(other._menuItemList, _menuItemList) &&
-            const DeepCollectionEquality()
-                .equals(other.selectedNaviIndex, selectedNaviIndex) &&
-            const DeepCollectionEquality()
-                .equals(other.selectedMenuIndex, selectedMenuIndex) &&
-            const DeepCollectionEquality()
-                .equals(other.showNavibar, showNavibar));
+            (identical(other.selectedNaviIndex, selectedNaviIndex) ||
+                other.selectedNaviIndex == selectedNaviIndex) &&
+            (identical(other.selectedMenuIndex, selectedMenuIndex) ||
+                other.selectedMenuIndex == selectedMenuIndex) &&
+            (identical(other.showNavibar, showNavibar) ||
+                other.showNavibar == showNavibar));
   }
 
   @JsonKey(ignore: true)
@@ -232,18 +238,21 @@ class _$_AppSetting with DiagnosticableTreeMixin implements _AppSetting {
       runtimeType,
       const DeepCollectionEquality().hash(_naviItemList),
       const DeepCollectionEquality().hash(_menuItemList),
-      const DeepCollectionEquality().hash(selectedNaviIndex),
-      const DeepCollectionEquality().hash(selectedMenuIndex),
-      const DeepCollectionEquality().hash(showNavibar));
+      selectedNaviIndex,
+      selectedMenuIndex,
+      showNavibar);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_AppSettingCopyWith<_$_AppSetting> get copyWith =>
       __$$_AppSettingCopyWithImpl<_$_AppSetting>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_AppSettingToJson(this);
+    return _$$_AppSettingToJson(
+      this,
+    );
   }
 }
 
@@ -259,15 +268,15 @@ abstract class _AppSetting implements AppSetting {
       _$_AppSetting.fromJson;
 
   @override
-  List<BMenuItem> get naviItemList => throw _privateConstructorUsedError;
+  List<BMenuItem> get naviItemList;
   @override // 底边栏项目列表
-  List<BMenuItem> get menuItemList => throw _privateConstructorUsedError;
+  List<BMenuItem> get menuItemList;
   @override // 菜单项目列表
-  int get selectedNaviIndex => throw _privateConstructorUsedError;
+  int get selectedNaviIndex;
   @override // 当前的底边栏下标
-  int get selectedMenuIndex => throw _privateConstructorUsedError;
+  int get selectedMenuIndex;
   @override // 当前的菜单栏下标
-  bool get showNavibar => throw _privateConstructorUsedError;
+  bool get showNavibar;
   @override
   @JsonKey(ignore: true)
   _$$_AppSettingCopyWith<_$_AppSetting> get copyWith =>
@@ -303,7 +312,8 @@ mixin _$BMenuItem {
 /// @nodoc
 abstract class $BMenuItemCopyWith<$Res> {
   factory $BMenuItemCopyWith(BMenuItem value, $Res Function(BMenuItem) then) =
-      _$BMenuItemCopyWithImpl<$Res>;
+      _$BMenuItemCopyWithImpl<$Res, BMenuItem>;
+  @useResult
   $Res call(
       {@JsonKey(ignore: true) int index,
       int orderNum,
@@ -318,68 +328,71 @@ abstract class $BMenuItemCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$BMenuItemCopyWithImpl<$Res> implements $BMenuItemCopyWith<$Res> {
+class _$BMenuItemCopyWithImpl<$Res, $Val extends BMenuItem>
+    implements $BMenuItemCopyWith<$Res> {
   _$BMenuItemCopyWithImpl(this._value, this._then);
 
-  final BMenuItem _value;
   // ignore: unused_field
-  final $Res Function(BMenuItem) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? index = freezed,
-    Object? orderNum = freezed,
-    Object? label = freezed,
+    Object? index = null,
+    Object? orderNum = null,
+    Object? label = null,
     Object? icon = freezed,
-    Object? flag = freezed,
-    Object? tooltip = freezed,
-    Object? enabled = freezed,
-    Object? naviItem = freezed,
-    Object? naviOrder = freezed,
-    Object? path = freezed,
+    Object? flag = null,
+    Object? tooltip = null,
+    Object? enabled = null,
+    Object? naviItem = null,
+    Object? naviOrder = null,
+    Object? path = null,
   }) {
     return _then(_value.copyWith(
-      index: index == freezed
+      index: null == index
           ? _value.index
           : index // ignore: cast_nullable_to_non_nullable
               as int,
-      orderNum: orderNum == freezed
+      orderNum: null == orderNum
           ? _value.orderNum
           : orderNum // ignore: cast_nullable_to_non_nullable
               as int,
-      label: label == freezed
+      label: null == label
           ? _value.label
           : label // ignore: cast_nullable_to_non_nullable
               as String,
-      icon: icon == freezed
+      icon: freezed == icon
           ? _value.icon
           : icon // ignore: cast_nullable_to_non_nullable
               as IconData?,
-      flag: flag == freezed
+      flag: null == flag
           ? _value.flag
           : flag // ignore: cast_nullable_to_non_nullable
               as String,
-      tooltip: tooltip == freezed
+      tooltip: null == tooltip
           ? _value.tooltip
           : tooltip // ignore: cast_nullable_to_non_nullable
               as String,
-      enabled: enabled == freezed
+      enabled: null == enabled
           ? _value.enabled
           : enabled // ignore: cast_nullable_to_non_nullable
               as bool,
-      naviItem: naviItem == freezed
+      naviItem: null == naviItem
           ? _value.naviItem
           : naviItem // ignore: cast_nullable_to_non_nullable
               as bool,
-      naviOrder: naviOrder == freezed
+      naviOrder: null == naviOrder
           ? _value.naviOrder
           : naviOrder // ignore: cast_nullable_to_non_nullable
               as int,
-      path: path == freezed
+      path: null == path
           ? _value.path
           : path // ignore: cast_nullable_to_non_nullable
               as String,
-    ));
+    ) as $Val);
   }
 }
 
@@ -389,6 +402,7 @@ abstract class _$$_BMenuItemCopyWith<$Res> implements $BMenuItemCopyWith<$Res> {
           _$_BMenuItem value, $Res Function(_$_BMenuItem) then) =
       __$$_BMenuItemCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {@JsonKey(ignore: true) int index,
       int orderNum,
@@ -403,66 +417,65 @@ abstract class _$$_BMenuItemCopyWith<$Res> implements $BMenuItemCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_BMenuItemCopyWithImpl<$Res> extends _$BMenuItemCopyWithImpl<$Res>
+class __$$_BMenuItemCopyWithImpl<$Res>
+    extends _$BMenuItemCopyWithImpl<$Res, _$_BMenuItem>
     implements _$$_BMenuItemCopyWith<$Res> {
   __$$_BMenuItemCopyWithImpl(
       _$_BMenuItem _value, $Res Function(_$_BMenuItem) _then)
-      : super(_value, (v) => _then(v as _$_BMenuItem));
+      : super(_value, _then);
 
-  @override
-  _$_BMenuItem get _value => super._value as _$_BMenuItem;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? index = freezed,
-    Object? orderNum = freezed,
-    Object? label = freezed,
+    Object? index = null,
+    Object? orderNum = null,
+    Object? label = null,
     Object? icon = freezed,
-    Object? flag = freezed,
-    Object? tooltip = freezed,
-    Object? enabled = freezed,
-    Object? naviItem = freezed,
-    Object? naviOrder = freezed,
-    Object? path = freezed,
+    Object? flag = null,
+    Object? tooltip = null,
+    Object? enabled = null,
+    Object? naviItem = null,
+    Object? naviOrder = null,
+    Object? path = null,
   }) {
     return _then(_$_BMenuItem(
-      index: index == freezed
+      index: null == index
           ? _value.index
           : index // ignore: cast_nullable_to_non_nullable
               as int,
-      orderNum: orderNum == freezed
+      orderNum: null == orderNum
           ? _value.orderNum
           : orderNum // ignore: cast_nullable_to_non_nullable
               as int,
-      label: label == freezed
+      label: null == label
           ? _value.label
           : label // ignore: cast_nullable_to_non_nullable
               as String,
-      icon: icon == freezed
+      icon: freezed == icon
           ? _value.icon
           : icon // ignore: cast_nullable_to_non_nullable
               as IconData?,
-      flag: flag == freezed
+      flag: null == flag
           ? _value.flag
           : flag // ignore: cast_nullable_to_non_nullable
               as String,
-      tooltip: tooltip == freezed
+      tooltip: null == tooltip
           ? _value.tooltip
           : tooltip // ignore: cast_nullable_to_non_nullable
               as String,
-      enabled: enabled == freezed
+      enabled: null == enabled
           ? _value.enabled
           : enabled // ignore: cast_nullable_to_non_nullable
               as bool,
-      naviItem: naviItem == freezed
+      naviItem: null == naviItem
           ? _value.naviItem
           : naviItem // ignore: cast_nullable_to_non_nullable
               as bool,
-      naviOrder: naviOrder == freezed
+      naviOrder: null == naviOrder
           ? _value.naviOrder
           : naviOrder // ignore: cast_nullable_to_non_nullable
               as int,
-      path: path == freezed
+      path: null == path
           ? _value.path
           : path // ignore: cast_nullable_to_non_nullable
               as String,
@@ -555,41 +568,37 @@ class _$_BMenuItem with DiagnosticableTreeMixin implements _BMenuItem {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_BMenuItem &&
-            const DeepCollectionEquality().equals(other.index, index) &&
-            const DeepCollectionEquality().equals(other.orderNum, orderNum) &&
-            const DeepCollectionEquality().equals(other.label, label) &&
-            const DeepCollectionEquality().equals(other.icon, icon) &&
-            const DeepCollectionEquality().equals(other.flag, flag) &&
-            const DeepCollectionEquality().equals(other.tooltip, tooltip) &&
-            const DeepCollectionEquality().equals(other.enabled, enabled) &&
-            const DeepCollectionEquality().equals(other.naviItem, naviItem) &&
-            const DeepCollectionEquality().equals(other.naviOrder, naviOrder) &&
-            const DeepCollectionEquality().equals(other.path, path));
+            (identical(other.index, index) || other.index == index) &&
+            (identical(other.orderNum, orderNum) ||
+                other.orderNum == orderNum) &&
+            (identical(other.label, label) || other.label == label) &&
+            (identical(other.icon, icon) || other.icon == icon) &&
+            (identical(other.flag, flag) || other.flag == flag) &&
+            (identical(other.tooltip, tooltip) || other.tooltip == tooltip) &&
+            (identical(other.enabled, enabled) || other.enabled == enabled) &&
+            (identical(other.naviItem, naviItem) ||
+                other.naviItem == naviItem) &&
+            (identical(other.naviOrder, naviOrder) ||
+                other.naviOrder == naviOrder) &&
+            (identical(other.path, path) || other.path == path));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(index),
-      const DeepCollectionEquality().hash(orderNum),
-      const DeepCollectionEquality().hash(label),
-      const DeepCollectionEquality().hash(icon),
-      const DeepCollectionEquality().hash(flag),
-      const DeepCollectionEquality().hash(tooltip),
-      const DeepCollectionEquality().hash(enabled),
-      const DeepCollectionEquality().hash(naviItem),
-      const DeepCollectionEquality().hash(naviOrder),
-      const DeepCollectionEquality().hash(path));
+  int get hashCode => Object.hash(runtimeType, index, orderNum, label, icon,
+      flag, tooltip, enabled, naviItem, naviOrder, path);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_BMenuItemCopyWith<_$_BMenuItem> get copyWith =>
       __$$_BMenuItemCopyWithImpl<_$_BMenuItem>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_BMenuItemToJson(this);
+    return _$$_BMenuItemToJson(
+      this,
+    );
   }
 }
 
@@ -611,27 +620,27 @@ abstract class _BMenuItem implements BMenuItem {
 
   @override
   @JsonKey(ignore: true)
-  int get index => throw _privateConstructorUsedError;
+  int get index;
   @override // 下标
-  int get orderNum => throw _privateConstructorUsedError;
+  int get orderNum;
   @override // 顺序
-  String get label => throw _privateConstructorUsedError;
+  String get label;
   @override // 标题
   @JsonKey(ignore: true)
-  IconData? get icon => throw _privateConstructorUsedError;
+  IconData? get icon;
   @override // 图标
-  String get flag => throw _privateConstructorUsedError;
+  String get flag;
   @override // 标志
-  String get tooltip => throw _privateConstructorUsedError;
+  String get tooltip;
   @override // 提示信息
-  bool get enabled => throw _privateConstructorUsedError;
+  bool get enabled;
   @override // 可用
-  bool get naviItem => throw _privateConstructorUsedError;
+  bool get naviItem;
   @override // 底边栏项目标志
-  int get naviOrder => throw _privateConstructorUsedError;
+  int get naviOrder;
   @override // 底边栏顺序
   @JsonKey(ignore: true)
-  String get path => throw _privateConstructorUsedError;
+  String get path;
   @override
   @JsonKey(ignore: true)
   _$$_BMenuItemCopyWith<_$_BMenuItem> get copyWith =>

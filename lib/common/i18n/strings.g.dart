@@ -1,16 +1,15 @@
+/// Generated file. Do not edit.
+///
+/// Locales: 5
+/// Strings: 25 (5 per locale)
+///
+/// Built on 2022-12-29 at 07:54 UTC
 
-/*
- * Generated file. Do not edit.
- *
- * Locales: 5
- * Strings: 25 (5.0 per locale)
- *
- * Built on 2022-07-19 at 10:03 UTC
- */
-
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, library_private_types_in_public_api
+// coverage:ignore-file
+// ignore_for_file: type=lint
 
 import 'package:flutter/widgets.dart';
+import 'package:slang/builder/model/node.dart';
 import 'package:slang_flutter/slang_flutter.dart';
 export 'package:slang_flutter/slang_flutter.dart';
 
@@ -22,7 +21,7 @@ const AppLocale _baseLocale = AppLocale.en;
 /// - LocaleSettings.setLocale(AppLocale.en) // set locale
 /// - Locale locale = AppLocale.en.flutterLocale // get flutter locale from enum
 /// - if (LocaleSettings.currentLocale == AppLocale.en) // locale check
-enum AppLocale with BaseAppLocale<_StringsEn> {
+enum AppLocale with BaseAppLocale<AppLocale, _StringsEn> {
 	en(languageCode: 'en', build: _StringsEn.build),
 	enUs(languageCode: 'en', countryCode: 'US', build: _StringsEnUs.build),
 	jaJp(languageCode: 'ja', countryCode: 'JP', build: _StringsJaJp.build),
@@ -34,7 +33,7 @@ enum AppLocale with BaseAppLocale<_StringsEn> {
 	@override final String languageCode;
 	@override final String? scriptCode;
 	@override final String? countryCode;
-	@override final TranslationBuilder<_StringsEn> build;
+	@override final TranslationBuilder<AppLocale, _StringsEn> build;
 
 	/// Gets current instance managed by [LocaleSettings].
 	_StringsEn get translations => LocaleSettings.instance.translationMap[this]!;
@@ -93,11 +92,7 @@ extension BuildContextTranslationsExtension on BuildContext {
 
 /// Manages all translation instances and the current locale
 class LocaleSettings extends BaseFlutterLocaleSettings<AppLocale, _StringsEn> {
-	LocaleSettings._() : super(
-		locales: AppLocale.values,
-		baseLocale: _baseLocale,
-		utils: AppLocaleUtils.instance,
-	);
+	LocaleSettings._() : super(utils: AppLocaleUtils.instance);
 
 	static final instance = LocaleSettings._();
 
@@ -125,28 +120,33 @@ class AppLocaleUtils extends BaseAppLocaleUtils<AppLocale, _StringsEn> {
 
 	// static aliases (checkout base methods for documentation)
 	static AppLocale parse(String rawLocale) => instance.parse(rawLocale);
+	static AppLocale parseLocaleParts({required String languageCode, String? scriptCode, String? countryCode}) => instance.parseLocaleParts(languageCode: languageCode, scriptCode: scriptCode, countryCode: countryCode);
 	static AppLocale findDeviceLocale() => instance.findDeviceLocale();
 }
 
 // translations
 
 // Path: <root>
-class _StringsEn implements BaseTranslations {
+class _StringsEn implements BaseTranslations<AppLocale, _StringsEn> {
 
 	/// You can call this constructor and build your own translation instance of this locale.
 	/// Constructing via the enum [AppLocale.build] is preferred.
-	_StringsEn.build({PluralResolver? cardinalResolver, PluralResolver? ordinalResolver})
-		: _cardinalResolver = cardinalResolver,
-		  _ordinalResolver = ordinalResolver;
+	_StringsEn.build({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver})
+		: assert(overrides == null, 'Set "translation_overrides: true" in order to enable this feature.'),
+		  $meta = TranslationMetadata(
+		    locale: AppLocale.en,
+		    overrides: overrides ?? {},
+		    cardinalResolver: cardinalResolver,
+		    ordinalResolver: ordinalResolver,
+		  ) {
+		$meta.setFlatMapFunction(_flatMapFunction);
+	}
+
+	/// Metadata for the translations of <en>.
+	@override final TranslationMetadata<AppLocale, _StringsEn> $meta;
 
 	/// Access flat map
-	dynamic operator[](String key) => _flatMap[key];
-
-	// Internal flat map initialized lazily
-	late final Map<String, dynamic> _flatMap = _buildFlatMap();
-
-	final PluralResolver? _cardinalResolver; // ignore: unused_field
-	final PluralResolver? _ordinalResolver; // ignore: unused_field
+	dynamic operator[](String key) => $meta.getTranslation(key);
 
 	late final _StringsEn _root = this; // ignore: unused_field
 
@@ -163,18 +163,22 @@ class _StringsEnUs implements _StringsEn {
 
 	/// You can call this constructor and build your own translation instance of this locale.
 	/// Constructing via the enum [AppLocale.build] is preferred.
-	_StringsEnUs.build({PluralResolver? cardinalResolver, PluralResolver? ordinalResolver})
-		: _cardinalResolver = cardinalResolver,
-		  _ordinalResolver = ordinalResolver;
+	_StringsEnUs.build({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver})
+		: assert(overrides == null, 'Set "translation_overrides: true" in order to enable this feature.'),
+		  $meta = TranslationMetadata(
+		    locale: AppLocale.enUs,
+		    overrides: overrides ?? {},
+		    cardinalResolver: cardinalResolver,
+		    ordinalResolver: ordinalResolver,
+		  ) {
+		$meta.setFlatMapFunction(_flatMapFunction);
+	}
+
+	/// Metadata for the translations of <en-US>.
+	@override final TranslationMetadata<AppLocale, _StringsEn> $meta;
 
 	/// Access flat map
-	@override dynamic operator[](String key) => _flatMap[key];
-
-	// Internal flat map initialized lazily
-	@override late final Map<String, dynamic> _flatMap = _buildFlatMap();
-
-	@override final PluralResolver? _cardinalResolver; // ignore: unused_field
-	@override final PluralResolver? _ordinalResolver; // ignore: unused_field
+	@override dynamic operator[](String key) => $meta.getTranslation(key);
 
 	@override late final _StringsEnUs _root = this; // ignore: unused_field
 
@@ -191,18 +195,22 @@ class _StringsJaJp implements _StringsEn {
 
 	/// You can call this constructor and build your own translation instance of this locale.
 	/// Constructing via the enum [AppLocale.build] is preferred.
-	_StringsJaJp.build({PluralResolver? cardinalResolver, PluralResolver? ordinalResolver})
-		: _cardinalResolver = cardinalResolver,
-		  _ordinalResolver = ordinalResolver;
+	_StringsJaJp.build({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver})
+		: assert(overrides == null, 'Set "translation_overrides: true" in order to enable this feature.'),
+		  $meta = TranslationMetadata(
+		    locale: AppLocale.jaJp,
+		    overrides: overrides ?? {},
+		    cardinalResolver: cardinalResolver,
+		    ordinalResolver: ordinalResolver,
+		  ) {
+		$meta.setFlatMapFunction(_flatMapFunction);
+	}
+
+	/// Metadata for the translations of <ja-JP>.
+	@override final TranslationMetadata<AppLocale, _StringsEn> $meta;
 
 	/// Access flat map
-	@override dynamic operator[](String key) => _flatMap[key];
-
-	// Internal flat map initialized lazily
-	@override late final Map<String, dynamic> _flatMap = _buildFlatMap();
-
-	@override final PluralResolver? _cardinalResolver; // ignore: unused_field
-	@override final PluralResolver? _ordinalResolver; // ignore: unused_field
+	@override dynamic operator[](String key) => $meta.getTranslation(key);
 
 	@override late final _StringsJaJp _root = this; // ignore: unused_field
 
@@ -219,18 +227,22 @@ class _StringsZhCn implements _StringsEn {
 
 	/// You can call this constructor and build your own translation instance of this locale.
 	/// Constructing via the enum [AppLocale.build] is preferred.
-	_StringsZhCn.build({PluralResolver? cardinalResolver, PluralResolver? ordinalResolver})
-		: _cardinalResolver = cardinalResolver,
-		  _ordinalResolver = ordinalResolver;
+	_StringsZhCn.build({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver})
+		: assert(overrides == null, 'Set "translation_overrides: true" in order to enable this feature.'),
+		  $meta = TranslationMetadata(
+		    locale: AppLocale.zhCn,
+		    overrides: overrides ?? {},
+		    cardinalResolver: cardinalResolver,
+		    ordinalResolver: ordinalResolver,
+		  ) {
+		$meta.setFlatMapFunction(_flatMapFunction);
+	}
+
+	/// Metadata for the translations of <zh-CN>.
+	@override final TranslationMetadata<AppLocale, _StringsEn> $meta;
 
 	/// Access flat map
-	@override dynamic operator[](String key) => _flatMap[key];
-
-	// Internal flat map initialized lazily
-	@override late final Map<String, dynamic> _flatMap = _buildFlatMap();
-
-	@override final PluralResolver? _cardinalResolver; // ignore: unused_field
-	@override final PluralResolver? _ordinalResolver; // ignore: unused_field
+	@override dynamic operator[](String key) => $meta.getTranslation(key);
 
 	@override late final _StringsZhCn _root = this; // ignore: unused_field
 
@@ -247,18 +259,22 @@ class _StringsZhHk implements _StringsEn {
 
 	/// You can call this constructor and build your own translation instance of this locale.
 	/// Constructing via the enum [AppLocale.build] is preferred.
-	_StringsZhHk.build({PluralResolver? cardinalResolver, PluralResolver? ordinalResolver})
-		: _cardinalResolver = cardinalResolver,
-		  _ordinalResolver = ordinalResolver;
+	_StringsZhHk.build({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver})
+		: assert(overrides == null, 'Set "translation_overrides: true" in order to enable this feature.'),
+		  $meta = TranslationMetadata(
+		    locale: AppLocale.zhHk,
+		    overrides: overrides ?? {},
+		    cardinalResolver: cardinalResolver,
+		    ordinalResolver: ordinalResolver,
+		  ) {
+		$meta.setFlatMapFunction(_flatMapFunction);
+	}
+
+	/// Metadata for the translations of <zh-HK>.
+	@override final TranslationMetadata<AppLocale, _StringsEn> $meta;
 
 	/// Access flat map
-	@override dynamic operator[](String key) => _flatMap[key];
-
-	// Internal flat map initialized lazily
-	@override late final Map<String, dynamic> _flatMap = _buildFlatMap();
-
-	@override final PluralResolver? _cardinalResolver; // ignore: unused_field
-	@override final PluralResolver? _ordinalResolver; // ignore: unused_field
+	@override dynamic operator[](String key) => $meta.getTranslation(key);
 
 	@override late final _StringsZhHk _root = this; // ignore: unused_field
 
@@ -274,61 +290,66 @@ class _StringsZhHk implements _StringsEn {
 /// Only for edge cases! For simple maps, use the map function of this library.
 
 extension on _StringsEn {
-	Map<String, dynamic> _buildFlatMap() {
-		return <String, dynamic>{
-			'hello': 'hello, world',
-			'msg': '{} are written in the {} language',
-			'login': 'login',
-			'logout': 'logout',
-			'setting': 'setting',
-		};
+	dynamic _flatMapFunction(String path) {
+		switch (path) {
+			case 'hello': return 'hello, world';
+			case 'msg': return '{} are written in the {} language';
+			case 'login': return 'login';
+			case 'logout': return 'logout';
+			case 'setting': return 'setting';
+			default: return null;
+		}
 	}
 }
 
 extension on _StringsEnUs {
-	Map<String, dynamic> _buildFlatMap() {
-		return <String, dynamic>{
-			'hello': 'hello, world',
-			'msg': '{} are written in the {} language',
-			'login': 'login',
-			'logout': 'logout',
-			'setting': 'setting',
-		};
+	dynamic _flatMapFunction(String path) {
+		switch (path) {
+			case 'hello': return 'hello, world';
+			case 'msg': return '{} are written in the {} language';
+			case 'login': return 'login';
+			case 'logout': return 'logout';
+			case 'setting': return 'setting';
+			default: return null;
+		}
 	}
 }
 
 extension on _StringsJaJp {
-	Map<String, dynamic> _buildFlatMap() {
-		return <String, dynamic>{
-			'hello': 'こんにちは、世界！',
-			'msg': '{} are written in the {} language',
-			'login': 'ログイン',
-			'logout': 'ログアウト',
-			'setting': '設定',
-		};
+	dynamic _flatMapFunction(String path) {
+		switch (path) {
+			case 'hello': return 'こんにちは、世界！';
+			case 'msg': return '{} are written in the {} language';
+			case 'login': return 'ログイン';
+			case 'logout': return 'ログアウト';
+			case 'setting': return '設定';
+			default: return null;
+		}
 	}
 }
 
 extension on _StringsZhCn {
-	Map<String, dynamic> _buildFlatMap() {
-		return <String, dynamic>{
-			'hello': '你好，世界！',
-			'msg': '{} are written in the {} language',
-			'login': '登录',
-			'logout': '退出登录',
-			'setting': '设定',
-		};
+	dynamic _flatMapFunction(String path) {
+		switch (path) {
+			case 'hello': return '你好，世界！';
+			case 'msg': return '{} are written in the {} language';
+			case 'login': return '登录';
+			case 'logout': return '退出登录';
+			case 'setting': return '设定';
+			default: return null;
+		}
 	}
 }
 
 extension on _StringsZhHk {
-	Map<String, dynamic> _buildFlatMap() {
-		return <String, dynamic>{
-			'hello': '你好，世界',
-			'msg': '{} are written in the {} language',
-			'login': '登錄',
-			'logout': '退出登錄',
-			'setting': '設定',
-		};
+	dynamic _flatMapFunction(String path) {
+		switch (path) {
+			case 'hello': return '你好，世界';
+			case 'msg': return '{} are written in the {} language';
+			case 'login': return '登錄';
+			case 'logout': return '退出登錄';
+			case 'setting': return '設定';
+			default: return null;
+		}
 	}
 }

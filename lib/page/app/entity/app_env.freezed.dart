@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'app_env.dart';
 
@@ -40,7 +40,8 @@ mixin _$AppEnv {
 /// @nodoc
 abstract class $AppEnvCopyWith<$Res> {
   factory $AppEnvCopyWith(AppEnv value, $Res Function(AppEnv) then) =
-      _$AppEnvCopyWithImpl<$Res>;
+      _$AppEnvCopyWithImpl<$Res, AppEnv>;
+  @useResult
   $Res call(
       {String code,
       String message,
@@ -55,68 +56,71 @@ abstract class $AppEnvCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$AppEnvCopyWithImpl<$Res> implements $AppEnvCopyWith<$Res> {
+class _$AppEnvCopyWithImpl<$Res, $Val extends AppEnv>
+    implements $AppEnvCopyWith<$Res> {
   _$AppEnvCopyWithImpl(this._value, this._then);
 
-  final AppEnv _value;
   // ignore: unused_field
-  final $Res Function(AppEnv) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? code = freezed,
-    Object? message = freezed,
-    Object? title = freezed,
-    Object? theme = freezed,
+    Object? code = null,
+    Object? message = null,
+    Object? title = null,
+    Object? theme = null,
     Object? themeData = freezed,
-    Object? locale = freezed,
-    Object? label = freezed,
-    Object? apiHost = freezed,
-    Object? rpcServer = freezed,
-    Object? rpcPort = freezed,
+    Object? locale = null,
+    Object? label = null,
+    Object? apiHost = null,
+    Object? rpcServer = null,
+    Object? rpcPort = null,
   }) {
     return _then(_value.copyWith(
-      code: code == freezed
+      code: null == code
           ? _value.code
           : code // ignore: cast_nullable_to_non_nullable
               as String,
-      message: message == freezed
+      message: null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String,
-      title: title == freezed
+      title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
-      theme: theme == freezed
+      theme: null == theme
           ? _value.theme
           : theme // ignore: cast_nullable_to_non_nullable
               as String,
-      themeData: themeData == freezed
+      themeData: freezed == themeData
           ? _value.themeData
           : themeData // ignore: cast_nullable_to_non_nullable
               as ThemeData?,
-      locale: locale == freezed
+      locale: null == locale
           ? _value.locale
           : locale // ignore: cast_nullable_to_non_nullable
               as String,
-      label: label == freezed
+      label: null == label
           ? _value.label
           : label // ignore: cast_nullable_to_non_nullable
               as String,
-      apiHost: apiHost == freezed
+      apiHost: null == apiHost
           ? _value.apiHost
           : apiHost // ignore: cast_nullable_to_non_nullable
               as String,
-      rpcServer: rpcServer == freezed
+      rpcServer: null == rpcServer
           ? _value.rpcServer
           : rpcServer // ignore: cast_nullable_to_non_nullable
               as String,
-      rpcPort: rpcPort == freezed
+      rpcPort: null == rpcPort
           ? _value.rpcPort
           : rpcPort // ignore: cast_nullable_to_non_nullable
               as int,
-    ));
+    ) as $Val);
   }
 }
 
@@ -125,6 +129,7 @@ abstract class _$$_AppEnvCopyWith<$Res> implements $AppEnvCopyWith<$Res> {
   factory _$$_AppEnvCopyWith(_$_AppEnv value, $Res Function(_$_AppEnv) then) =
       __$$_AppEnvCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {String code,
       String message,
@@ -139,65 +144,64 @@ abstract class _$$_AppEnvCopyWith<$Res> implements $AppEnvCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_AppEnvCopyWithImpl<$Res> extends _$AppEnvCopyWithImpl<$Res>
+class __$$_AppEnvCopyWithImpl<$Res>
+    extends _$AppEnvCopyWithImpl<$Res, _$_AppEnv>
     implements _$$_AppEnvCopyWith<$Res> {
   __$$_AppEnvCopyWithImpl(_$_AppEnv _value, $Res Function(_$_AppEnv) _then)
-      : super(_value, (v) => _then(v as _$_AppEnv));
+      : super(_value, _then);
 
-  @override
-  _$_AppEnv get _value => super._value as _$_AppEnv;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? code = freezed,
-    Object? message = freezed,
-    Object? title = freezed,
-    Object? theme = freezed,
+    Object? code = null,
+    Object? message = null,
+    Object? title = null,
+    Object? theme = null,
     Object? themeData = freezed,
-    Object? locale = freezed,
-    Object? label = freezed,
-    Object? apiHost = freezed,
-    Object? rpcServer = freezed,
-    Object? rpcPort = freezed,
+    Object? locale = null,
+    Object? label = null,
+    Object? apiHost = null,
+    Object? rpcServer = null,
+    Object? rpcPort = null,
   }) {
     return _then(_$_AppEnv(
-      code: code == freezed
+      code: null == code
           ? _value.code
           : code // ignore: cast_nullable_to_non_nullable
               as String,
-      message: message == freezed
+      message: null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String,
-      title: title == freezed
+      title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
-      theme: theme == freezed
+      theme: null == theme
           ? _value.theme
           : theme // ignore: cast_nullable_to_non_nullable
               as String,
-      themeData: themeData == freezed
+      themeData: freezed == themeData
           ? _value.themeData
           : themeData // ignore: cast_nullable_to_non_nullable
               as ThemeData?,
-      locale: locale == freezed
+      locale: null == locale
           ? _value.locale
           : locale // ignore: cast_nullable_to_non_nullable
               as String,
-      label: label == freezed
+      label: null == label
           ? _value.label
           : label // ignore: cast_nullable_to_non_nullable
               as String,
-      apiHost: apiHost == freezed
+      apiHost: null == apiHost
           ? _value.apiHost
           : apiHost // ignore: cast_nullable_to_non_nullable
               as String,
-      rpcServer: rpcServer == freezed
+      rpcServer: null == rpcServer
           ? _value.rpcServer
           : rpcServer // ignore: cast_nullable_to_non_nullable
               as String,
-      rpcPort: rpcPort == freezed
+      rpcPort: null == rpcPort
           ? _value.rpcPort
           : rpcPort // ignore: cast_nullable_to_non_nullable
               as int,
@@ -290,41 +294,36 @@ class _$_AppEnv with DiagnosticableTreeMixin implements _AppEnv {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_AppEnv &&
-            const DeepCollectionEquality().equals(other.code, code) &&
-            const DeepCollectionEquality().equals(other.message, message) &&
-            const DeepCollectionEquality().equals(other.title, title) &&
-            const DeepCollectionEquality().equals(other.theme, theme) &&
-            const DeepCollectionEquality().equals(other.themeData, themeData) &&
-            const DeepCollectionEquality().equals(other.locale, locale) &&
-            const DeepCollectionEquality().equals(other.label, label) &&
-            const DeepCollectionEquality().equals(other.apiHost, apiHost) &&
-            const DeepCollectionEquality().equals(other.rpcServer, rpcServer) &&
-            const DeepCollectionEquality().equals(other.rpcPort, rpcPort));
+            (identical(other.code, code) || other.code == code) &&
+            (identical(other.message, message) || other.message == message) &&
+            (identical(other.title, title) || other.title == title) &&
+            (identical(other.theme, theme) || other.theme == theme) &&
+            (identical(other.themeData, themeData) ||
+                other.themeData == themeData) &&
+            (identical(other.locale, locale) || other.locale == locale) &&
+            (identical(other.label, label) || other.label == label) &&
+            (identical(other.apiHost, apiHost) || other.apiHost == apiHost) &&
+            (identical(other.rpcServer, rpcServer) ||
+                other.rpcServer == rpcServer) &&
+            (identical(other.rpcPort, rpcPort) || other.rpcPort == rpcPort));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(code),
-      const DeepCollectionEquality().hash(message),
-      const DeepCollectionEquality().hash(title),
-      const DeepCollectionEquality().hash(theme),
-      const DeepCollectionEquality().hash(themeData),
-      const DeepCollectionEquality().hash(locale),
-      const DeepCollectionEquality().hash(label),
-      const DeepCollectionEquality().hash(apiHost),
-      const DeepCollectionEquality().hash(rpcServer),
-      const DeepCollectionEquality().hash(rpcPort));
+  int get hashCode => Object.hash(runtimeType, code, message, title, theme,
+      themeData, locale, label, apiHost, rpcServer, rpcPort);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_AppEnvCopyWith<_$_AppEnv> get copyWith =>
       __$$_AppEnvCopyWithImpl<_$_AppEnv>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_AppEnvToJson(this);
+    return _$$_AppEnvToJson(
+      this,
+    );
   }
 }
 
@@ -344,26 +343,26 @@ abstract class _AppEnv implements AppEnv {
   factory _AppEnv.fromJson(Map<String, dynamic> json) = _$_AppEnv.fromJson;
 
   @override
-  String get code => throw _privateConstructorUsedError;
+  String get code;
   @override // 状态码
-  String get message => throw _privateConstructorUsedError;
+  String get message;
   @override // 消息
-  String get title => throw _privateConstructorUsedError;
+  String get title;
   @override // 应用标题
-  String get theme => throw _privateConstructorUsedError;
+  String get theme;
   @override // 应用主题标志
   @JsonKey(ignore: true)
-  ThemeData? get themeData => throw _privateConstructorUsedError;
+  ThemeData? get themeData;
   @override // 应用主题
-  String get locale => throw _privateConstructorUsedError;
+  String get locale;
   @override // 应用语言标志
-  String get label => throw _privateConstructorUsedError;
+  String get label;
   @override // 主题切换标签
-  String get apiHost => throw _privateConstructorUsedError;
+  String get apiHost;
   @override // API服务 URL
-  String get rpcServer => throw _privateConstructorUsedError;
+  String get rpcServer;
   @override // RPC服务 IP
-  int get rpcPort => throw _privateConstructorUsedError;
+  int get rpcPort;
   @override
   @JsonKey(ignore: true)
   _$$_AppEnvCopyWith<_$_AppEnv> get copyWith =>

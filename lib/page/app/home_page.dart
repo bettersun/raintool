@@ -29,6 +29,7 @@ class HomePageState extends ConsumerState<HomePage> {
     ref.listen<AppEnv>(appEnvProvider, (previous, next) {
       final snackBar = SnackBar(
         content: Text(next.message),
+        duration: const Duration(seconds: 1),
       );
 
       ScaffoldMessenger.of(context).showSnackBar(snackBar);

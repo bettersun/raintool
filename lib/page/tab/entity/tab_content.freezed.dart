@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'tab_content.dart';
 
@@ -34,33 +34,37 @@ mixin _$TabContent {
 abstract class $TabContentCopyWith<$Res> {
   factory $TabContentCopyWith(
           TabContent value, $Res Function(TabContent) then) =
-      _$TabContentCopyWithImpl<$Res>;
+      _$TabContentCopyWithImpl<$Res, TabContent>;
+  @useResult
   $Res call({List<TabContentItem> tabContentItemList, String contentType});
 }
 
 /// @nodoc
-class _$TabContentCopyWithImpl<$Res> implements $TabContentCopyWith<$Res> {
+class _$TabContentCopyWithImpl<$Res, $Val extends TabContent>
+    implements $TabContentCopyWith<$Res> {
   _$TabContentCopyWithImpl(this._value, this._then);
 
-  final TabContent _value;
   // ignore: unused_field
-  final $Res Function(TabContent) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? tabContentItemList = freezed,
-    Object? contentType = freezed,
+    Object? tabContentItemList = null,
+    Object? contentType = null,
   }) {
     return _then(_value.copyWith(
-      tabContentItemList: tabContentItemList == freezed
+      tabContentItemList: null == tabContentItemList
           ? _value.tabContentItemList
           : tabContentItemList // ignore: cast_nullable_to_non_nullable
               as List<TabContentItem>,
-      contentType: contentType == freezed
+      contentType: null == contentType
           ? _value.contentType
           : contentType // ignore: cast_nullable_to_non_nullable
               as String,
-    ));
+    ) as $Val);
   }
 }
 
@@ -71,30 +75,30 @@ abstract class _$$_TabContentCopyWith<$Res>
           _$_TabContent value, $Res Function(_$_TabContent) then) =
       __$$_TabContentCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({List<TabContentItem> tabContentItemList, String contentType});
 }
 
 /// @nodoc
-class __$$_TabContentCopyWithImpl<$Res> extends _$TabContentCopyWithImpl<$Res>
+class __$$_TabContentCopyWithImpl<$Res>
+    extends _$TabContentCopyWithImpl<$Res, _$_TabContent>
     implements _$$_TabContentCopyWith<$Res> {
   __$$_TabContentCopyWithImpl(
       _$_TabContent _value, $Res Function(_$_TabContent) _then)
-      : super(_value, (v) => _then(v as _$_TabContent));
+      : super(_value, _then);
 
-  @override
-  _$_TabContent get _value => super._value as _$_TabContent;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? tabContentItemList = freezed,
-    Object? contentType = freezed,
+    Object? tabContentItemList = null,
+    Object? contentType = null,
   }) {
     return _then(_$_TabContent(
-      tabContentItemList: tabContentItemList == freezed
+      tabContentItemList: null == tabContentItemList
           ? _value._tabContentItemList
           : tabContentItemList // ignore: cast_nullable_to_non_nullable
               as List<TabContentItem>,
-      contentType: contentType == freezed
+      contentType: null == contentType
           ? _value.contentType
           : contentType // ignore: cast_nullable_to_non_nullable
               as String,
@@ -117,6 +121,8 @@ class _$_TabContent implements _TabContent {
   @override
   @JsonKey()
   List<TabContentItem> get tabContentItemList {
+    if (_tabContentItemList is EqualUnmodifiableListView)
+      return _tabContentItemList;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_tabContentItemList);
   }
@@ -138,25 +144,26 @@ class _$_TabContent implements _TabContent {
             other is _$_TabContent &&
             const DeepCollectionEquality()
                 .equals(other._tabContentItemList, _tabContentItemList) &&
-            const DeepCollectionEquality()
-                .equals(other.contentType, contentType));
+            (identical(other.contentType, contentType) ||
+                other.contentType == contentType));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(_tabContentItemList),
-      const DeepCollectionEquality().hash(contentType));
+  int get hashCode => Object.hash(runtimeType,
+      const DeepCollectionEquality().hash(_tabContentItemList), contentType);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_TabContentCopyWith<_$_TabContent> get copyWith =>
       __$$_TabContentCopyWithImpl<_$_TabContent>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_TabContentToJson(this);
+    return _$$_TabContentToJson(
+      this,
+    );
   }
 }
 
@@ -169,10 +176,9 @@ abstract class _TabContent implements TabContent {
       _$_TabContent.fromJson;
 
   @override
-  List<TabContentItem> get tabContentItemList =>
-      throw _privateConstructorUsedError;
+  List<TabContentItem> get tabContentItemList;
   @override // 标签内容项目列表
-  String get contentType => throw _privateConstructorUsedError;
+  String get contentType;
   @override
   @JsonKey(ignore: true)
   _$$_TabContentCopyWith<_$_TabContent> get copyWith =>
@@ -199,39 +205,42 @@ mixin _$TabContentItem {
 abstract class $TabContentItemCopyWith<$Res> {
   factory $TabContentItemCopyWith(
           TabContentItem value, $Res Function(TabContentItem) then) =
-      _$TabContentItemCopyWithImpl<$Res>;
+      _$TabContentItemCopyWithImpl<$Res, TabContentItem>;
+  @useResult
   $Res call({String content, String code, DateTime? datetime});
 }
 
 /// @nodoc
-class _$TabContentItemCopyWithImpl<$Res>
+class _$TabContentItemCopyWithImpl<$Res, $Val extends TabContentItem>
     implements $TabContentItemCopyWith<$Res> {
   _$TabContentItemCopyWithImpl(this._value, this._then);
 
-  final TabContentItem _value;
   // ignore: unused_field
-  final $Res Function(TabContentItem) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? content = freezed,
-    Object? code = freezed,
+    Object? content = null,
+    Object? code = null,
     Object? datetime = freezed,
   }) {
     return _then(_value.copyWith(
-      content: content == freezed
+      content: null == content
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
               as String,
-      code: code == freezed
+      code: null == code
           ? _value.code
           : code // ignore: cast_nullable_to_non_nullable
               as String,
-      datetime: datetime == freezed
+      datetime: freezed == datetime
           ? _value.datetime
           : datetime // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -242,36 +251,35 @@ abstract class _$$_TabContentItemCopyWith<$Res>
           _$_TabContentItem value, $Res Function(_$_TabContentItem) then) =
       __$$_TabContentItemCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({String content, String code, DateTime? datetime});
 }
 
 /// @nodoc
 class __$$_TabContentItemCopyWithImpl<$Res>
-    extends _$TabContentItemCopyWithImpl<$Res>
+    extends _$TabContentItemCopyWithImpl<$Res, _$_TabContentItem>
     implements _$$_TabContentItemCopyWith<$Res> {
   __$$_TabContentItemCopyWithImpl(
       _$_TabContentItem _value, $Res Function(_$_TabContentItem) _then)
-      : super(_value, (v) => _then(v as _$_TabContentItem));
+      : super(_value, _then);
 
-  @override
-  _$_TabContentItem get _value => super._value as _$_TabContentItem;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? content = freezed,
-    Object? code = freezed,
+    Object? content = null,
+    Object? code = null,
     Object? datetime = freezed,
   }) {
     return _then(_$_TabContentItem(
-      content: content == freezed
+      content: null == content
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
               as String,
-      code: code == freezed
+      code: null == code
           ? _value.code
           : code // ignore: cast_nullable_to_non_nullable
               as String,
-      datetime: datetime == freezed
+      datetime: freezed == datetime
           ? _value.datetime
           : datetime // ignore: cast_nullable_to_non_nullable
               as DateTime?,
@@ -310,27 +318,27 @@ class _$_TabContentItem implements _TabContentItem {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_TabContentItem &&
-            const DeepCollectionEquality().equals(other.content, content) &&
-            const DeepCollectionEquality().equals(other.code, code) &&
-            const DeepCollectionEquality().equals(other.datetime, datetime));
+            (identical(other.content, content) || other.content == content) &&
+            (identical(other.code, code) || other.code == code) &&
+            (identical(other.datetime, datetime) ||
+                other.datetime == datetime));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(content),
-      const DeepCollectionEquality().hash(code),
-      const DeepCollectionEquality().hash(datetime));
+  int get hashCode => Object.hash(runtimeType, content, code, datetime);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_TabContentItemCopyWith<_$_TabContentItem> get copyWith =>
       __$$_TabContentItemCopyWithImpl<_$_TabContentItem>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_TabContentItemToJson(this);
+    return _$$_TabContentItemToJson(
+      this,
+    );
   }
 }
 
@@ -344,11 +352,11 @@ abstract class _TabContentItem implements TabContentItem {
       _$_TabContentItem.fromJson;
 
   @override
-  String get content => throw _privateConstructorUsedError;
+  String get content;
   @override // 内容
-  String get code => throw _privateConstructorUsedError;
+  String get code;
   @override //  代码
-  DateTime? get datetime => throw _privateConstructorUsedError;
+  DateTime? get datetime;
   @override
   @JsonKey(ignore: true)
   _$$_TabContentItemCopyWith<_$_TabContentItem> get copyWith =>

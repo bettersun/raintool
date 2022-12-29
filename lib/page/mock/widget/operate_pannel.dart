@@ -37,11 +37,11 @@ class _OperatePanelState extends State<OperatePanel> {
           Row(
             children: [
               // 启动服务/关闭服务
-              FlatButton(
-                color: toggleColor,
+              TextButton(
                 child: Text(
                   toggleText,
                   style: TextStyle(
+                    color: toggleColor,
                     fontWeight: FontWeight.w700,
                   ),
                 ),
@@ -85,8 +85,7 @@ class _OperatePanelState extends State<OperatePanel> {
             children: [
               Container(
                 margin: EdgeInsets.only(left: ThemeConst.marginButton, right: ThemeConst.marginButton),
-                child: FlatButton(
-                  color: Colors.blue[200],
+                child: TextButton(
                   child: Text('全部返回200'),
                   onPressed: () {
                     // BlocProvider.of<MockServiceBloc>(context).add(MockServiceAllResponseOKEvent());

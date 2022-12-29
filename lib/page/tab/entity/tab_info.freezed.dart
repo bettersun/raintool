@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'tab_info.dart';
 
@@ -38,7 +38,8 @@ mixin _$TabInfo {
 /// @nodoc
 abstract class $TabInfoCopyWith<$Res> {
   factory $TabInfoCopyWith(TabInfo value, $Res Function(TabInfo) then) =
-      _$TabInfoCopyWithImpl<$Res>;
+      _$TabInfoCopyWithImpl<$Res, TabInfo>;
+  @useResult
   $Res call(
       {String code,
       String message,
@@ -50,53 +51,56 @@ abstract class $TabInfoCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$TabInfoCopyWithImpl<$Res> implements $TabInfoCopyWith<$Res> {
+class _$TabInfoCopyWithImpl<$Res, $Val extends TabInfo>
+    implements $TabInfoCopyWith<$Res> {
   _$TabInfoCopyWithImpl(this._value, this._then);
 
-  final TabInfo _value;
   // ignore: unused_field
-  final $Res Function(TabInfo) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? code = freezed,
-    Object? message = freezed,
-    Object? tabList = freezed,
-    Object? enabledTabList = freezed,
-    Object? disabledTabList = freezed,
-    Object? selectedTabIndex = freezed,
-    Object? editMode = freezed,
+    Object? code = null,
+    Object? message = null,
+    Object? tabList = null,
+    Object? enabledTabList = null,
+    Object? disabledTabList = null,
+    Object? selectedTabIndex = null,
+    Object? editMode = null,
   }) {
     return _then(_value.copyWith(
-      code: code == freezed
+      code: null == code
           ? _value.code
           : code // ignore: cast_nullable_to_non_nullable
               as String,
-      message: message == freezed
+      message: null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String,
-      tabList: tabList == freezed
+      tabList: null == tabList
           ? _value.tabList
           : tabList // ignore: cast_nullable_to_non_nullable
               as List<TabItem>,
-      enabledTabList: enabledTabList == freezed
+      enabledTabList: null == enabledTabList
           ? _value.enabledTabList
           : enabledTabList // ignore: cast_nullable_to_non_nullable
               as List<TabItem>,
-      disabledTabList: disabledTabList == freezed
+      disabledTabList: null == disabledTabList
           ? _value.disabledTabList
           : disabledTabList // ignore: cast_nullable_to_non_nullable
               as List<TabItem>,
-      selectedTabIndex: selectedTabIndex == freezed
+      selectedTabIndex: null == selectedTabIndex
           ? _value.selectedTabIndex
           : selectedTabIndex // ignore: cast_nullable_to_non_nullable
               as int,
-      editMode: editMode == freezed
+      editMode: null == editMode
           ? _value.editMode
           : editMode // ignore: cast_nullable_to_non_nullable
               as bool,
-    ));
+    ) as $Val);
   }
 }
 
@@ -106,6 +110,7 @@ abstract class _$$_TabInfoCopyWith<$Res> implements $TabInfoCopyWith<$Res> {
           _$_TabInfo value, $Res Function(_$_TabInfo) then) =
       __$$_TabInfoCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {String code,
       String message,
@@ -117,50 +122,49 @@ abstract class _$$_TabInfoCopyWith<$Res> implements $TabInfoCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_TabInfoCopyWithImpl<$Res> extends _$TabInfoCopyWithImpl<$Res>
+class __$$_TabInfoCopyWithImpl<$Res>
+    extends _$TabInfoCopyWithImpl<$Res, _$_TabInfo>
     implements _$$_TabInfoCopyWith<$Res> {
   __$$_TabInfoCopyWithImpl(_$_TabInfo _value, $Res Function(_$_TabInfo) _then)
-      : super(_value, (v) => _then(v as _$_TabInfo));
+      : super(_value, _then);
 
-  @override
-  _$_TabInfo get _value => super._value as _$_TabInfo;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? code = freezed,
-    Object? message = freezed,
-    Object? tabList = freezed,
-    Object? enabledTabList = freezed,
-    Object? disabledTabList = freezed,
-    Object? selectedTabIndex = freezed,
-    Object? editMode = freezed,
+    Object? code = null,
+    Object? message = null,
+    Object? tabList = null,
+    Object? enabledTabList = null,
+    Object? disabledTabList = null,
+    Object? selectedTabIndex = null,
+    Object? editMode = null,
   }) {
     return _then(_$_TabInfo(
-      code: code == freezed
+      code: null == code
           ? _value.code
           : code // ignore: cast_nullable_to_non_nullable
               as String,
-      message: message == freezed
+      message: null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String,
-      tabList: tabList == freezed
+      tabList: null == tabList
           ? _value._tabList
           : tabList // ignore: cast_nullable_to_non_nullable
               as List<TabItem>,
-      enabledTabList: enabledTabList == freezed
+      enabledTabList: null == enabledTabList
           ? _value._enabledTabList
           : enabledTabList // ignore: cast_nullable_to_non_nullable
               as List<TabItem>,
-      disabledTabList: disabledTabList == freezed
+      disabledTabList: null == disabledTabList
           ? _value._disabledTabList
           : disabledTabList // ignore: cast_nullable_to_non_nullable
               as List<TabItem>,
-      selectedTabIndex: selectedTabIndex == freezed
+      selectedTabIndex: null == selectedTabIndex
           ? _value.selectedTabIndex
           : selectedTabIndex // ignore: cast_nullable_to_non_nullable
               as int,
-      editMode: editMode == freezed
+      editMode: null == editMode
           ? _value.editMode
           : editMode // ignore: cast_nullable_to_non_nullable
               as bool,
@@ -199,6 +203,7 @@ class _$_TabInfo implements _TabInfo {
   @override
   @JsonKey()
   List<TabItem> get tabList {
+    if (_tabList is EqualUnmodifiableListView) return _tabList;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_tabList);
   }
@@ -209,6 +214,7 @@ class _$_TabInfo implements _TabInfo {
   @override
   @JsonKey()
   List<TabItem> get enabledTabList {
+    if (_enabledTabList is EqualUnmodifiableListView) return _enabledTabList;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_enabledTabList);
   }
@@ -219,6 +225,7 @@ class _$_TabInfo implements _TabInfo {
   @override
   @JsonKey()
   List<TabItem> get disabledTabList {
+    if (_disabledTabList is EqualUnmodifiableListView) return _disabledTabList;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_disabledTabList);
   }
@@ -242,38 +249,42 @@ class _$_TabInfo implements _TabInfo {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_TabInfo &&
-            const DeepCollectionEquality().equals(other.code, code) &&
-            const DeepCollectionEquality().equals(other.message, message) &&
+            (identical(other.code, code) || other.code == code) &&
+            (identical(other.message, message) || other.message == message) &&
             const DeepCollectionEquality().equals(other._tabList, _tabList) &&
             const DeepCollectionEquality()
                 .equals(other._enabledTabList, _enabledTabList) &&
             const DeepCollectionEquality()
                 .equals(other._disabledTabList, _disabledTabList) &&
-            const DeepCollectionEquality()
-                .equals(other.selectedTabIndex, selectedTabIndex) &&
-            const DeepCollectionEquality().equals(other.editMode, editMode));
+            (identical(other.selectedTabIndex, selectedTabIndex) ||
+                other.selectedTabIndex == selectedTabIndex) &&
+            (identical(other.editMode, editMode) ||
+                other.editMode == editMode));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(code),
-      const DeepCollectionEquality().hash(message),
+      code,
+      message,
       const DeepCollectionEquality().hash(_tabList),
       const DeepCollectionEquality().hash(_enabledTabList),
       const DeepCollectionEquality().hash(_disabledTabList),
-      const DeepCollectionEquality().hash(selectedTabIndex),
-      const DeepCollectionEquality().hash(editMode));
+      selectedTabIndex,
+      editMode);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_TabInfoCopyWith<_$_TabInfo> get copyWith =>
       __$$_TabInfoCopyWithImpl<_$_TabInfo>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_TabInfoToJson(this);
+    return _$$_TabInfoToJson(
+      this,
+    );
   }
 }
 
@@ -290,19 +301,19 @@ abstract class _TabInfo implements TabInfo {
   factory _TabInfo.fromJson(Map<String, dynamic> json) = _$_TabInfo.fromJson;
 
   @override
-  String get code => throw _privateConstructorUsedError;
+  String get code;
   @override // 状态码
-  String get message => throw _privateConstructorUsedError;
+  String get message;
   @override // 消息
-  List<TabItem> get tabList => throw _privateConstructorUsedError;
+  List<TabItem> get tabList;
   @override // 可用的标签列表
-  List<TabItem> get enabledTabList => throw _privateConstructorUsedError;
+  List<TabItem> get enabledTabList;
   @override // 可用的标签列表
-  List<TabItem> get disabledTabList => throw _privateConstructorUsedError;
+  List<TabItem> get disabledTabList;
   @override // 不可用的标签列表
-  int get selectedTabIndex => throw _privateConstructorUsedError;
+  int get selectedTabIndex;
   @override // 选中的标签下标
-  bool get editMode => throw _privateConstructorUsedError;
+  bool get editMode;
   @override
   @JsonKey(ignore: true)
   _$$_TabInfoCopyWith<_$_TabInfo> get copyWith =>
@@ -329,7 +340,8 @@ mixin _$TabItem {
 /// @nodoc
 abstract class $TabItemCopyWith<$Res> {
   factory $TabItemCopyWith(TabItem value, $Res Function(TabItem) then) =
-      _$TabItemCopyWithImpl<$Res>;
+      _$TabItemCopyWithImpl<$Res, TabItem>;
+  @useResult
   $Res call(
       {String flag,
       String tooltip,
@@ -338,38 +350,41 @@ abstract class $TabItemCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$TabItemCopyWithImpl<$Res> implements $TabItemCopyWith<$Res> {
+class _$TabItemCopyWithImpl<$Res, $Val extends TabItem>
+    implements $TabItemCopyWith<$Res> {
   _$TabItemCopyWithImpl(this._value, this._then);
 
-  final TabItem _value;
   // ignore: unused_field
-  final $Res Function(TabItem) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? flag = freezed,
-    Object? tooltip = freezed,
-    Object? enable = freezed,
+    Object? flag = null,
+    Object? tooltip = null,
+    Object? enable = null,
     Object? iconData = freezed,
   }) {
     return _then(_value.copyWith(
-      flag: flag == freezed
+      flag: null == flag
           ? _value.flag
           : flag // ignore: cast_nullable_to_non_nullable
               as String,
-      tooltip: tooltip == freezed
+      tooltip: null == tooltip
           ? _value.tooltip
           : tooltip // ignore: cast_nullable_to_non_nullable
               as String,
-      enable: enable == freezed
+      enable: null == enable
           ? _value.enable
           : enable // ignore: cast_nullable_to_non_nullable
               as bool,
-      iconData: iconData == freezed
+      iconData: freezed == iconData
           ? _value.iconData
           : iconData // ignore: cast_nullable_to_non_nullable
               as IconData?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -379,6 +394,7 @@ abstract class _$$_TabItemCopyWith<$Res> implements $TabItemCopyWith<$Res> {
           _$_TabItem value, $Res Function(_$_TabItem) then) =
       __$$_TabItemCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {String flag,
       String tooltip,
@@ -387,35 +403,34 @@ abstract class _$$_TabItemCopyWith<$Res> implements $TabItemCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_TabItemCopyWithImpl<$Res> extends _$TabItemCopyWithImpl<$Res>
+class __$$_TabItemCopyWithImpl<$Res>
+    extends _$TabItemCopyWithImpl<$Res, _$_TabItem>
     implements _$$_TabItemCopyWith<$Res> {
   __$$_TabItemCopyWithImpl(_$_TabItem _value, $Res Function(_$_TabItem) _then)
-      : super(_value, (v) => _then(v as _$_TabItem));
+      : super(_value, _then);
 
-  @override
-  _$_TabItem get _value => super._value as _$_TabItem;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? flag = freezed,
-    Object? tooltip = freezed,
-    Object? enable = freezed,
+    Object? flag = null,
+    Object? tooltip = null,
+    Object? enable = null,
     Object? iconData = freezed,
   }) {
     return _then(_$_TabItem(
-      flag: flag == freezed
+      flag: null == flag
           ? _value.flag
           : flag // ignore: cast_nullable_to_non_nullable
               as String,
-      tooltip: tooltip == freezed
+      tooltip: null == tooltip
           ? _value.tooltip
           : tooltip // ignore: cast_nullable_to_non_nullable
               as String,
-      enable: enable == freezed
+      enable: null == enable
           ? _value.enable
           : enable // ignore: cast_nullable_to_non_nullable
               as bool,
-      iconData: iconData == freezed
+      iconData: freezed == iconData
           ? _value.iconData
           : iconData // ignore: cast_nullable_to_non_nullable
               as IconData?,
@@ -461,29 +476,28 @@ class _$_TabItem implements _TabItem {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_TabItem &&
-            const DeepCollectionEquality().equals(other.flag, flag) &&
-            const DeepCollectionEquality().equals(other.tooltip, tooltip) &&
-            const DeepCollectionEquality().equals(other.enable, enable) &&
-            const DeepCollectionEquality().equals(other.iconData, iconData));
+            (identical(other.flag, flag) || other.flag == flag) &&
+            (identical(other.tooltip, tooltip) || other.tooltip == tooltip) &&
+            (identical(other.enable, enable) || other.enable == enable) &&
+            (identical(other.iconData, iconData) ||
+                other.iconData == iconData));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(flag),
-      const DeepCollectionEquality().hash(tooltip),
-      const DeepCollectionEquality().hash(enable),
-      const DeepCollectionEquality().hash(iconData));
+  int get hashCode => Object.hash(runtimeType, flag, tooltip, enable, iconData);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_TabItemCopyWith<_$_TabItem> get copyWith =>
       __$$_TabItemCopyWithImpl<_$_TabItem>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_TabItemToJson(this);
+    return _$$_TabItemToJson(
+      this,
+    );
   }
 }
 
@@ -497,14 +511,14 @@ abstract class _TabItem implements TabItem {
   factory _TabItem.fromJson(Map<String, dynamic> json) = _$_TabItem.fromJson;
 
   @override
-  String get flag => throw _privateConstructorUsedError;
+  String get flag;
   @override //  标签标志
-  String get tooltip => throw _privateConstructorUsedError;
+  String get tooltip;
   @override // 标签提示信息
-  bool get enable => throw _privateConstructorUsedError;
+  bool get enable;
   @override // 可用
   @JsonKey(ignore: true)
-  IconData? get iconData => throw _privateConstructorUsedError;
+  IconData? get iconData;
   @override
   @JsonKey(ignore: true)
   _$$_TabItemCopyWith<_$_TabItem> get copyWith =>

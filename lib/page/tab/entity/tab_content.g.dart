@@ -27,7 +27,7 @@ _$_TabContentItem _$$_TabContentItemFromJson(Map<String, dynamic> json) =>
       code: json['code'] as String? ?? '',
       datetime: json['datetime'] == null
           ? null
-          : DateTime.parse(json['datetime'] as String) ?? null,
+          : DateTime.parse(json['datetime'] as String),
     );
 
 Map<String, dynamic> _$$_TabContentItemToJson(_$_TabContentItem instance) =>

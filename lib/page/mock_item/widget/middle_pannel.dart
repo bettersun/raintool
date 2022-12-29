@@ -19,8 +19,7 @@ class MiddlePanel extends StatelessWidget {
       child: Row(
         children: [
           //
-          FlatButton(
-            color: Colors.blue[300],
+          TextButton(
             child: Text('重载响应文件列表'),
             onPressed: () {
               // BlocProvider.of<InfoDetailBloc>(context)

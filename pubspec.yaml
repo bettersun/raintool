@@ -37,19 +37,19 @@ dependencies:
 
   flutter_localizations: # add this
     sdk: flutter
-  flutter_riverpod: ^2.0.0-dev.4
+  flutter_riverpod: ^2.1.3
   uuid: ^3.0.4
-  kiwi: ^4.0.2
+  kiwi: ^4.0.3
   dio: ^4.0.6
-  hive: ^2.1.0
+  hive: ^2.2.3
   hive_flutter: ^1.1.0
   protobuf: ^2.0.1
   grpc: ^3.0.2
   basic_utils: ^4.2.1
-  freezed_annotation: ^2.0.3
-  json_annotation: ^4.5.0
-  slang: ^2.3.1
-  slang_flutter: ^2.5.0
+  freezed_annotation: ^2.2.0
+  json_annotation: ^4.7.0
+  slang: ^3.7.0
+  slang_flutter: ^3.7.0
   flutter_reorderable_grid_view: ^3.1.1
   flutter_speed_dial: ^6.0.0
   path: ^1.8.1
@@ -68,12 +68,12 @@ dev_dependencies:
   # rules and activating additional ones.
   flutter_lints: ^1.0.0
 
-  build_runner: ^2.1.10
-  kiwi_generator: ^4.0.2
-  freezed: ^2.0.3
-  json_serializable: ^6.2.0
+  build_runner: ^2.3.3
+  kiwi_generator: ^4.0.3
+  freezed: ^2.3.2
+  json_serializable: ^6.5.4
   go_router: ^3.1.1
-  slang_build_runner: ^2.5.0
+  slang_build_runner: ^3.7.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

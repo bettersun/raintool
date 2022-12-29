@@ -152,7 +152,8 @@ class AppServiceImpl extends AppService {
       state = state.copyWith(
         theme: AppConst.dark,
         themeData: ThemeData.dark(),
-        label: AppConst.labelLight,
+        label: AppConst.labelDark,
+        message: AppConst.labelDark,
       );
 
       // 持久化
@@ -164,7 +165,8 @@ class AppServiceImpl extends AppService {
       state = state.copyWith(
         theme: AppConst.light,
         themeData: ThemeData.light(),
-        label: AppConst.labelDark,
+        label: AppConst.labelLight,
+        message: AppConst.labelLight,
       );
 
       // 持久化
@@ -181,22 +183,25 @@ class AppServiceImpl extends AppService {
       // 英语
       case AppConst.localEnUs:
         state = state.copyWith(
-          // 汉语（中国）
+          // 汉语（中国大陆）
           locale: AppConst.localZhCn,
+          message: '汉语（中国大陆）',
         );
         break;
-      // 汉语（中国）
+      // 汉语（中国大陆）
       case AppConst.localZhCn:
         state = state.copyWith(
-          // 汉语（香港）
+          // 汉语（中国香港）
           locale: AppConst.localZhHk,
+          message: '汉语（中国香港）',
         );
         break;
-      // 汉语（香港）
+      // 汉语（中国香港）
       case AppConst.localZhHk:
         state = state.copyWith(
           // 日语
           locale: AppConst.localJaJp,
+          message: '日语',
         );
         break;
       // 日语
@@ -204,12 +209,14 @@ class AppServiceImpl extends AppService {
         state = state.copyWith(
           // 英语
           locale: AppConst.localEnUs,
+          message: '英语',
         );
         break;
       default:
         state = state.copyWith(
           // 默认语言
           locale: AppConst.localDefault,
+          message: '默认',
         );
     }
 

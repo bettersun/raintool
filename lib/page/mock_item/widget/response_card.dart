@@ -114,19 +114,15 @@ class _ResponseCardState extends State<ResponseCard> {
             ]),
           ),
           actions: <Widget>[
-            RaisedButton(
+            OutlinedButton(
               child: Text('取消'),
-              color: Colors.blue[200],
-              textColor: Colors.white,
               onPressed: () {
                 // 触发事件
                 Navigator.pop(context);
               },
             ),
-            RaisedButton(
+            OutlinedButton(
               child: Text('确定'),
-              color: Colors.blue[400],
-              textColor: Colors.white,
               onPressed: () {
                 // 触发事件
                 // bloc.add(InfoDetailRenameEvent(
