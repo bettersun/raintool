@@ -10,8 +10,7 @@ const (
 	httpHeaderContentLength   = "Content-Length"
 
 	/// HTTP头部值
-	encodingGzip        = "gzip"
-	contentTypeJSON     = "application/json"
-	contentTypeText     = "application/text"
-	contentTypeJSONUTF8 = "application/json;charset=UTF-8"
+	encodingGzip    = "gzip"
+	contentTypeJSON = "application/json"
+	contentTypeText = "application/text"
 )

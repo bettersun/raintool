@@ -4,8 +4,8 @@
     "method": "POST",
     "DestHost": "http://127.0.0.1:9527",
     "useMock": false,
-    "statusCode": 200,
-    "responseFile": "",
+    "statusCode": 500,
+    "responseFile": "mock/_json/hello.json",
     "description": ""
   },
   {
@@ -13,6 +13,7 @@
     "method": "GET",
     "DestHost": "http://127.0.0.1:9527",
     "useMock": true,
+    "duration": 200,
     "statusCode": 200,
     "responseFile": "mock/_json/home.json",
     "description": ""

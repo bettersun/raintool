@@ -9,8 +9,12 @@ import (
 	"net/http"
 )
 
-/// 初始化
+// / 初始化
 func init() {
+	initAll()
+}
+
+func initAll() {
 	config = loadConfig(configFile)
 
 	// 读取模拟服务通用响应头

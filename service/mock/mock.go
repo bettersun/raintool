@@ -6,8 +6,8 @@ import (
 	"encoding/json"
 	"fmt"
 	"io"
-	"io/ioutil"
 	"net/http"
+	"os"
 	"strings"
 	"time"
 
@@ -33,9 +33,14 @@ func StartMock() {
 		Handler: http.HandlerFunc(DoHandle),
 	}
 
-	go mockServer.ListenAndServe()
+	go func() {
+		err := mockServer.ListenAndServe()
+		if err != nil {
+			logger.Error(err)
+		}
+	}()
 
-	msg := fmt.Sprintf("服务运行中... 端口[%v]", config.Port)
+	msg := fmt.Sprintf("Mock / Proxy 服务运行中... 端口[%v]", config.Port)
 	logger.Info(msg)
 }
 
@@ -129,7 +134,7 @@ func defaultMockItem(url string, method string, host string) MockItem {
 	return item
 }
 
-/// 代理转发
+// 代理转发
 // 参考：https://www.cnblogs.com/boxker/p/11046342.html
 func doProxy(w http.ResponseWriter, r *http.Request, host string) {
 	msg := fmt.Sprintf("=== 代理转发 === 目标主机：[%s]", host)
@@ -138,7 +143,7 @@ func doProxy(w http.ResponseWriter, r *http.Request, host string) {
 	// 读取请求的Body
 	// 读取后 r.Body 即关闭，无法再次读取
 	// 若需要再次读取，需要用读取到的内容再次构建Reader
-	body, err := ioutil.ReadAll(r.Body)
+	body, err := io.ReadAll(r.Body)
 	if err != nil {
 		msg := "读取请求体发生错误"
 		logger.Info(msg)
@@ -177,9 +182,17 @@ func doProxy(w http.ResponseWriter, r *http.Request, host string) {
 
 		w.Header().Set(httpHeaderContentType, contentTypeText)
 		w.WriteHeader(http.StatusServiceUnavailable)
-		w.Write([]byte(msg))
+		_, err2 := w.Write([]byte(msg))
+		if err2 != nil {
+			logger.Error(err)
+		}
 	}
-	defer responseProxy.Body.Close()
+	defer func(Body io.ReadCloser) {
+		err := Body.Close()
+		if err != nil {
+			logger.Error(err)
+		}
+	}(responseProxy.Body)
 
 	// 输出响应头(每次都输出用于保存最新的响应头)
 	OutResponseHeader(config, mapResponseHeader, url, r.Method, &responseProxy.Header)
@@ -187,7 +200,7 @@ func doProxy(w http.ResponseWriter, r *http.Request, host string) {
 	// 响应体数据
 	var data []byte
 	// 读取响应体
-	data, err = ioutil.ReadAll(responseProxy.Body)
+	data, err = io.ReadAll(responseProxy.Body)
 	if err != nil {
 		msg := fmt.Sprintf("读取响应体发生错误。 %v", err)
 		logger.Error(msg)
@@ -197,8 +210,13 @@ func doProxy(w http.ResponseWriter, r *http.Request, host string) {
 	go OutResponseBody(config, url, r.Method, &responseProxy.Header, data)
 
 	// response的Body不能多次读取，需要重新生成可读取的Body
-	resProxyBody := ioutil.NopCloser(bytes.NewBuffer(data))
-	defer resProxyBody.Close() // 延时关闭
+	resProxyBody := io.NopCloser(bytes.NewBuffer(data))
+	defer func(resProxyBody io.ReadCloser) {
+		err := resProxyBody.Close()
+		if err != nil {
+			logger.Error(err)
+		}
+	}(resProxyBody) // 延时关闭
 
 	// 转发响应的响应头
 	for k, v := range responseProxy.Header {
@@ -207,7 +225,10 @@ func doProxy(w http.ResponseWriter, r *http.Request, host string) {
 	// 状态码
 	w.WriteHeader(responseProxy.StatusCode)
 	// 复制转发的响应Body到响应Body
-	io.Copy(w, resProxyBody)
+	_, err = io.Copy(w, resProxyBody)
+	if err != nil {
+		logger.Error(err)
+	}
 
 	msg = fmt.Sprintf("=== 响应正常结束 === ")
 	logger.Info(msg)
@@ -218,13 +239,15 @@ func doMock(w http.ResponseWriter, r *http.Request, item MockItem, config *Confi
 	msg := fmt.Sprintf("=== 使用Mock === Mock项目：[%v]", item)
 	logger.Info(msg)
 
-	duration := config.Proxy.Duration
-	time.Sleep(time.Duration(duration) * time.Millisecond)
-	msg = fmt.Sprintf("=== 响应等待时间：[%v]毫秒", duration)
-	logger.Info(msg)
+	duration := item.Duration
+	if duration > 0 {
+		time.Sleep(time.Duration(duration) * time.Millisecond)
+		msg = fmt.Sprintf("=== 响应等待时间：[%v]毫秒", duration)
+		logger.Info(msg)
+	}
 
 	// 读取请求的Body
-	body, err := ioutil.ReadAll(r.Body)
+	body, err := io.ReadAll(r.Body)
 	if err != nil {
 		msg := fmt.Sprintf("读取请求体发生错误。 %v", err)
 		logger.Error(msg)
@@ -283,7 +306,7 @@ func doMock(w http.ResponseWriter, r *http.Request, item MockItem, config *Confi
 			LogError(err)
 		} else {
 			// 响应体非JSON
-			data, err := ioutil.ReadFile(fResp)
+			data, err := os.ReadFile(fResp)
 			LogError(err)
 			stream = data
 		}
@@ -313,12 +336,24 @@ func doMock(w http.ResponseWriter, r *http.Request, item MockItem, config *Confi
 		// gzip压缩
 		buffer := new(bytes.Buffer)
 		gw := gzip.NewWriter(buffer)
-		gw.Write(stream)
-		gw.Flush()
+		_, err := gw.Write(stream)
+		if err != nil {
+			LogError(err)
+		}
+		err = gw.Flush()
+		if err != nil {
+			LogError(err)
+		}
 
-		w.Write(buffer.Bytes())
+		_, err = w.Write(buffer.Bytes())
+		if err != nil {
+			LogError(err)
+		}
 	} else {
-		w.Write(stream)
+		_, err2 := w.Write(stream)
+		if err2 != nil {
+			LogError(err)
+		}
 	}
 
 	msg = fmt.Sprintf("=== 响应正常结束 === ")

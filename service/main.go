@@ -7,6 +7,7 @@ import (
 
 func main() {
 	go http.RunHttp()
+	go mock.Watch()
 	mock.StartMock()
 	mock.RunRpc()
 }

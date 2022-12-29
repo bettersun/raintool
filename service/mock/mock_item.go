@@ -38,7 +38,7 @@ func UpdateAllMockItem(newInfoSlice []MockItem) {
 }
 
 // SaveMockItem 保存Mock 项目
-func SaveMockItem(config *Config, mockItems []MockItem) error {
+func SaveMockItem(config *Config, mockItems []MockItem) {
 	// 保存Mock 项目
 	err := OutputMockItem(config, mockItems)
 	if err != nil {
@@ -48,6 +48,4 @@ func SaveMockItem(config *Config, mockItems []MockItem) error {
 
 	msg := fmt.Sprintf("Mock 项目已保存。[%s]", config.Proxy.MockItemFile)
 	logger.Info(msg)
-
-	return nil
 }

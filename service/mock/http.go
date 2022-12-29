@@ -7,5 +7,8 @@ import (
 func ResponseText(w http.ResponseWriter, content string) {
 	w.Header().Set(httpHeaderContentEncoding, contentTypeText)
 	w.WriteHeader(http.StatusInternalServerError)
-	w.Write([]byte(content))
+	_, err := w.Write([]byte(content))
+	if err != nil {
+		logger.Error(err)
+	}
 }

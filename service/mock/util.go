@@ -5,15 +5,15 @@ import (
 	"compress/gzip"
 	"fmt"
 	"github.com/bettersun/rain"
-	"io/ioutil"
+	"io"
 	"log"
 	"net/http"
 	"os"
 	"strings"
 )
 
-/// 获取URL里的地址部分
-///  去掉URL里?后面的内容
+// / 获取URL里的地址部分
+// /  去掉URL里?后面的内容
 func baseURL(s string) string {
 	tmp := ""
 
@@ -29,8 +29,8 @@ func baseURL(s string) string {
 	return tmp
 }
 
-/// 反斜线转下划线
-/// 去掉第一个下划线
+// / 反斜线转下划线
+// / 去掉第一个下划线
 func escapeURL(s string) string {
 	// 去掉问号后面的部分
 	s = baseURL(s)
@@ -40,26 +40,26 @@ func escapeURL(s string) string {
 	return result
 }
 
-/// 文件存放目录(绝对)
+// / 文件存放目录(绝对)
 func pathURL(relativePath string, method string, url string) string {
 	p := fmt.Sprintf("%v/%v", rain.CurrentDir(), pathURLRelative(relativePath, method, url))
 	return p
 }
 
-/// 文件存放目录(相对)
+// / 文件存放目录(相对)
 func pathURLRelative(relativePath string, method string, url string) string {
 	pURL := escapeURL(url)
 	p := fmt.Sprintf("%v/%v/%v", relativePath, method, pURL)
 	return p
 }
 
-/// 请求信息文件名
+// / 请求信息文件名
 func fileRequest() string {
 	f := fmt.Sprintf("req_%v.json", rain.NowMdHms())
 	return f
 }
 
-/// 响应信息文件名
+// / 响应信息文件名
 func fileResponse(isJSON bool) string {
 	var f string
 
@@ -119,7 +119,8 @@ func OutRequest(relativePath string, r *http.Request, body []byte) {
 }
 
 // OutResponseBody 输出响应体到文件
-//  TODO 返回值未使用
+//
+//	TODO 返回值未使用
 func OutResponseBody(config *Config, url string, method string, header *http.Header, data []byte) string {
 
 	relativePath := config.Path.Response
@@ -133,8 +134,13 @@ func OutResponseBody(config *Config, url string, method string, header *http.Hea
 
 	// gzip压缩编码数据
 	if isGzipped {
-		resProxyGzippedBody := ioutil.NopCloser(bytes.NewBuffer(data))
-		defer resProxyGzippedBody.Close() // 延时关闭
+		resProxyGzippedBody := io.NopCloser(bytes.NewBuffer(data))
+		defer func(resProxyGzippedBody io.ReadCloser) {
+			err := resProxyGzippedBody.Close()
+			if err != nil {
+				logger.Error(err)
+			}
+		}(resProxyGzippedBody) // 延时关闭
 
 		// gzip Reader
 		gr, err := gzip.NewReader(resProxyGzippedBody)
@@ -142,10 +148,15 @@ func OutResponseBody(config *Config, url string, method string, header *http.Hea
 			msg := fmt.Sprintf("创建gzip读取器发生错误。[%v]", err)
 			logger.Error(msg)
 		}
-		defer gr.Close()
+		defer func(gr *gzip.Reader) {
+			err := gr.Close()
+			if err != nil {
+				logger.Error(err)
+			}
+		}(gr)
 
 		// 读取gzip对象内容
-		dataOutput, err = ioutil.ReadAll(gr)
+		dataOutput, err = io.ReadAll(gr)
 		if err != nil {
 			msg := fmt.Sprintf("读取gzip对象内容发生错误。[%v]", err)
 			logger.Error(msg)
@@ -236,7 +247,7 @@ func LoadResponseFile(relativePath string, url string, method string) ([]string,
 	path := pathURL(relativePath, method, url)
 
 	var file []string
-	sub, err := ioutil.ReadDir(path)
+	sub, err := os.ReadDir(path)
 	if err != nil {
 		msg := fmt.Sprintf("目录不存在，或打开错误。[%s][%v]", path, err)
 		logger.Warn(msg)
