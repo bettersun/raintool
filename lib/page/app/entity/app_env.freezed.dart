@@ -26,7 +26,8 @@ mixin _$AppEnv {
   String get theme => throw _privateConstructorUsedError; // 应用主题标志
   @JsonKey(ignore: true)
   ThemeData? get themeData => throw _privateConstructorUsedError; // 应用主题
-  String get locale => throw _privateConstructorUsedError; // 应用语言标志
+  String get languageCode => throw _privateConstructorUsedError; // 语言Code
+  String get countryCode => throw _privateConstructorUsedError; // 地区码
   String get label => throw _privateConstructorUsedError; // 主题切换标签
   String get apiHost => throw _privateConstructorUsedError; // API服务 URL
   String get rpcServer => throw _privateConstructorUsedError; // RPC服务 IP
@@ -48,7 +49,8 @@ abstract class $AppEnvCopyWith<$Res> {
       String title,
       String theme,
       @JsonKey(ignore: true) ThemeData? themeData,
-      String locale,
+      String languageCode,
+      String countryCode,
       String label,
       String apiHost,
       String rpcServer,
@@ -73,7 +75,8 @@ class _$AppEnvCopyWithImpl<$Res, $Val extends AppEnv>
     Object? title = null,
     Object? theme = null,
     Object? themeData = freezed,
-    Object? locale = null,
+    Object? languageCode = null,
+    Object? countryCode = null,
     Object? label = null,
     Object? apiHost = null,
     Object? rpcServer = null,
@@ -100,9 +103,13 @@ class _$AppEnvCopyWithImpl<$Res, $Val extends AppEnv>
           ? _value.themeData
           : themeData // ignore: cast_nullable_to_non_nullable
               as ThemeData?,
-      locale: null == locale
-          ? _value.locale
-          : locale // ignore: cast_nullable_to_non_nullable
+      languageCode: null == languageCode
+          ? _value.languageCode
+          : languageCode // ignore: cast_nullable_to_non_nullable
+              as String,
+      countryCode: null == countryCode
+          ? _value.countryCode
+          : countryCode // ignore: cast_nullable_to_non_nullable
               as String,
       label: null == label
           ? _value.label
@@ -136,7 +143,8 @@ abstract class _$$_AppEnvCopyWith<$Res> implements $AppEnvCopyWith<$Res> {
       String title,
       String theme,
       @JsonKey(ignore: true) ThemeData? themeData,
-      String locale,
+      String languageCode,
+      String countryCode,
       String label,
       String apiHost,
       String rpcServer,
@@ -158,7 +166,8 @@ class __$$_AppEnvCopyWithImpl<$Res>
     Object? title = null,
     Object? theme = null,
     Object? themeData = freezed,
-    Object? locale = null,
+    Object? languageCode = null,
+    Object? countryCode = null,
     Object? label = null,
     Object? apiHost = null,
     Object? rpcServer = null,
@@ -185,9 +194,13 @@ class __$$_AppEnvCopyWithImpl<$Res>
           ? _value.themeData
           : themeData // ignore: cast_nullable_to_non_nullable
               as ThemeData?,
-      locale: null == locale
-          ? _value.locale
-          : locale // ignore: cast_nullable_to_non_nullable
+      languageCode: null == languageCode
+          ? _value.languageCode
+          : languageCode // ignore: cast_nullable_to_non_nullable
+              as String,
+      countryCode: null == countryCode
+          ? _value.countryCode
+          : countryCode // ignore: cast_nullable_to_non_nullable
               as String,
       label: null == label
           ? _value.label
@@ -211,14 +224,15 @@ class __$$_AppEnvCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_AppEnv with DiagnosticableTreeMixin implements _AppEnv {
+class _$_AppEnv implements _AppEnv {
   const _$_AppEnv(
       {this.code = '',
       this.message = '',
       this.title = '',
       this.theme = '',
       @JsonKey(ignore: true) this.themeData = null,
-      this.locale = '',
+      this.languageCode = 'en',
+      this.countryCode = '',
       this.label = '',
       this.apiHost = '',
       this.rpcServer = '',
@@ -249,8 +263,12 @@ class _$_AppEnv with DiagnosticableTreeMixin implements _AppEnv {
 // 应用主题
   @override
   @JsonKey()
-  final String locale;
-// 应用语言标志
+  final String languageCode;
+// 语言Code
+  @override
+  @JsonKey()
+  final String countryCode;
+// 地区码
   @override
   @JsonKey()
   final String label;
@@ -268,25 +286,8 @@ class _$_AppEnv with DiagnosticableTreeMixin implements _AppEnv {
   final int rpcPort;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'AppEnv(code: $code, message: $message, title: $title, theme: $theme, themeData: $themeData, locale: $locale, label: $label, apiHost: $apiHost, rpcServer: $rpcServer, rpcPort: $rpcPort)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'AppEnv'))
-      ..add(DiagnosticsProperty('code', code))
-      ..add(DiagnosticsProperty('message', message))
-      ..add(DiagnosticsProperty('title', title))
-      ..add(DiagnosticsProperty('theme', theme))
-      ..add(DiagnosticsProperty('themeData', themeData))
-      ..add(DiagnosticsProperty('locale', locale))
-      ..add(DiagnosticsProperty('label', label))
-      ..add(DiagnosticsProperty('apiHost', apiHost))
-      ..add(DiagnosticsProperty('rpcServer', rpcServer))
-      ..add(DiagnosticsProperty('rpcPort', rpcPort));
+  String toString() {
+    return 'AppEnv(code: $code, message: $message, title: $title, theme: $theme, themeData: $themeData, languageCode: $languageCode, countryCode: $countryCode, label: $label, apiHost: $apiHost, rpcServer: $rpcServer, rpcPort: $rpcPort)';
   }
 
   @override
@@ -300,7 +301,10 @@ class _$_AppEnv with DiagnosticableTreeMixin implements _AppEnv {
             (identical(other.theme, theme) || other.theme == theme) &&
             (identical(other.themeData, themeData) ||
                 other.themeData == themeData) &&
-            (identical(other.locale, locale) || other.locale == locale) &&
+            (identical(other.languageCode, languageCode) ||
+                other.languageCode == languageCode) &&
+            (identical(other.countryCode, countryCode) ||
+                other.countryCode == countryCode) &&
             (identical(other.label, label) || other.label == label) &&
             (identical(other.apiHost, apiHost) || other.apiHost == apiHost) &&
             (identical(other.rpcServer, rpcServer) ||
@@ -311,7 +315,7 @@ class _$_AppEnv with DiagnosticableTreeMixin implements _AppEnv {
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, code, message, title, theme,
-      themeData, locale, label, apiHost, rpcServer, rpcPort);
+      themeData, languageCode, countryCode, label, apiHost, rpcServer, rpcPort);
 
   @JsonKey(ignore: true)
   @override
@@ -334,7 +338,8 @@ abstract class _AppEnv implements AppEnv {
       final String title,
       final String theme,
       @JsonKey(ignore: true) final ThemeData? themeData,
-      final String locale,
+      final String languageCode,
+      final String countryCode,
       final String label,
       final String apiHost,
       final String rpcServer,
@@ -354,8 +359,10 @@ abstract class _AppEnv implements AppEnv {
   @JsonKey(ignore: true)
   ThemeData? get themeData;
   @override // 应用主题
-  String get locale;
-  @override // 应用语言标志
+  String get languageCode;
+  @override // 语言Code
+  String get countryCode;
+  @override // 地区码
   String get label;
   @override // 主题切换标签
   String get apiHost;

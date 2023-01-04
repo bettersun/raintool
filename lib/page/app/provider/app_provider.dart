@@ -49,18 +49,21 @@ final appEnvProvider = StateNotifierProvider<AppEnvNotifier, AppEnv>((ref) {
   }
 
   // 国际化
-  String? locale = HiveUtil.appBox().get(HiveKey.appLocale);
-  locale ??= AppConst.localDefault;
+  String? languageCode = HiveUtil.appBox().get(HiveKey.appLocaleLanguageCode);
+  String? countryCode = HiveUtil.appBox().get(HiveKey.appLocaleCountryCode);
+  languageCode ??= AppLocale.enUs.languageCode;
+  countryCode ??= '';
 
   // 持久化
-  LocaleSettings.setLocaleRaw(locale);
+  LocaleSettings.setLocaleRaw(languageCode + '-' + countryCode);
 
   return AppEnvNotifier(AppEnv(
     title: title,
     label: label,
     theme: theme,
     themeData: themeData,
-    locale: locale,
+    languageCode: languageCode,
+    countryCode: countryCode,
   ));
 });
 

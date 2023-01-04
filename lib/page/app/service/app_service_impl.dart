@@ -179,51 +179,42 @@ class AppServiceImpl extends AppService {
 
   @override
   AppEnv changeLocale(AppEnv state) {
-    switch (state.locale) {
-      // 英语
-      case AppConst.localEnUs:
-        state = state.copyWith(
-          // 汉语（中国大陆）
-          locale: AppConst.localZhCn,
-          message: '汉语（中国大陆）',
-        );
-        break;
-      // 汉语（中国大陆）
-      case AppConst.localZhCn:
-        state = state.copyWith(
-          // 汉语（中国香港）
-          locale: AppConst.localZhHk,
-          message: '汉语（中国香港）',
-        );
-        break;
-      // 汉语（中国香港）
-      case AppConst.localZhHk:
-        state = state.copyWith(
-          // 日语
-          locale: AppConst.localJaJp,
-          message: '日语',
-        );
-        break;
-      // 日语
-      case AppConst.localJaJp:
-        state = state.copyWith(
-          // 英语
-          locale: AppConst.localEnUs,
-          message: '英语',
-        );
-        break;
-      default:
-        state = state.copyWith(
-          // 默认语言
-          locale: AppConst.localDefault,
-          message: '默认',
-        );
+    if (state.languageCode == AppLocale.enUs.languageCode && state.countryCode == AppLocale.enUs.countryCode ||
+        state.languageCode == AppLocale.enUs.languageCode) {
+      state = state.copyWith(
+        // 汉语（中国大陆）
+        languageCode: AppLocale.zhCn.languageCode,
+        countryCode: AppLocale.zhCn.countryCode ?? '',
+        message: '汉语（中国大陆）',
+      );
+    } else if (state.languageCode == AppLocale.zhCn.languageCode && state.countryCode == AppLocale.zhCn.countryCode) {
+      state = state.copyWith(
+        // 汉语（中国香港）
+        languageCode: AppLocale.zhHk.languageCode,
+        countryCode: AppLocale.zhHk.countryCode ?? '',
+        message: '汉语（中国香港）',
+      );
+    } else if (state.languageCode == AppLocale.zhHk.languageCode && state.countryCode == AppLocale.zhHk.countryCode) {
+      state = state.copyWith(
+        // 日语
+        languageCode: AppLocale.jaJp.languageCode,
+        countryCode: AppLocale.jaJp.countryCode ?? '',
+        message: '日语',
+      );
+    } else if (state.languageCode == AppLocale.jaJp.languageCode && state.countryCode == AppLocale.jaJp.countryCode) {
+      state = state.copyWith(
+        // 英语
+        languageCode: AppLocale.enUs.languageCode,
+        countryCode: AppLocale.enUs.countryCode ?? '',
+        message: '英语',
+      );
     }
 
     // 反映
-    LocaleSettings.setLocaleRaw(state.locale);
+    LocaleSettings.setLocaleRaw(state.languageCode + '-' + state.countryCode);
     // 持久化
-    HiveUtil.appBox().put(HiveKey.appLocale, state.locale);
+    HiveUtil.appBox().put(HiveKey.appLocaleLanguageCode, state.languageCode);
+    HiveUtil.appBox().put(HiveKey.appLocaleCountryCode, state.countryCode);
 
     return state;
   }

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../common/i18n/strings.g.dart';
 import 'entity/app_env.dart';
 import 'provider/app_provider.dart';
 
@@ -32,9 +34,13 @@ class RainAppState extends ConsumerState<RainApp> {
     return MaterialApp.router(
       routeInformationParser: router.routeInformationParser,
       routerDelegate: router.routerDelegate,
-      // locale: Locale(appEnv.locale), // use provider
-      // supportedLocales: LocaleSettings.supportedLocales,
-      // localizationsDelegates: GlobalMaterialLocalizations.delegates,
+      localizationsDelegates: const [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      locale: Locale(appEnv.languageCode, appEnv.countryCode),
+      supportedLocales: LocaleSettings.supportedLocales,
       theme: appEnv.themeData,
     );
   }

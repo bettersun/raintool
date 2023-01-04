@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -14,7 +13,8 @@ class AppEnv with _$AppEnv {
     @Default('') String title, // 应用标题
     @Default('') String theme, // 应用主题标志
     @Default(null) @JsonKey(ignore: true) ThemeData? themeData, // 应用主题
-    @Default('') String locale, // 应用语言标志
+    @Default('en') String languageCode, // 语言Code
+    @Default('') String countryCode, // 地区Code
     @Default('') String label, // 主题切换标签
     @Default('') String apiHost, // API服务 URL
     @Default('') String rpcServer, // RPC服务 IP

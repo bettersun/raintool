@@ -11,13 +11,6 @@ class AppConst {
   static const String labelLight = '明亮模式'; // 明亮模式
   static const String labelDark = '黑暗模式'; // 黑暗模式
 
-  /// 语言
-  static const String localEnUs = 'en-US';
-  static const String localZhCn = 'zh-CN';
-  static const String localZhHk = 'zh-HK';
-  static const String localJaJp = 'ja-JP';
-  static const String localDefault = localEnUs; // 默认：英语
-
   /// RPC 最多尝试连接次数
   static const int maxRpcConnectTimes = 5;
 
